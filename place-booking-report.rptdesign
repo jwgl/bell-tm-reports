@@ -45,7 +45,7 @@
             <list-property name="computedColumns">
                 <structure>
                     <property name="name">_weeks</property>
-                    <expression name="expression">row["startweek"] = row["endweek"] ? "第" + row["startweek"] + "周" : row["startweek"] + "-" + row["endweek"] + "周"</expression>
+                    <expression name="expression">row["startweek"] == row["endweek"] ? "第" + row["startweek"] + "周" : row["startweek"] + "-" + row["endweek"] + "周"</expression>
                     <property name="dataType">string</property>
                 </structure>
                 <structure>
@@ -389,7 +389,8 @@ join tm.system_user form_user on form_user.id = form.user_id
 join tm.system_user checker on checker.id = form.checker_id
 join ea.place on place.id = item.place_id
 join ea.department on department.id = form.department_id
-where report.id = ?]]></xml-property>
+where report.id = ?
+order by openGroup, startWeek, endWeek, dayOfWeek, section.start]]></xml-property>
             <xml-property name="designerValues"><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
 <model:DesignValues xmlns:design="http://www.eclipse.org/datatools/connectivity/oda/design" xmlns:model="http://www.eclipse.org/birt/report/model/adapter/odaModel">
   <Version>2.0</Version>
@@ -714,6 +715,7 @@ where report.id = ?]]></xml-property>
     </page-setup>
     <body>
         <table id="5">
+            <property name="pageBreakInside">auto</property>
             <property name="dataSet">Report</property>
             <list-property name="boundDataColumns">
                 <structure>
@@ -737,6 +739,9 @@ where report.id = ?]]></xml-property>
                 <structure>
                     <property name="name">RowNumber</property>
                     <property name="dataType">float</property>
+                    <simple-property-list name="aggregateOn">
+                        <value>NewTableGroup1</value>
+                    </simple-property-list>
                     <property name="aggregateFunction">RUNNINGSUM</property>
                     <list-property name="arguments">
                         <structure>
@@ -789,6 +794,7 @@ where report.id = ?]]></xml-property>
                     <property name="dataType">string</property>
                 </structure>
             </list-property>
+            <property name="pageBreakInterval">4000</property>
             <column id="33">
                 <property name="width">10mm</property>
             </column>
@@ -821,6 +827,7 @@ where report.id = ?]]></xml-property>
                 </structure>
                 <property name="hideDetail">false</property>
                 <property name="pageBreakAfter">always-excluding-last</property>
+                <property name="pageBreakInside">avoid</property>
                 <header>
                     <row id="147">
                         <property name="height">0.4479166666666667in</property>
@@ -965,7 +972,7 @@ where report.id = ?]]></xml-property>
     </body>
     <property name="pageVariables">
         <variable-element name="rowNum">
-            <expression name="value" type="javascript">0</expression>
+            <expression name="value" type="javascript">1</expression>
             <property name="type">report</property>
         </variable-element>
     </property>
