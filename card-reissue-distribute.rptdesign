@@ -300,7 +300,7 @@ order by department, admin_class, student.id]]></xml-property>
                     <property name="dataType">integer</property>
                 </structure>
             </list-property>
-            <property name="pageBreakInterval">4000</property>
+            <property name="pageBreakInterval">0</property>
             <column id="121">
                 <property name="width">10mm</property>
             </column>
