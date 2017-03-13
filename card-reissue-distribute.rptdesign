@@ -55,6 +55,7 @@
     </data-sources>
     <data-sets>
         <oda-data-set extensionID="org.eclipse.birt.report.data.oda.jdbc.JdbcSelectDataSet" name="Distribute List" id="5">
+            <property name="nullsOrdering">nulls lowest</property>
             <list-property name="columnHints">
                 <structure>
                     <property name="columnName">ordinal</property>
@@ -99,10 +100,10 @@
                     <text-property name="heading">admin_class</text-property>
                 </structure>
                 <structure>
-                    <property name="columnName">apply_rank</property>
+                    <property name="columnName">form_ordinal</property>
                     <property name="analysis">measure</property>
-                    <text-property name="displayName">apply_rank</text-property>
-                    <text-property name="heading">apply_rank</text-property>
+                    <text-property name="displayName">form_ordinal</text-property>
+                    <text-property name="heading">form_ordinal</text-property>
                 </structure>
             </list-property>
             <list-property name="parameters">
@@ -156,8 +157,8 @@
                     </structure>
                     <structure>
                         <property name="position">8</property>
-                        <property name="name">apply_rank</property>
-                        <property name="dataType">decimal</property>
+                        <property name="name">form_ordinal</property>
+                        <property name="dataType">integer</property>
                     </structure>
                 </list-property>
             </structure>
@@ -214,10 +215,10 @@
                 </structure>
                 <structure>
                     <property name="position">8</property>
-                    <property name="name">apply_rank</property>
-                    <property name="nativeName">apply_rank</property>
-                    <property name="dataType">decimal</property>
-                    <property name="nativeDataType">-5</property>
+                    <property name="name">form_ordinal</property>
+                    <property name="nativeName">form_ordinal</property>
+                    <property name="dataType">integer</property>
+                    <property name="nativeDataType">4</property>
                 </structure>
             </list-property>
             <xml-property name="queryText"><![CDATA[select
@@ -228,7 +229,7 @@
   department.name as department,
   subject.name as subject,
   admin_class.name as admin_class,
-  statis.rank as apply_rank
+  form.ordinal as form_ordinal
 from tm.card_reissue_order ro
 join tm.card_reissue_order_item oi on ro.id = oi.order_id
 join tm.card_reissue_form form on oi.form_id = form.id
@@ -237,8 +238,7 @@ join ea.admin_class on student.admin_class_id = admin_class.id
 join ea.department on student.department_id = department.id
 join ea.major on student.major_id = major.id
 join ea.subject on major.subject_id = subject.id
-join tm.dv_card_reissue_form_statis statis on form.id = statis.form_id
-where form.status = 5
+where form.status = 'FINISHED'
 and ro.id = ?
 order by department, admin_class, student.id]]></xml-property>
         </oda-data-set>
@@ -248,7 +248,7 @@ order by department, admin_class, student.id]]></xml-property>
     </page-setup>
     <body>
         <table id="54">
-            <property name="width">6.302083333333333in</property>
+            <property name="width">165mm</property>
             <property name="dataSet">Distribute List</property>
             <list-property name="boundDataColumns">
                 <structure>
@@ -294,12 +294,13 @@ order by department, admin_class, student.id]]></xml-property>
                     <property name="dataType">integer</property>
                 </structure>
                 <structure>
-                    <property name="name">apply_rank</property>
-                    <text-property name="displayName">apply_rank</text-property>
-                    <expression name="expression" type="javascript">dataSetRow["apply_rank"]</expression>
-                    <property name="dataType">decimal</property>
+                    <property name="name">form_ordinal</property>
+                    <text-property name="displayName">form_ordinal</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["form_ordinal"]</expression>
+                    <property name="dataType">integer</property>
                 </structure>
             </list-property>
+            <property name="pageBreakInterval">4000</property>
             <column id="121">
                 <property name="width">10mm</property>
             </column>
@@ -313,10 +314,10 @@ order by department, admin_class, student.id]]></xml-property>
                 <property name="width">10mm</property>
             </column>
             <column id="92">
-                <property name="width">38mm</property>
+                <property name="width">35mm</property>
             </column>
             <column id="93">
-                <property name="width">38mm</property>
+                <property name="width">30mm</property>
             </column>
             <column id="136">
                 <property name="width">10mm</property>
@@ -365,11 +366,12 @@ order by department, admin_class, student.id]]></xml-property>
                             </label>
                         </cell>
                         <cell id="100">
+                            <property name="colSpan">2</property>
+                            <property name="rowSpan">1</property>
                             <data id="109">
                                 <property name="resultSetColumn">department</property>
                             </data>
                         </cell>
-                        <cell id="101"/>
                         <cell id="133">
                             <label id="149">
                                 <text-property name="text">时间</text-property>
@@ -523,8 +525,8 @@ order by department, admin_class, student.id]]></xml-property>
                         </data>
                     </cell>
                     <cell id="135">
-                        <data id="138">
-                            <property name="resultSetColumn">apply_rank</property>
+                        <data id="151">
+                            <property name="resultSetColumn">form_ordinal</property>
                         </data>
                     </cell>
                     <cell id="127"/>
