@@ -828,7 +828,7 @@ order by openGroup, startWeek, endWeek, dayOfWeek, section.start]]></xml-propert
                     <property name="dataType">string</property>
                 </structure>
             </list-property>
-            <property name="pageBreakInterval">4000</property>
+            <property name="pageBreakInterval">0</property>
             <column id="33">
                 <property name="width">10mm</property>
             </column>

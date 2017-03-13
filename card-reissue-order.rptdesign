@@ -406,6 +406,7 @@ order by student.id]]></xml-property>
     </page-setup>
     <body>
         <table id="117">
+            <property name="width">255mm</property>
             <property name="dataSet">Order Items</property>
             <list-property name="boundDataColumns">
                 <structure>
@@ -476,6 +477,8 @@ order by student.id]]></xml-property>
                     <property name="dataType">integer</property>
                 </structure>
             </list-property>
+            <property name="repeatHeader">true</property>
+            <property name="pageBreakInterval">4000</property>
             <column id="190">
                 <property name="width">10mm</property>
             </column>
@@ -489,13 +492,13 @@ order by student.id]]></xml-property>
                 <property name="width">10mm</property>
             </column>
             <column id="179">
-                <property name="width">30mm</property>
+                <property name="width">25mm</property>
             </column>
             <column id="180">
-                <property name="width">38mm</property>
+                <property name="width">35mm</property>
             </column>
             <column id="181">
-                <property name="width">45mm</property>
+                <property name="width">40mm</property>
             </column>
             <column id="182">
                 <property name="width">22mm</property>
