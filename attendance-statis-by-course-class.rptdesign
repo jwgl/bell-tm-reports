@@ -1,0 +1,1277 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<report xmlns="http://www.eclipse.org/birt/2005/design" version="3.2.23" id="1">
+    <property name="createdBy">Eclipse BIRT Designer Version 4.6.0.v201606072122</property>
+    <text-property name="title">课程考勤统计</text-property>
+    <list-property name="propertyBindings">
+        <structure>
+            <property name="name">queryText</property>
+            <property name="id">6</property>
+        </structure>
+        <structure>
+            <property name="name">queryTimeOut</property>
+            <property name="id">6</property>
+        </structure>
+        <structure>
+            <property name="name">rowFetchSize</property>
+            <property name="id">6</property>
+        </structure>
+    </list-property>
+    <property name="units">in</property>
+    <property name="theme">tm-common.defaultTheme</property>
+    <property name="iconFile">/templates/blank_report.gif</property>
+    <property name="layoutPreference">auto layout</property>
+    <property name="bidiLayoutOrientation">ltr</property>
+    <property name="imageDPI">96</property>
+    <list-property name="libraries">
+        <structure>
+            <property name="fileName">tm-common.rptlibrary</property>
+            <property name="namespace">tm-common</property>
+        </structure>
+    </list-property>
+    <parameters>
+        <scalar-parameter name="courseClassId" id="59">
+            <property name="valueType">static</property>
+            <property name="isRequired">true</property>
+            <property name="dataType">string</property>
+            <property name="distinct">true</property>
+            <list-property name="selectionList"/>
+            <property name="paramType">simple</property>
+            <property name="concealValue">false</property>
+            <property name="controlType">text-box</property>
+            <structure name="format">
+                <property name="category">Unformatted</property>
+            </structure>
+        </scalar-parameter>
+    </parameters>
+    <data-sources>
+        <oda-data-source extensionID="org.eclipse.birt.report.data.oda.jdbc" name="Data Source" id="5"
+ extends="tm-common.Data Source">
+            <property name="odaDriverClass">org.postgresql.Driver</property>
+            <property name="odaURL">jdbc:postgresql://localhost:5432/bell</property>
+            <property name="odaUser">tm</property>
+            <encrypted-property name="odaPassword" encryptionID="base64">dG0=</encrypted-property>
+        </oda-data-source>
+    </data-sources>
+    <data-sets>
+        <oda-data-set extensionID="org.eclipse.birt.report.data.oda.jdbc.JdbcSelectDataSet" name="attendances" id="6">
+            <property name="nullsOrdering">nulls lowest</property>
+            <list-property name="columnHints">
+                <structure>
+                    <property name="columnName">id</property>
+                    <property name="alias">id</property>
+                    <property name="analysis">dimension</property>
+                    <text-property name="displayName">id</text-property>
+                    <text-property name="heading">id</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">name</property>
+                    <property name="alias">name</property>
+                    <property name="analysis">dimension</property>
+                    <text-property name="displayName">name</text-property>
+                    <text-property name="heading">name</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">subject</property>
+                    <property name="alias">subject</property>
+                    <property name="analysis">dimension</property>
+                    <text-property name="displayName">subject</text-property>
+                    <text-property name="heading">subject</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">adminclass</property>
+                    <property name="analysis">dimension</property>
+                    <text-property name="displayName">adminclass</text-property>
+                    <text-property name="heading">adminclass</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">absent</property>
+                    <property name="alias">absent</property>
+                    <property name="analysis">measure</property>
+                    <text-property name="displayName">absent</text-property>
+                    <text-property name="heading">absent</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">late</property>
+                    <property name="alias">late</property>
+                    <property name="analysis">measure</property>
+                    <text-property name="displayName">late</text-property>
+                    <text-property name="heading">late</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">early</property>
+                    <property name="alias">early</property>
+                    <property name="analysis">measure</property>
+                    <text-property name="displayName">early</text-property>
+                    <text-property name="heading">early</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">total</property>
+                    <property name="alias">total</property>
+                    <property name="analysis">measure</property>
+                    <text-property name="displayName">total</text-property>
+                    <text-property name="heading">total</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">leave</property>
+                    <property name="alias">leave</property>
+                    <property name="analysis">measure</property>
+                    <text-property name="displayName">leave</text-property>
+                    <text-property name="heading">leave</text-property>
+                </structure>
+            </list-property>
+            <list-property name="parameters">
+                <structure>
+                    <property name="name">courseClassId</property>
+                    <property name="paramName">courseClassId</property>
+                    <property name="nativeName"></property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">1111</property>
+                    <property name="position">1</property>
+                    <property name="isInput">true</property>
+                    <property name="isOutput">false</property>
+                </structure>
+            </list-property>
+            <structure name="cachedMetaData">
+                <list-property name="resultSet">
+                    <structure>
+                        <property name="position">1</property>
+                        <property name="name">id</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">2</property>
+                        <property name="name">name</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">3</property>
+                        <property name="name">subject</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">4</property>
+                        <property name="name">adminclass</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">5</property>
+                        <property name="name">absent</property>
+                        <property name="dataType">decimal</property>
+                    </structure>
+                    <structure>
+                        <property name="position">6</property>
+                        <property name="name">late</property>
+                        <property name="dataType">decimal</property>
+                    </structure>
+                    <structure>
+                        <property name="position">7</property>
+                        <property name="name">early</property>
+                        <property name="dataType">decimal</property>
+                    </structure>
+                    <structure>
+                        <property name="position">8</property>
+                        <property name="name">total</property>
+                        <property name="dataType">decimal</property>
+                    </structure>
+                    <structure>
+                        <property name="position">9</property>
+                        <property name="name">leave</property>
+                        <property name="dataType">decimal</property>
+                    </structure>
+                </list-property>
+            </structure>
+            <property name="dataSource">Data Source</property>
+            <list-property name="resultSet">
+                <structure>
+                    <property name="position">1</property>
+                    <property name="name">id</property>
+                    <property name="nativeName">id</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">2</property>
+                    <property name="name">name</property>
+                    <property name="nativeName">name</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">3</property>
+                    <property name="name">subject</property>
+                    <property name="nativeName">subject</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">4</property>
+                    <property name="name">adminclass</property>
+                    <property name="nativeName">adminclass</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">5</property>
+                    <property name="name">absent</property>
+                    <property name="nativeName">absent</property>
+                    <property name="dataType">decimal</property>
+                </structure>
+                <structure>
+                    <property name="position">6</property>
+                    <property name="name">late</property>
+                    <property name="nativeName">late</property>
+                    <property name="dataType">decimal</property>
+                </structure>
+                <structure>
+                    <property name="position">7</property>
+                    <property name="name">early</property>
+                    <property name="nativeName">early</property>
+                    <property name="dataType">decimal</property>
+                </structure>
+                <structure>
+                    <property name="position">8</property>
+                    <property name="name">total</property>
+                    <property name="nativeName">total</property>
+                    <property name="dataType">decimal</property>
+                </structure>
+                <structure>
+                    <property name="position">9</property>
+                    <property name="name">leave</property>
+                    <property name="nativeName">leave</property>
+                    <property name="dataType">decimal</property>
+                </structure>
+            </list-property>
+            <xml-property name="queryText"><![CDATA[with course_class as (
+  select id
+  from ea.course_class
+  where id = cast(? as uuid)
+), course_class_student as (
+  select distinct student.id as id,
+    student.name as name,
+    subject.name as subject,
+    admin_class.name as adminClass
+  from course_class
+  join ea.task on course_class.id = task.course_class_id
+  join ea.task_student on task.id = task_student.task_id
+  join ea.student on task_student.student_id = student.id
+  join ea.major on student.major_id = major.id
+  join ea.subject on major.subject_id = subject.id
+  join ea.admin_class on student.admin_class_id = admin_class.id
+), attendance_stats as (
+  select sa.student_id as student_id,
+    sum(case when type = 1 then ts.total_section else 0 end) as absent,
+    sum(case when type = 2 then 0.5 else 0 end) as late,
+    sum(case when type in (3, 5) then ts.total_section else 0 end) as early,
+    sum(case when type in (1, 3, 5) then ts.total_section else 0 end) + sum(case type when 2 then 0.5 else 0 end) as total,
+    sum(case type when 4 then ts.total_section else 0 end) as leave
+  from tm.dv_student_attendance sa
+  join ea.task_schedule ts on sa.task_schedule_id = ts.id
+  join ea.task on ts.task_id = task.id
+  join course_class on task.course_class_id = course_class.id 
+  where sa.valid = true
+  group by sa.student_id
+)
+select id, name, subject, adminClass,
+  nullif(absent, 0)::numeric(4,1) as absent,
+  nullif(late, 0)::numeric(4,1) as late,
+  nullif(early, 0)::numeric(4,1) as early,
+  nullif(total, 0)::numeric(4,1) as total,
+  nullif(leave, 0)::numeric(4,1) as leave
+from course_class_student
+left join attendance_stats on id = student_id
+order by id;
+]]></xml-property>
+            <xml-property name="designerValues"><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
+<model:DesignValues xmlns:design="http://www.eclipse.org/datatools/connectivity/oda/design" xmlns:model="http://www.eclipse.org/birt/report/model/adapter/odaModel">
+  <Version>2.0</Version>
+  <design:ResultSets derivedMetaData="true">
+    <design:resultSetDefinitions>
+      <design:resultSetColumns>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>id</design:name>
+              <design:position>1</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>12</design:nativeDataTypeCode>
+            <design:precision>10</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>NotNullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>id</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>id</design:label>
+            <design:formattingHints>
+              <design:displaySize>10</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>name</design:name>
+              <design:position>2</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>12</design:nativeDataTypeCode>
+            <design:precision>50</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>NotNullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>name</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>name</design:label>
+            <design:formattingHints>
+              <design:displaySize>50</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>adminclass</design:name>
+              <design:position>3</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>12</design:nativeDataTypeCode>
+            <design:precision>50</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>NotNullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>adminclass</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>adminclass</design:label>
+            <design:formattingHints>
+              <design:displaySize>50</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>absent</design:name>
+              <design:position>4</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>-5</design:nativeDataTypeCode>
+            <design:precision>19</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>Unknown</design:nullability>
+            <design:uiHints>
+              <design:displayName>absent</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>absent</design:label>
+            <design:formattingHints>
+              <design:displaySize>20</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>late</design:name>
+              <design:position>5</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>2</design:nativeDataTypeCode>
+            <design:precision>0</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>Unknown</design:nullability>
+            <design:uiHints>
+              <design:displayName>late</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>late</design:label>
+            <design:formattingHints>
+              <design:displaySize>131089</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>early</design:name>
+              <design:position>6</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>-5</design:nativeDataTypeCode>
+            <design:precision>19</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>Unknown</design:nullability>
+            <design:uiHints>
+              <design:displayName>early</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>early</design:label>
+            <design:formattingHints>
+              <design:displaySize>20</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>total</design:name>
+              <design:position>7</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>2</design:nativeDataTypeCode>
+            <design:precision>0</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>Unknown</design:nullability>
+            <design:uiHints>
+              <design:displayName>total</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>total</design:label>
+            <design:formattingHints>
+              <design:displaySize>131089</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>leave</design:name>
+              <design:position>8</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>-5</design:nativeDataTypeCode>
+            <design:precision>19</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>Unknown</design:nullability>
+            <design:uiHints>
+              <design:displayName>leave</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>leave</design:label>
+            <design:formattingHints>
+              <design:displaySize>20</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+      </design:resultSetColumns>
+      <design:criteria/>
+    </design:resultSetDefinitions>
+  </design:ResultSets>
+</model:DesignValues>]]></xml-property>
+        </oda-data-set>
+        <oda-data-set extensionID="org.eclipse.birt.report.data.oda.jdbc.JdbcSelectDataSet" name="courseClass" id="199">
+            <list-property name="columnHints">
+                <structure>
+                    <property name="columnName">id</property>
+                    <property name="analysis">dimension</property>
+                    <text-property name="displayName">id</text-property>
+                    <text-property name="heading">id</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">course</property>
+                    <property name="analysis">dimension</property>
+                    <text-property name="displayName">course</text-property>
+                    <text-property name="heading">course</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">name</property>
+                    <property name="analysis">dimension</property>
+                    <text-property name="displayName">name</text-property>
+                    <text-property name="heading">name</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">code</property>
+                    <property name="analysis">dimension</property>
+                    <text-property name="displayName">code</text-property>
+                    <text-property name="heading">code</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">teacher</property>
+                    <property name="analysis">dimension</property>
+                    <text-property name="displayName">teacher</text-property>
+                    <text-property name="heading">teacher</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">department</property>
+                    <property name="analysis">dimension</property>
+                    <text-property name="displayName">department</text-property>
+                    <text-property name="heading">department</text-property>
+                </structure>
+            </list-property>
+            <list-property name="parameters">
+                <structure>
+                    <property name="name">courseClassId</property>
+                    <property name="paramName">courseClassId</property>
+                    <property name="nativeName"></property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">1111</property>
+                    <property name="position">1</property>
+                    <property name="isOptional">false</property>
+                    <property name="isInput">true</property>
+                    <property name="isOutput">false</property>
+                </structure>
+            </list-property>
+            <structure name="cachedMetaData">
+                <list-property name="resultSet">
+                    <structure>
+                        <property name="position">1</property>
+                        <property name="name">id</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">2</property>
+                        <property name="name">course</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">3</property>
+                        <property name="name">name</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">4</property>
+                        <property name="name">code</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">5</property>
+                        <property name="name">teacher</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">6</property>
+                        <property name="name">department</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                </list-property>
+            </structure>
+            <property name="dataSource">Data Source</property>
+            <list-property name="resultSet">
+                <structure>
+                    <property name="position">1</property>
+                    <property name="name">id</property>
+                    <property name="nativeName">id</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">1111</property>
+                </structure>
+                <structure>
+                    <property name="position">2</property>
+                    <property name="name">course</property>
+                    <property name="nativeName">course</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">12</property>
+                </structure>
+                <structure>
+                    <property name="position">3</property>
+                    <property name="name">name</property>
+                    <property name="nativeName">name</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">12</property>
+                </structure>
+                <structure>
+                    <property name="position">4</property>
+                    <property name="name">code</property>
+                    <property name="nativeName">code</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">12</property>
+                </structure>
+                <structure>
+                    <property name="position">5</property>
+                    <property name="name">teacher</property>
+                    <property name="nativeName">teacher</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">12</property>
+                </structure>
+                <structure>
+                    <property name="position">6</property>
+                    <property name="name">department</property>
+                    <property name="nativeName">department</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">12</property>
+                </structure>
+            </list-property>
+            <xml-property name="queryText"><![CDATA[select course_class.id, course.name as course, course_class.name, course_class.code,
+  teacher.name as teacher, department.name as department
+from ea.course_class
+join ea.course on course_class.course_id = course.id
+join ea.teacher on course_class.teacher_id = teacher.id
+join ea.department on course_class.department_id = department.id
+where course_class.id = cast(? as uuid);]]></xml-property>
+            <xml-property name="designerValues"><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
+<model:DesignValues xmlns:design="http://www.eclipse.org/datatools/connectivity/oda/design" xmlns:model="http://www.eclipse.org/birt/report/model/adapter/odaModel">
+  <Version>2.0</Version>
+  <design:ResultSets derivedMetaData="true">
+    <design:resultSetDefinitions>
+      <design:resultSetColumns>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>id</design:name>
+              <design:position>1</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>1111</design:nativeDataTypeCode>
+            <design:precision>2147483647</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>NotNullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>id</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>id</design:label>
+            <design:formattingHints>
+              <design:displaySize>2147483647</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>name</design:name>
+              <design:position>2</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>12</design:nativeDataTypeCode>
+            <design:precision>255</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>Nullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>name</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>name</design:label>
+            <design:formattingHints>
+              <design:displaySize>255</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>code</design:name>
+              <design:position>3</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>12</design:nativeDataTypeCode>
+            <design:precision>31</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>NotNullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>code</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>code</design:label>
+            <design:formattingHints>
+              <design:displaySize>31</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>teacher</design:name>
+              <design:position>4</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>12</design:nativeDataTypeCode>
+            <design:precision>50</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>NotNullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>teacher</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>teacher</design:label>
+            <design:formattingHints>
+              <design:displaySize>50</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>department</design:name>
+              <design:position>5</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>12</design:nativeDataTypeCode>
+            <design:precision>50</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>NotNullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>department</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>department</design:label>
+            <design:formattingHints>
+              <design:displaySize>50</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+      </design:resultSetColumns>
+      <design:criteria/>
+    </design:resultSetDefinitions>
+  </design:ResultSets>
+</model:DesignValues>]]></xml-property>
+        </oda-data-set>
+    </data-sets>
+    <page-setup>
+        <simple-master-page name="A4-Portrait" id="77" extends="tm-common.A4-Portrait">
+            <property name="topMargin">2cm</property>
+            <property name="leftMargin">2cm</property>
+            <property name="bottomMargin">2cm</property>
+            <property name="rightMargin">2cm</property>
+        </simple-master-page>
+    </page-setup>
+    <body>
+        <table id="7">
+            <property name="verticalAlign">middle</property>
+            <property name="display">block</property>
+            <property name="pageBreakAfter">always</property>
+            <property name="pageBreakInside">avoid</property>
+            <property name="width">17cm</property>
+            <property name="dataSet">attendances</property>
+            <list-property name="boundDataColumns">
+                <structure>
+                    <property name="name">id</property>
+                    <text-property name="displayName">id</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["id"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">name</property>
+                    <text-property name="displayName">name</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["name"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">adminclass</property>
+                    <text-property name="displayName">adminclass</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["adminclass"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">absent</property>
+                    <text-property name="displayName">absent</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["absent"]</expression>
+                    <property name="dataType">decimal</property>
+                </structure>
+                <structure>
+                    <property name="name">late</property>
+                    <text-property name="displayName">late</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["late"]</expression>
+                    <property name="dataType">decimal</property>
+                </structure>
+                <structure>
+                    <property name="name">early</property>
+                    <text-property name="displayName">early</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["early"]</expression>
+                    <property name="dataType">decimal</property>
+                </structure>
+                <structure>
+                    <property name="name">total</property>
+                    <text-property name="displayName">total</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["total"]</expression>
+                    <property name="dataType">decimal</property>
+                </structure>
+                <structure>
+                    <property name="name">leave</property>
+                    <text-property name="displayName">leave</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["leave"]</expression>
+                    <property name="dataType">decimal</property>
+                </structure>
+                <structure>
+                    <property name="name">subject</property>
+                    <text-property name="displayName">subject</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["subject"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">RowNumber</property>
+                    <text-property name="displayName">序号</text-property>
+                    <property name="dataType">float</property>
+                    <property name="aggregateFunction">RUNNINGSUM</property>
+                    <list-property name="arguments">
+                        <structure>
+                            <property name="name">Expression</property>
+                            <expression name="value" type="javascript">1</expression>
+                        </structure>
+                    </list-property>
+                    <property name="allowExport">true</property>
+                </structure>
+            </list-property>
+            <property name="repeatHeader">false</property>
+            <property name="pageBreakInterval">0</property>
+            <column id="68">
+                <property name="width">0.8cm</property>
+            </column>
+            <column id="51">
+                <property name="width">2cm</property>
+            </column>
+            <column id="52">
+                <property name="width">1.8cm</property>
+            </column>
+            <column id="63">
+                <property name="width">4cm</property>
+            </column>
+            <column id="54">
+                <property name="width">0.8cm</property>
+            </column>
+            <column id="55">
+                <property name="width">0.8cm</property>
+            </column>
+            <column id="56">
+                <property name="width">0.8cm</property>
+            </column>
+            <column id="57">
+                <property name="width">0.8cm</property>
+            </column>
+            <column id="58">
+                <property name="width">0.8cm</property>
+            </column>
+            <column id="76">
+                <property name="width">1cm</property>
+            </column>
+            <column id="93">
+                <property name="width">1cm</property>
+            </column>
+            <column id="97">
+                <property name="width">1cm</property>
+            </column>
+            <header>
+                <row id="103">
+                    <property name="verticalAlign">middle</property>
+                    <property name="height">0.4583333333333333in</property>
+                    <cell id="104">
+                        <property name="colSpan">12</property>
+                        <property name="rowSpan">1</property>
+                        <property name="fontSize">10pt</property>
+                        <property name="borderBottomStyle">none</property>
+                        <property name="borderLeftStyle">none</property>
+                        <property name="borderRightStyle">none</property>
+                        <property name="borderTopStyle">none</property>
+                        <property name="verticalAlign">middle</property>
+                        <label id="102">
+                            <property name="fontSize">16pt</property>
+                            <property name="borderBottomStyle">none</property>
+                            <property name="borderLeftStyle">none</property>
+                            <property name="borderRightStyle">none</property>
+                            <property name="borderTopStyle">none</property>
+                            <text-property name="text">北京师范大学珠海分校课堂考核及成绩记载表</text-property>
+                        </label>
+                    </cell>
+                </row>
+                <row id="137">
+                    <property name="borderBottomStyle">none</property>
+                    <property name="borderLeftStyle">none</property>
+                    <property name="borderRightStyle">none</property>
+                    <property name="borderTopStyle">none</property>
+                    <property name="whiteSpace">nowrap</property>
+                    <cell id="138">
+                        <property name="colSpan">4</property>
+                        <property name="rowSpan">1</property>
+                        <property name="fontSize">10pt</property>
+                        <property name="borderBottomStyle">none</property>
+                        <property name="borderLeftStyle">none</property>
+                        <property name="borderRightStyle">none</property>
+                        <property name="borderTopStyle">none</property>
+                        <property name="textAlign">left</property>
+                        <label id="200">
+                            <property name="fontWeight">normal</property>
+                            <property name="paddingTop">0pt</property>
+                            <property name="paddingLeft">0pt</property>
+                            <property name="paddingBottom">0pt</property>
+                            <property name="paddingRight">0pt</property>
+                            <property name="display">inline</property>
+                            <text-property name="text">选课课号：</text-property>
+                        </label>
+                        <data id="198">
+                            <property name="paddingTop">0pt</property>
+                            <property name="paddingLeft">0pt</property>
+                            <property name="paddingBottom">0pt</property>
+                            <property name="paddingRight">0pt</property>
+                            <property name="display">inline</property>
+                            <property name="dataSet">courseClass</property>
+                            <list-property name="boundDataColumns">
+                                <structure>
+                                    <property name="name">course_class_code</property>
+                                    <expression name="expression" type="javascript">dataSetRow["code"]</expression>
+                                    <property name="dataType">string</property>
+                                    <property name="allowExport">true</property>
+                                </structure>
+                            </list-property>
+                            <property name="resultSetColumn">course_class_code</property>
+                        </data>
+                    </cell>
+                    <cell id="174">
+                        <property name="colSpan">8</property>
+                        <property name="rowSpan">1</property>
+                        <property name="fontSize">10pt</property>
+                        <property name="borderBottomStyle">none</property>
+                        <property name="borderLeftStyle">none</property>
+                        <property name="borderRightStyle">none</property>
+                        <property name="borderTopStyle">none</property>
+                        <property name="textAlign">left</property>
+                        <label id="204">
+                            <property name="fontWeight">normal</property>
+                            <property name="paddingTop">0pt</property>
+                            <property name="paddingLeft">0pt</property>
+                            <property name="paddingBottom">0pt</property>
+                            <property name="paddingRight">0pt</property>
+                            <property name="display">inline</property>
+                            <text-property name="text">任课教师：</text-property>
+                        </label>
+                        <data id="205">
+                            <property name="paddingTop">0pt</property>
+                            <property name="paddingLeft">0pt</property>
+                            <property name="paddingBottom">0pt</property>
+                            <property name="paddingRight">0pt</property>
+                            <property name="display">inline</property>
+                            <property name="dataSet">courseClass</property>
+                            <list-property name="boundDataColumns">
+                                <structure>
+                                    <property name="name">course_class_teacher</property>
+                                    <expression name="expression" type="javascript">dataSetRow["teacher"]</expression>
+                                    <property name="dataType">string</property>
+                                    <property name="allowExport">true</property>
+                                </structure>
+                            </list-property>
+                            <property name="resultSetColumn">course_class_teacher</property>
+                        </data>
+                    </cell>
+                </row>
+                <row id="150">
+                    <property name="borderBottomStyle">none</property>
+                    <property name="borderLeftStyle">none</property>
+                    <property name="borderRightStyle">none</property>
+                    <property name="borderTopStyle">none</property>
+                    <property name="whiteSpace">nowrap</property>
+                    <cell id="151">
+                        <property name="colSpan">4</property>
+                        <property name="rowSpan">1</property>
+                        <property name="fontSize">10pt</property>
+                        <property name="borderBottomStyle">none</property>
+                        <property name="borderLeftStyle">none</property>
+                        <property name="borderRightStyle">none</property>
+                        <property name="borderTopStyle">none</property>
+                        <property name="textAlign">left</property>
+                        <label id="201">
+                            <property name="fontWeight">normal</property>
+                            <property name="paddingTop">0pt</property>
+                            <property name="paddingLeft">0pt</property>
+                            <property name="paddingBottom">0pt</property>
+                            <property name="paddingRight">0pt</property>
+                            <property name="display">inline</property>
+                            <text-property name="text">课程名称：</text-property>
+                        </label>
+                        <data id="202">
+                            <property name="paddingTop">0pt</property>
+                            <property name="paddingLeft">0pt</property>
+                            <property name="paddingBottom">0pt</property>
+                            <property name="paddingRight">0pt</property>
+                            <property name="display">inline</property>
+                            <property name="dataSet">courseClass</property>
+                            <list-property name="boundDataColumns">
+                                <structure>
+                                    <property name="name">course_class_name</property>
+                                    <expression name="expression" type="javascript">dataSetRow["course"] + (dataSetRow["name"] ? '-' : '') + dataSetRow["name"]</expression>
+                                    <property name="dataType">string</property>
+                                    <property name="allowExport">true</property>
+                                </structure>
+                            </list-property>
+                            <property name="resultSetColumn">course_class_name</property>
+                        </data>
+                    </cell>
+                    <cell id="178">
+                        <property name="colSpan">8</property>
+                        <property name="rowSpan">1</property>
+                        <property name="fontSize">10pt</property>
+                        <property name="borderBottomStyle">none</property>
+                        <property name="borderLeftStyle">none</property>
+                        <property name="borderRightStyle">none</property>
+                        <property name="borderTopStyle">none</property>
+                        <property name="textAlign">left</property>
+                        <label id="206">
+                            <property name="fontWeight">normal</property>
+                            <property name="paddingTop">0pt</property>
+                            <property name="paddingLeft">0pt</property>
+                            <property name="paddingBottom">0pt</property>
+                            <property name="paddingRight">0pt</property>
+                            <property name="display">inline</property>
+                            <text-property name="text">开课单位：</text-property>
+                        </label>
+                        <data id="207">
+                            <property name="paddingTop">0pt</property>
+                            <property name="paddingLeft">0pt</property>
+                            <property name="paddingBottom">0pt</property>
+                            <property name="paddingRight">0pt</property>
+                            <property name="display">inline</property>
+                            <property name="dataSet">courseClass</property>
+                            <list-property name="boundDataColumns">
+                                <structure>
+                                    <property name="name">course_class_department</property>
+                                    <expression name="expression" type="javascript">dataSetRow["department"]</expression>
+                                    <property name="dataType">string</property>
+                                    <property name="allowExport">true</property>
+                                </structure>
+                            </list-property>
+                            <property name="resultSetColumn">course_class_department</property>
+                        </data>
+                    </cell>
+                </row>
+                <row id="78">
+                    <property name="verticalAlign">middle</property>
+                    <property name="height">0cm</property>
+                    <cell id="79">
+                        <property name="colSpan">1</property>
+                        <property name="rowSpan">2</property>
+                        <property name="fontSize">10pt</property>
+                        <property name="verticalAlign">middle</property>
+                        <label id="70">
+                            <property name="fontWeight">normal</property>
+                            <property name="paddingTop">0pt</property>
+                            <text-property name="text">序号</text-property>
+                        </label>
+                    </cell>
+                    <cell id="80">
+                        <property name="colSpan">1</property>
+                        <property name="rowSpan">2</property>
+                        <property name="fontSize">10pt</property>
+                        <property name="verticalAlign">middle</property>
+                        <label id="10">
+                            <property name="fontWeight">normal</property>
+                            <property name="paddingTop">0pt</property>
+                            <text-property name="text">学号</text-property>
+                        </label>
+                    </cell>
+                    <cell id="81">
+                        <property name="colSpan">1</property>
+                        <property name="rowSpan">2</property>
+                        <property name="fontSize">10pt</property>
+                        <property name="verticalAlign">middle</property>
+                        <label id="12">
+                            <property name="fontWeight">normal</property>
+                            <property name="paddingTop">0pt</property>
+                            <text-property name="text">姓名</text-property>
+                        </label>
+                    </cell>
+                    <cell id="82">
+                        <property name="colSpan">1</property>
+                        <property name="rowSpan">2</property>
+                        <property name="fontSize">10pt</property>
+                        <property name="verticalAlign">middle</property>
+                        <label id="65">
+                            <property name="fontWeight">normal</property>
+                            <property name="paddingTop">0pt</property>
+                            <text-property name="text">专业</text-property>
+                        </label>
+                    </cell>
+                    <cell id="83">
+                        <property name="colSpan">5</property>
+                        <property name="rowSpan">1</property>
+                        <property name="fontSize">10pt</property>
+                        <property name="verticalAlign">middle</property>
+                        <label id="89">
+                            <property name="fontWeight">normal</property>
+                            <property name="paddingTop">0pt</property>
+                            <text-property name="text">考勤（节）</text-property>
+                        </label>
+                    </cell>
+                    <cell id="88">
+                        <property name="colSpan">3</property>
+                        <property name="rowSpan">1</property>
+                        <property name="fontSize">10pt</property>
+                        <property name="verticalAlign">middle</property>
+                        <label id="98">
+                            <property name="fontWeight">normal</property>
+                            <property name="paddingTop">0pt</property>
+                            <text-property name="text">成绩</text-property>
+                        </label>
+                    </cell>
+                </row>
+                <row id="8">
+                    <property name="verticalAlign">middle</property>
+                    <cell id="15">
+                        <property name="fontSize">10pt</property>
+                        <property name="verticalAlign">middle</property>
+                        <label id="16">
+                            <property name="fontWeight">normal</property>
+                            <property name="paddingTop">0pt</property>
+                            <text-property name="text">旷课</text-property>
+                        </label>
+                    </cell>
+                    <cell id="17">
+                        <property name="fontSize">10pt</property>
+                        <property name="verticalAlign">middle</property>
+                        <label id="18">
+                            <property name="fontWeight">normal</property>
+                            <property name="paddingTop">0pt</property>
+                            <text-property name="text">迟到</text-property>
+                        </label>
+                    </cell>
+                    <cell id="19">
+                        <property name="fontSize">10pt</property>
+                        <property name="verticalAlign">middle</property>
+                        <label id="20">
+                            <property name="fontWeight">normal</property>
+                            <property name="paddingTop">0pt</property>
+                            <text-property name="text">早退</text-property>
+                        </label>
+                    </cell>
+                    <cell id="21">
+                        <property name="fontSize">10pt</property>
+                        <property name="verticalAlign">middle</property>
+                        <label id="22">
+                            <property name="fontWeight">normal</property>
+                            <property name="paddingTop">0pt</property>
+                            <text-property name="text">折合</text-property>
+                        </label>
+                    </cell>
+                    <cell id="23">
+                        <property name="fontSize">10pt</property>
+                        <property name="verticalAlign">middle</property>
+                        <label id="24">
+                            <property name="fontWeight">normal</property>
+                            <property name="paddingTop">0pt</property>
+                            <text-property name="text">请假</text-property>
+                        </label>
+                    </cell>
+                    <cell id="74">
+                        <property name="fontSize">10pt</property>
+                        <property name="verticalAlign">middle</property>
+                        <label id="99">
+                            <property name="fontWeight">normal</property>
+                            <property name="paddingTop">0pt</property>
+                            <text-property name="text">平时</text-property>
+                        </label>
+                    </cell>
+                    <cell id="91">
+                        <property name="fontSize">10pt</property>
+                        <property name="verticalAlign">middle</property>
+                        <label id="100">
+                            <property name="fontWeight">normal</property>
+                            <property name="paddingTop">0pt</property>
+                            <text-property name="text">期中</text-property>
+                        </label>
+                    </cell>
+                    <cell id="95">
+                        <property name="fontSize">10pt</property>
+                        <property name="verticalAlign">middle</property>
+                        <label id="101">
+                            <property name="fontWeight">normal</property>
+                            <property name="paddingTop">0pt</property>
+                            <text-property name="text">期末</text-property>
+                        </label>
+                    </cell>
+                </row>
+            </header>
+            <detail>
+                <row id="25">
+                    <cell id="67">
+                        <property name="fontSize">10pt</property>
+                        <property name="verticalAlign">middle</property>
+                        <data id="72">
+                            <property name="resultSetColumn">RowNumber</property>
+                        </data>
+                    </cell>
+                    <cell id="26">
+                        <property name="fontSize">10pt</property>
+                        <property name="verticalAlign">middle</property>
+                        <data id="27">
+                            <property name="resultSetColumn">id</property>
+                        </data>
+                    </cell>
+                    <cell id="28">
+                        <property name="fontSize">10pt</property>
+                        <property name="verticalAlign">middle</property>
+                        <data id="29">
+                            <property name="resultSetColumn">name</property>
+                        </data>
+                    </cell>
+                    <cell id="62">
+                        <property name="fontSize">10pt</property>
+                        <property name="verticalAlign">middle</property>
+                        <data id="64">
+                            <property name="resultSetColumn">subject</property>
+                        </data>
+                    </cell>
+                    <cell id="32">
+                        <property name="fontSize">10pt</property>
+                        <property name="verticalAlign">middle</property>
+                        <data id="33">
+                            <property name="resultSetColumn">absent</property>
+                        </data>
+                    </cell>
+                    <cell id="34">
+                        <property name="fontSize">10pt</property>
+                        <property name="verticalAlign">middle</property>
+                        <data id="35">
+                            <property name="resultSetColumn">late</property>
+                        </data>
+                    </cell>
+                    <cell id="36">
+                        <property name="fontSize">10pt</property>
+                        <property name="verticalAlign">middle</property>
+                        <data id="37">
+                            <property name="resultSetColumn">early</property>
+                        </data>
+                    </cell>
+                    <cell id="38">
+                        <property name="fontSize">10pt</property>
+                        <property name="verticalAlign">middle</property>
+                        <data id="39">
+                            <property name="resultSetColumn">total</property>
+                        </data>
+                    </cell>
+                    <cell id="40">
+                        <property name="fontSize">10pt</property>
+                        <property name="verticalAlign">middle</property>
+                        <data id="41">
+                            <property name="resultSetColumn">leave</property>
+                        </data>
+                    </cell>
+                    <cell id="75">
+                        <property name="fontSize">10pt</property>
+                        <property name="verticalAlign">middle</property>
+                    </cell>
+                    <cell id="92">
+                        <property name="fontSize">10pt</property>
+                        <property name="verticalAlign">middle</property>
+                    </cell>
+                    <cell id="96">
+                        <property name="fontSize">10pt</property>
+                        <property name="verticalAlign">middle</property>
+                    </cell>
+                </row>
+            </detail>
+            <footer>
+                <row id="208">
+                    <property name="verticalAlign">middle</property>
+                    <cell id="209">
+                        <property name="colSpan">12</property>
+                        <property name="rowSpan">1</property>
+                        <property name="fontSize">10pt</property>
+                        <property name="borderBottomStyle">none</property>
+                        <property name="borderLeftStyle">none</property>
+                        <property name="borderRightStyle">none</property>
+                        <property name="borderTopStyle">none</property>
+                        <property name="textAlign">right</property>
+                        <property name="verticalAlign">middle</property>
+                        <label id="244">
+                            <property name="fontWeight">normal</property>
+                            <property name="paddingTop">0pt</property>
+                            <property name="paddingLeft">0pt</property>
+                            <property name="paddingBottom">0pt</property>
+                            <property name="paddingRight">0pt</property>
+                            <property name="display">inline</property>
+                            <text-property name="text">打印时间：</text-property>
+                        </label>
+                        <text-data id="243">
+                            <property name="display">inline</property>
+                            <expression name="valueExpr">Formatter.format(new Date(), 'yyyy-MM-dd')</expression>
+                            <property name="contentType">html</property>
+                        </text-data>
+                    </cell>
+                </row>
+            </footer>
+        </table>
+    </body>
+</report>
