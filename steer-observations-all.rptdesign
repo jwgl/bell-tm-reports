@@ -1,0 +1,1934 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<report xmlns="http://www.eclipse.org/birt/2005/design" version="3.2.23" id="1">
+    <property name="createdBy">Eclipse BIRT Designer Version 4.6.0.v201606072122</property>
+    <text-property name="title">督导总表</text-property>
+    <property name="units">in</property>
+    <property name="iconFile">/templates/blank_report.gif</property>
+    <property name="bidiLayoutOrientation">ltr</property>
+    <property name="imageDPI">96</property>
+    <parameters>
+        <scalar-parameter name="termId" id="812">
+            <property name="valueType">static</property>
+            <property name="isRequired">true</property>
+            <property name="dataType">integer</property>
+            <property name="distinct">true</property>
+            <list-property name="selectionList"/>
+            <property name="paramType">simple</property>
+            <property name="concealValue">false</property>
+            <property name="controlType">text-box</property>
+            <structure name="format">
+                <property name="category">Unformatted</property>
+            </structure>
+        </scalar-parameter>
+    </parameters>
+    <data-sources>
+        <oda-data-source extensionID="org.eclipse.birt.report.data.oda.jdbc" name="Data Source" id="4">
+            <list-property name="privateDriverProperties">
+                <ex-property>
+                    <name>metadataBidiFormatStr</name>
+                    <value>ILYNN</value>
+                </ex-property>
+                <ex-property>
+                    <name>disabledMetadataBidiFormatStr</name>
+                </ex-property>
+                <ex-property>
+                    <name>contentBidiFormatStr</name>
+                    <value>ILYNN</value>
+                </ex-property>
+                <ex-property>
+                    <name>disabledContentBidiFormatStr</name>
+                </ex-property>
+            </list-property>
+            <property name="odaDriverClass">org.postgresql.Driver</property>
+            <property name="odaURL">jdbc:postgresql://localhost:5432/bell</property>
+            <property name="odaUser">tm</property>
+            <encrypted-property name="odaPassword" encryptionID="base64">dG0=</encrypted-property>
+        </oda-data-source>
+    </data-sources>
+    <data-sets>
+        <oda-data-set extensionID="org.eclipse.birt.report.data.oda.jdbc.JdbcSelectDataSet" name="Data Set" id="5">
+            <property name="nullsOrdering">nulls lowest</property>
+            <list-property name="computedColumns">
+                <structure>
+                    <property name="name">_observer</property>
+                    <expression name="expression">row["supervisor_name"]+row["supervisor_id"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">_status</property>
+                    <expression name="expression">new Array("未提交","未发布","已发布")[row["status"]]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">_teacher</property>
+                    <expression name="expression">row["teacher_name"] + row["teacher_id"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">_term</property>
+                    <expression name="expression">Math.floor(row["term_id"]/10).toString() + "-" +(Math.floor(row["term_id"]/10)+1).toString() + "学年 第" + Math.floor(row["term_id"] %10).toString() +"学期"</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">_observer_type</property>
+                    <expression name="expression">new Array("","校督导","院督导","校领导")[row["observer_type"]]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+            </list-property>
+            <list-property name="columnHints">
+                <structure>
+                    <property name="columnName">supervisor_name</property>
+                    <property name="alias">supervisor_name</property>
+                    <property name="analysis">dimension</property>
+                    <text-property name="displayName">supervisor_name</text-property>
+                    <text-property name="heading">supervisor_name</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">supervisor_id</property>
+                    <property name="alias">supervisor_id</property>
+                    <property name="analysis">dimension</property>
+                    <text-property name="displayName">supervisor_id</text-property>
+                    <text-property name="heading">supervisor_id</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">department_name</property>
+                    <property name="alias">department_name</property>
+                    <property name="analysis">dimension</property>
+                    <text-property name="displayName">department_name</text-property>
+                    <text-property name="heading">department_name</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">teacher_name</property>
+                    <property name="alias">teacher_name</property>
+                    <property name="analysis">dimension</property>
+                    <text-property name="displayName">teacher_name</text-property>
+                    <text-property name="heading">teacher_name</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">teacher_id</property>
+                    <property name="alias">teacher_id</property>
+                    <property name="analysis">dimension</property>
+                    <text-property name="displayName">teacher_id</text-property>
+                    <text-property name="heading">teacher_id</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">academic_title</property>
+                    <property name="alias">academic_title</property>
+                    <property name="analysis">dimension</property>
+                    <text-property name="displayName">academic_title</text-property>
+                    <text-property name="heading">academic_title</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">status</property>
+                    <property name="alias">status</property>
+                    <property name="analysis">measure</property>
+                    <text-property name="displayName">status</text-property>
+                    <text-property name="heading">status</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">observer_type</property>
+                    <property name="alias">observer_type</property>
+                    <property name="analysis">measure</property>
+                    <text-property name="displayName">observer_type</text-property>
+                    <text-property name="heading">observer_type</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">course_name</property>
+                    <property name="alias">course_name</property>
+                    <property name="analysis">dimension</property>
+                    <text-property name="displayName">course_name</text-property>
+                    <text-property name="heading">course_name</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">lecture_week</property>
+                    <property name="alias">lecture_week</property>
+                    <property name="analysis">measure</property>
+                    <text-property name="displayName">lecture_week</text-property>
+                    <text-property name="heading">lecture_week</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">supervisor_date</property>
+                    <property name="alias">supervisor_date</property>
+                    <property name="analysis">dimension</property>
+                    <text-property name="displayName">supervisor_date</text-property>
+                    <text-property name="heading">supervisor_date</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">reward_date</property>
+                    <property name="alias">reward_date</property>
+                    <property name="analysis">dimension</property>
+                    <text-property name="displayName">reward_date</text-property>
+                    <text-property name="heading">reward_date</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">place_name</property>
+                    <property name="alias">place_name</property>
+                    <property name="analysis">dimension</property>
+                    <text-property name="displayName">place_name</text-property>
+                    <text-property name="heading">place_name</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">course_class_name</property>
+                    <property name="alias">course_class_name</property>
+                    <property name="analysis">dimension</property>
+                    <text-property name="displayName">course_class_name</text-property>
+                    <text-property name="heading">course_class_name</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">term_id</property>
+                    <property name="alias">term_id</property>
+                    <property name="analysis">measure</property>
+                    <text-property name="displayName">term_id</text-property>
+                    <text-property name="heading">term_id</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">due_stds</property>
+                    <property name="alias">due_stds</property>
+                    <property name="analysis">measure</property>
+                    <text-property name="displayName">due_stds</text-property>
+                    <text-property name="heading">due_stds</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">attendant_stds</property>
+                    <property name="alias">attendant_stds</property>
+                    <property name="analysis">measure</property>
+                    <text-property name="displayName">attendant_stds</text-property>
+                    <text-property name="heading">attendant_stds</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">late_stds</property>
+                    <property name="alias">late_stds</property>
+                    <property name="analysis">measure</property>
+                    <text-property name="displayName">late_stds</text-property>
+                    <text-property name="heading">late_stds</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">leave_stds</property>
+                    <property name="alias">leave_stds</property>
+                    <property name="analysis">measure</property>
+                    <text-property name="displayName">leave_stds</text-property>
+                    <text-property name="heading">leave_stds</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">earlier</property>
+                    <property name="alias">earlier</property>
+                    <property name="analysis">measure</property>
+                    <text-property name="displayName">earlier</text-property>
+                    <text-property name="heading">earlier</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">late</property>
+                    <property name="alias">late</property>
+                    <property name="analysis">measure</property>
+                    <text-property name="displayName">late</text-property>
+                    <text-property name="heading">late</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">leave</property>
+                    <property name="alias">leave</property>
+                    <property name="analysis">measure</property>
+                    <text-property name="displayName">leave</text-property>
+                    <text-property name="heading">leave</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">teaching_methods</property>
+                    <property name="alias">teaching_methods</property>
+                    <property name="analysis">dimension</property>
+                    <text-property name="displayName">teaching_methods</text-property>
+                    <text-property name="heading">teaching_methods</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">evaluate_level</property>
+                    <property name="alias">evaluate_level</property>
+                    <property name="analysis">dimension</property>
+                    <text-property name="displayName">evaluate_level</text-property>
+                    <text-property name="heading">evaluate_level</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">evaluation_text</property>
+                    <property name="alias">evaluation_text</property>
+                    <property name="analysis">dimension</property>
+                    <text-property name="displayName">evaluation_text</text-property>
+                    <text-property name="heading">evaluation_text</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">suggest</property>
+                    <property name="alias">suggest</property>
+                    <property name="analysis">dimension</property>
+                    <text-property name="displayName">suggest</text-property>
+                    <text-property name="heading">suggest</text-property>
+                </structure>
+            </list-property>
+            <list-property name="parameters">
+                <structure>
+                    <property name="name">termId</property>
+                    <property name="paramName">termId</property>
+                    <property name="nativeName"></property>
+                    <property name="dataType">integer</property>
+                    <property name="nativeDataType">4</property>
+                    <property name="position">1</property>
+                    <property name="isInput">true</property>
+                    <property name="isOutput">false</property>
+                </structure>
+            </list-property>
+            <structure name="cachedMetaData">
+                <list-property name="resultSet">
+                    <structure>
+                        <property name="position">1</property>
+                        <property name="name">supervisor_name</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">2</property>
+                        <property name="name">supervisor_id</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">3</property>
+                        <property name="name">department_name</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">4</property>
+                        <property name="name">teacher_name</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">5</property>
+                        <property name="name">teacher_id</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">6</property>
+                        <property name="name">academic_title</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">7</property>
+                        <property name="name">status</property>
+                        <property name="dataType">integer</property>
+                    </structure>
+                    <structure>
+                        <property name="position">8</property>
+                        <property name="name">observer_type</property>
+                        <property name="dataType">integer</property>
+                    </structure>
+                    <structure>
+                        <property name="position">9</property>
+                        <property name="name">course_name</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">10</property>
+                        <property name="name">lecture_week</property>
+                        <property name="dataType">integer</property>
+                    </structure>
+                    <structure>
+                        <property name="position">11</property>
+                        <property name="name">supervisor_date</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">12</property>
+                        <property name="name">reward_date</property>
+                        <property name="dataType">date-time</property>
+                    </structure>
+                    <structure>
+                        <property name="position">13</property>
+                        <property name="name">place_name</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">14</property>
+                        <property name="name">course_class_name</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">15</property>
+                        <property name="name">term_id</property>
+                        <property name="dataType">integer</property>
+                    </structure>
+                    <structure>
+                        <property name="position">16</property>
+                        <property name="name">due_stds</property>
+                        <property name="dataType">integer</property>
+                    </structure>
+                    <structure>
+                        <property name="position">17</property>
+                        <property name="name">attendant_stds</property>
+                        <property name="dataType">integer</property>
+                    </structure>
+                    <structure>
+                        <property name="position">18</property>
+                        <property name="name">late_stds</property>
+                        <property name="dataType">integer</property>
+                    </structure>
+                    <structure>
+                        <property name="position">19</property>
+                        <property name="name">leave_stds</property>
+                        <property name="dataType">integer</property>
+                    </structure>
+                    <structure>
+                        <property name="position">20</property>
+                        <property name="name">earlier</property>
+                        <property name="dataType">integer</property>
+                    </structure>
+                    <structure>
+                        <property name="position">21</property>
+                        <property name="name">late</property>
+                        <property name="dataType">integer</property>
+                    </structure>
+                    <structure>
+                        <property name="position">22</property>
+                        <property name="name">leave</property>
+                        <property name="dataType">integer</property>
+                    </structure>
+                    <structure>
+                        <property name="position">23</property>
+                        <property name="name">teaching_methods</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">24</property>
+                        <property name="name">evaluate_level</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">25</property>
+                        <property name="name">evaluation_text</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">26</property>
+                        <property name="name">suggest</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">27</property>
+                        <property name="name">_observer</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">28</property>
+                        <property name="name">_status</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">29</property>
+                        <property name="name">_teacher</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">30</property>
+                        <property name="name">_term</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">31</property>
+                        <property name="name">_observer_type</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                </list-property>
+            </structure>
+            <property name="dataSource">Data Source</property>
+            <list-property name="resultSet">
+                <structure>
+                    <property name="position">1</property>
+                    <property name="name">supervisor_name</property>
+                    <property name="nativeName">supervisor_name</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">12</property>
+                </structure>
+                <structure>
+                    <property name="position">2</property>
+                    <property name="name">supervisor_id</property>
+                    <property name="nativeName">supervisor_id</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">12</property>
+                </structure>
+                <structure>
+                    <property name="position">3</property>
+                    <property name="name">department_name</property>
+                    <property name="nativeName">department_name</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">12</property>
+                </structure>
+                <structure>
+                    <property name="position">4</property>
+                    <property name="name">teacher_name</property>
+                    <property name="nativeName">teacher_name</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">12</property>
+                </structure>
+                <structure>
+                    <property name="position">5</property>
+                    <property name="name">teacher_id</property>
+                    <property name="nativeName">teacher_id</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">12</property>
+                </structure>
+                <structure>
+                    <property name="position">6</property>
+                    <property name="name">academic_title</property>
+                    <property name="nativeName">academic_title</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">12</property>
+                </structure>
+                <structure>
+                    <property name="position">7</property>
+                    <property name="name">status</property>
+                    <property name="nativeName">status</property>
+                    <property name="dataType">integer</property>
+                    <property name="nativeDataType">4</property>
+                </structure>
+                <structure>
+                    <property name="position">8</property>
+                    <property name="name">observer_type</property>
+                    <property name="nativeName">observer_type</property>
+                    <property name="dataType">integer</property>
+                    <property name="nativeDataType">4</property>
+                </structure>
+                <structure>
+                    <property name="position">9</property>
+                    <property name="name">course_name</property>
+                    <property name="nativeName">course_name</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">12</property>
+                </structure>
+                <structure>
+                    <property name="position">10</property>
+                    <property name="name">lecture_week</property>
+                    <property name="nativeName">lecture_week</property>
+                    <property name="dataType">integer</property>
+                    <property name="nativeDataType">4</property>
+                </structure>
+                <structure>
+                    <property name="position">11</property>
+                    <property name="name">supervisor_date</property>
+                    <property name="nativeName">supervisor_date</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">12</property>
+                </structure>
+                <structure>
+                    <property name="position">12</property>
+                    <property name="name">reward_date</property>
+                    <property name="nativeName">reward_date</property>
+                    <property name="dataType">date-time</property>
+                    <property name="nativeDataType">93</property>
+                </structure>
+                <structure>
+                    <property name="position">13</property>
+                    <property name="name">place_name</property>
+                    <property name="nativeName">place_name</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">12</property>
+                </structure>
+                <structure>
+                    <property name="position">14</property>
+                    <property name="name">course_class_name</property>
+                    <property name="nativeName">course_class_name</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">12</property>
+                </structure>
+                <structure>
+                    <property name="position">15</property>
+                    <property name="name">term_id</property>
+                    <property name="nativeName">term_id</property>
+                    <property name="dataType">integer</property>
+                    <property name="nativeDataType">4</property>
+                </structure>
+                <structure>
+                    <property name="position">16</property>
+                    <property name="name">due_stds</property>
+                    <property name="nativeName">due_stds</property>
+                    <property name="dataType">integer</property>
+                    <property name="nativeDataType">4</property>
+                </structure>
+                <structure>
+                    <property name="position">17</property>
+                    <property name="name">attendant_stds</property>
+                    <property name="nativeName">attendant_stds</property>
+                    <property name="dataType">integer</property>
+                    <property name="nativeDataType">4</property>
+                </structure>
+                <structure>
+                    <property name="position">18</property>
+                    <property name="name">late_stds</property>
+                    <property name="nativeName">late_stds</property>
+                    <property name="dataType">integer</property>
+                    <property name="nativeDataType">4</property>
+                </structure>
+                <structure>
+                    <property name="position">19</property>
+                    <property name="name">leave_stds</property>
+                    <property name="nativeName">leave_stds</property>
+                    <property name="dataType">integer</property>
+                    <property name="nativeDataType">4</property>
+                </structure>
+                <structure>
+                    <property name="position">20</property>
+                    <property name="name">earlier</property>
+                    <property name="nativeName">earlier</property>
+                    <property name="dataType">integer</property>
+                    <property name="nativeDataType">4</property>
+                </structure>
+                <structure>
+                    <property name="position">21</property>
+                    <property name="name">late</property>
+                    <property name="nativeName">late</property>
+                    <property name="dataType">integer</property>
+                    <property name="nativeDataType">4</property>
+                </structure>
+                <structure>
+                    <property name="position">22</property>
+                    <property name="name">leave</property>
+                    <property name="nativeName">leave</property>
+                    <property name="dataType">integer</property>
+                    <property name="nativeDataType">4</property>
+                </structure>
+                <structure>
+                    <property name="position">23</property>
+                    <property name="name">teaching_methods</property>
+                    <property name="nativeName">teaching_methods</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">12</property>
+                </structure>
+                <structure>
+                    <property name="position">24</property>
+                    <property name="name">evaluate_level</property>
+                    <property name="nativeName">evaluate_level</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">12</property>
+                </structure>
+                <structure>
+                    <property name="position">25</property>
+                    <property name="name">evaluation_text</property>
+                    <property name="nativeName">evaluation_text</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">12</property>
+                </structure>
+                <structure>
+                    <property name="position">26</property>
+                    <property name="name">suggest</property>
+                    <property name="nativeName">suggest</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">12</property>
+                </structure>
+            </list-property>
+            <xml-property name="queryText"><![CDATA[select distinct 
+supervisor_name,
+supervisor_id,
+department_name,
+teacher_name,
+teacher_id,
+academic_title,
+status,
+observer_type,
+course_name,
+lecture_week,
+supervisor_date,
+reward_date,
+place_name,
+course_class_name,
+term_id,
+due_stds,
+attendant_stds,
+late_stds,
+leave_stds,
+earlier,
+late,
+leave,
+teaching_methods,
+evaluate_level,
+evaluation_text,
+suggest
+from tm.dv_observation_view  
+where  term_id=? and observer_type !=2 and status>0
+order by supervisor_name]]></xml-property>
+            <xml-property name="designerValues"><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
+<model:DesignValues xmlns:design="http://www.eclipse.org/datatools/connectivity/oda/design" xmlns:model="http://www.eclipse.org/birt/report/model/adapter/odaModel">
+  <Version>2.0</Version>
+  <design:ResultSets derivedMetaData="true">
+    <design:resultSetDefinitions>
+      <design:resultSetColumns>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>id</design:name>
+              <design:position>1</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>-5</design:nativeDataTypeCode>
+            <design:precision>19</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>Nullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>id</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>id</design:label>
+            <design:formattingHints>
+              <design:displaySize>20</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>attendant_stds</design:name>
+              <design:position>2</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>4</design:nativeDataTypeCode>
+            <design:precision>10</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>Nullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>attendant_stds</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>attendant_stds</design:label>
+            <design:formattingHints>
+              <design:displaySize>11</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>due_stds</design:name>
+              <design:position>3</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>4</design:nativeDataTypeCode>
+            <design:precision>10</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>Nullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>due_stds</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>due_stds</design:label>
+            <design:formattingHints>
+              <design:displaySize>11</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>earlier</design:name>
+              <design:position>4</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>4</design:nativeDataTypeCode>
+            <design:precision>10</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>Nullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>earlier</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>earlier</design:label>
+            <design:formattingHints>
+              <design:displaySize>11</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>evaluate_level</design:name>
+              <design:position>5</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>12</design:nativeDataTypeCode>
+            <design:precision>4</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>Nullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>evaluate_level</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>evaluate_level</design:label>
+            <design:formattingHints>
+              <design:displaySize>4</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>evaluation_text</design:name>
+              <design:position>6</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>12</design:nativeDataTypeCode>
+            <design:precision>1500</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>Nullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>evaluation_text</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>evaluation_text</design:label>
+            <design:formattingHints>
+              <design:displaySize>1500</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>late</design:name>
+              <design:position>7</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>4</design:nativeDataTypeCode>
+            <design:precision>10</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>Nullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>late</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>late</design:label>
+            <design:formattingHints>
+              <design:displaySize>11</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>late_stds</design:name>
+              <design:position>8</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>4</design:nativeDataTypeCode>
+            <design:precision>10</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>Nullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>late_stds</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>late_stds</design:label>
+            <design:formattingHints>
+              <design:displaySize>11</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>leave</design:name>
+              <design:position>9</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>4</design:nativeDataTypeCode>
+            <design:precision>10</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>Nullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>leave</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>leave</design:label>
+            <design:formattingHints>
+              <design:displaySize>11</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>leave_stds</design:name>
+              <design:position>10</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>4</design:nativeDataTypeCode>
+            <design:precision>10</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>Nullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>leave_stds</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>leave_stds</design:label>
+            <design:formattingHints>
+              <design:displaySize>11</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>lecture_week</design:name>
+              <design:position>11</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>4</design:nativeDataTypeCode>
+            <design:precision>10</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>Nullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>lecture_week</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>lecture_week</design:label>
+            <design:formattingHints>
+              <design:displaySize>11</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>status</design:name>
+              <design:position>12</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>4</design:nativeDataTypeCode>
+            <design:precision>10</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>Nullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>status</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>status</design:label>
+            <design:formattingHints>
+              <design:displaySize>11</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>suggest</design:name>
+              <design:position>13</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>12</design:nativeDataTypeCode>
+            <design:precision>1500</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>Nullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>suggest</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>suggest</design:label>
+            <design:formattingHints>
+              <design:displaySize>1500</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>supervisor_id</design:name>
+              <design:position>14</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>12</design:nativeDataTypeCode>
+            <design:precision>5</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>Nullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>supervisor_id</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>supervisor_id</design:label>
+            <design:formattingHints>
+              <design:displaySize>5</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>supervisor_date</design:name>
+              <design:position>15</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>12</design:nativeDataTypeCode>
+            <design:precision>255</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>Nullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>supervisor_date</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>supervisor_date</design:label>
+            <design:formattingHints>
+              <design:displaySize>255</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>teaching_methods</design:name>
+              <design:position>16</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>12</design:nativeDataTypeCode>
+            <design:precision>255</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>Nullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>teaching_methods</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>teaching_methods</design:label>
+            <design:formattingHints>
+              <design:displaySize>255</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>form_total_section</design:name>
+              <design:position>17</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>4</design:nativeDataTypeCode>
+            <design:precision>10</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>Nullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>form_total_section</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>form_total_section</design:label>
+            <design:formattingHints>
+              <design:displaySize>11</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>record_date</design:name>
+              <design:position>18</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>93</design:nativeDataTypeCode>
+            <design:precision>29</design:precision>
+            <design:scale>6</design:scale>
+            <design:nullability>Nullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>record_date</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>record_date</design:label>
+            <design:formattingHints>
+              <design:displaySize>29</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>reward_date</design:name>
+              <design:position>19</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>93</design:nativeDataTypeCode>
+            <design:precision>29</design:precision>
+            <design:scale>6</design:scale>
+            <design:nullability>Nullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>reward_date</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>reward_date</design:label>
+            <design:formattingHints>
+              <design:displaySize>29</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>supervisor_name</design:name>
+              <design:position>20</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>12</design:nativeDataTypeCode>
+            <design:precision>50</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>Nullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>supervisor_name</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>supervisor_name</design:label>
+            <design:formattingHints>
+              <design:displaySize>50</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>type_name</design:name>
+              <design:position>21</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>12</design:nativeDataTypeCode>
+            <design:precision>255</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>Nullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>type_name</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>type_name</design:label>
+            <design:formattingHints>
+              <design:displaySize>255</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>teacher_id</design:name>
+              <design:position>22</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>12</design:nativeDataTypeCode>
+            <design:precision>5</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>Nullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>teacher_id</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>teacher_id</design:label>
+            <design:formattingHints>
+              <design:displaySize>5</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>academic_title</design:name>
+              <design:position>23</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>12</design:nativeDataTypeCode>
+            <design:precision>20</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>Nullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>academic_title</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>academic_title</design:label>
+            <design:formattingHints>
+              <design:displaySize>20</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>course_class_name</design:name>
+              <design:position>24</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>12</design:nativeDataTypeCode>
+            <design:precision>255</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>Nullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>course_class_name</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>course_class_name</design:label>
+            <design:formattingHints>
+              <design:displaySize>255</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>start_week</design:name>
+              <design:position>25</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>4</design:nativeDataTypeCode>
+            <design:precision>10</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>Nullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>start_week</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>start_week</design:label>
+            <design:formattingHints>
+              <design:displaySize>11</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>end_week</design:name>
+              <design:position>26</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>4</design:nativeDataTypeCode>
+            <design:precision>10</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>Nullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>end_week</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>end_week</design:label>
+            <design:formattingHints>
+              <design:displaySize>11</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>odd_even</design:name>
+              <design:position>27</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>4</design:nativeDataTypeCode>
+            <design:precision>10</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>Nullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>odd_even</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>odd_even</design:label>
+            <design:formattingHints>
+              <design:displaySize>11</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>day_of_week</design:name>
+              <design:position>28</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>4</design:nativeDataTypeCode>
+            <design:precision>10</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>Nullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>day_of_week</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>day_of_week</design:label>
+            <design:formattingHints>
+              <design:displaySize>11</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>start_section</design:name>
+              <design:position>29</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>4</design:nativeDataTypeCode>
+            <design:precision>10</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>Nullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>start_section</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>start_section</design:label>
+            <design:formattingHints>
+              <design:displaySize>11</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>total_section</design:name>
+              <design:position>30</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>4</design:nativeDataTypeCode>
+            <design:precision>10</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>Nullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>total_section</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>total_section</design:label>
+            <design:formattingHints>
+              <design:displaySize>11</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>course_name</design:name>
+              <design:position>31</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>12</design:nativeDataTypeCode>
+            <design:precision>100</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>Nullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>course_name</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>course_name</design:label>
+            <design:formattingHints>
+              <design:displaySize>100</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>place_name</design:name>
+              <design:position>32</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>12</design:nativeDataTypeCode>
+            <design:precision>50</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>Nullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>place_name</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>place_name</design:label>
+            <design:formattingHints>
+              <design:displaySize>50</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>teacher_name</design:name>
+              <design:position>33</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>12</design:nativeDataTypeCode>
+            <design:precision>50</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>Nullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>teacher_name</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>teacher_name</design:label>
+            <design:formattingHints>
+              <design:displaySize>50</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>department_name</design:name>
+              <design:position>34</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>12</design:nativeDataTypeCode>
+            <design:precision>50</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>Nullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>department_name</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>department_name</design:label>
+            <design:formattingHints>
+              <design:displaySize>50</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>termid</design:name>
+              <design:position>35</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>4</design:nativeDataTypeCode>
+            <design:precision>10</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>Nullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>termid</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>termid</design:label>
+            <design:formattingHints>
+              <design:displaySize>11</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>evaluat_item_id</design:name>
+              <design:position>36</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>-5</design:nativeDataTypeCode>
+            <design:precision>19</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>NotNullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>evaluat_item_id</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>evaluat_item_id</design:label>
+            <design:formattingHints>
+              <design:displaySize>20</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>value</design:name>
+              <design:position>37</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>4</design:nativeDataTypeCode>
+            <design:precision>10</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>Nullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>value</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>value</design:label>
+            <design:formattingHints>
+              <design:displaySize>11</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+      </design:resultSetColumns>
+      <design:criteria/>
+    </design:resultSetDefinitions>
+  </design:ResultSets>
+</model:DesignValues>]]></xml-property>
+        </oda-data-set>
+    </data-sets>
+    <page-setup>
+        <simple-master-page name="Simple MasterPage" id="2">
+            <page-footer>
+                <text id="3">
+                    <property name="contentType">html</property>
+                    <text-property name="content"><![CDATA[<value-of>new Date()</value-of>]]></text-property>
+                </text>
+            </page-footer>
+        </simple-master-page>
+    </page-setup>
+    <body>
+        <table id="1381">
+            <property name="dataSet">Data Set</property>
+            <list-property name="boundDataColumns">
+                <structure>
+                    <property name="name">supervisor_name</property>
+                    <text-property name="displayName">supervisor_name</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["supervisor_name"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">supervisor_id</property>
+                    <text-property name="displayName">supervisor_id</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["supervisor_id"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">department_name</property>
+                    <text-property name="displayName">department_name</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["department_name"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">teacher_name</property>
+                    <text-property name="displayName">teacher_name</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["teacher_name"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">teacher_id</property>
+                    <text-property name="displayName">teacher_id</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["teacher_id"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">academic_title</property>
+                    <text-property name="displayName">academic_title</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["academic_title"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">status</property>
+                    <text-property name="displayName">status</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["status"]</expression>
+                    <property name="dataType">integer</property>
+                </structure>
+                <structure>
+                    <property name="name">course_name</property>
+                    <text-property name="displayName">course_name</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["course_name"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">lecture_week</property>
+                    <text-property name="displayName">lecture_week</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["lecture_week"]</expression>
+                    <property name="dataType">integer</property>
+                </structure>
+                <structure>
+                    <property name="name">supervisor_date</property>
+                    <text-property name="displayName">supervisor_date</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["supervisor_date"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">place_name</property>
+                    <text-property name="displayName">place_name</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["place_name"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">course_class_name</property>
+                    <text-property name="displayName">course_class_name</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["course_class_name"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">due_stds</property>
+                    <text-property name="displayName">due_stds</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["due_stds"]</expression>
+                    <property name="dataType">integer</property>
+                </structure>
+                <structure>
+                    <property name="name">attendant_stds</property>
+                    <text-property name="displayName">attendant_stds</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["attendant_stds"]</expression>
+                    <property name="dataType">integer</property>
+                </structure>
+                <structure>
+                    <property name="name">late_stds</property>
+                    <text-property name="displayName">late_stds</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["late_stds"]</expression>
+                    <property name="dataType">integer</property>
+                </structure>
+                <structure>
+                    <property name="name">leave_stds</property>
+                    <text-property name="displayName">leave_stds</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["leave_stds"]</expression>
+                    <property name="dataType">integer</property>
+                </structure>
+                <structure>
+                    <property name="name">earlier</property>
+                    <text-property name="displayName">earlier</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["earlier"]</expression>
+                    <property name="dataType">integer</property>
+                </structure>
+                <structure>
+                    <property name="name">late</property>
+                    <text-property name="displayName">late</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["late"]</expression>
+                    <property name="dataType">integer</property>
+                </structure>
+                <structure>
+                    <property name="name">leave</property>
+                    <text-property name="displayName">leave</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["leave"]</expression>
+                    <property name="dataType">integer</property>
+                </structure>
+                <structure>
+                    <property name="name">teaching_methods</property>
+                    <text-property name="displayName">teaching_methods</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["teaching_methods"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">evaluate_level</property>
+                    <text-property name="displayName">evaluate_level</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["evaluate_level"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">evaluation_text</property>
+                    <text-property name="displayName">evaluation_text</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["evaluation_text"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">suggest</property>
+                    <text-property name="displayName">suggest</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["suggest"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">_observer</property>
+                    <text-property name="displayName">_observer</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["_observer"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">_status</property>
+                    <text-property name="displayName">_status</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["_status"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">_teacher</property>
+                    <text-property name="displayName">_teacher</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["_teacher"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">_term</property>
+                    <text-property name="displayName">_term</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["_term"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">reward_date</property>
+                    <text-property name="displayName">reward_date</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["reward_date"]</expression>
+                    <property name="dataType">date-time</property>
+                </structure>
+                <structure>
+                    <property name="name">_observer_type</property>
+                    <text-property name="displayName">_observer_type</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["_observer_type"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+            </list-property>
+            <column id="1557">
+                <property name="repeat">1</property>
+            </column>
+            <column id="1532">
+                <property name="repeat">1</property>
+            </column>
+            <column id="1535"/>
+            <column id="1536"/>
+            <column id="1538"/>
+            <column id="1539"/>
+            <column id="1540"/>
+            <column id="1541"/>
+            <column id="1542"/>
+            <column id="1544"/>
+            <column id="1545"/>
+            <column id="1546"/>
+            <column id="1547"/>
+            <column id="1548"/>
+            <column id="1549"/>
+            <column id="1550"/>
+            <column id="1551"/>
+            <column id="1552"/>
+            <column id="1553"/>
+            <column id="1554"/>
+            <column id="1555"/>
+            <column id="1556"/>
+            <column id="1558"/>
+            <column id="1562"/>
+            <header>
+                <row id="1382">
+                    <property name="fontWeight">bold</property>
+                    <cell id="1437">
+                        <label id="1438">
+                            <text-property name="text">教师</text-property>
+                        </label>
+                    </cell>
+                    <cell id="1387">
+                        <label id="1388">
+                            <text-property name="text">学院</text-property>
+                        </label>
+                    </cell>
+                    <cell id="1393">
+                        <label id="1394">
+                            <text-property name="text">职称</text-property>
+                        </label>
+                    </cell>
+                    <cell id="1395">
+                        <label id="1396">
+                            <text-property name="text">类型</text-property>
+                        </label>
+                    </cell>
+                    <cell id="1399">
+                        <label id="1400">
+                            <text-property name="text">课程名</text-property>
+                        </label>
+                    </cell>
+                    <cell id="1401">
+                        <label id="1402">
+                            <text-property name="text">听课周</text-property>
+                        </label>
+                    </cell>
+                    <cell id="1403">
+                        <label id="1404">
+                            <text-property name="text">听课日期</text-property>
+                        </label>
+                    </cell>
+                    <cell id="1405">
+                        <label id="1406">
+                            <text-property name="text">地点</text-property>
+                        </label>
+                    </cell>
+                    <cell id="1407">
+                        <label id="1408">
+                            <text-property name="text">课程班</text-property>
+                        </label>
+                    </cell>
+                    <cell id="1411">
+                        <label id="1412">
+                            <text-property name="text">应到</text-property>
+                        </label>
+                    </cell>
+                    <cell id="1413">
+                        <label id="1414">
+                            <text-property name="text">实到</text-property>
+                        </label>
+                    </cell>
+                    <cell id="1415">
+                        <label id="1416">
+                            <text-property name="text">迟到</text-property>
+                        </label>
+                    </cell>
+                    <cell id="1417">
+                        <label id="1418">
+                            <text-property name="text">早退</text-property>
+                        </label>
+                    </cell>
+                    <cell id="1419">
+                        <label id="1420">
+                            <text-property name="text">老师提前</text-property>
+                        </label>
+                    </cell>
+                    <cell id="1421">
+                        <label id="1422">
+                            <text-property name="text">老师迟到</text-property>
+                        </label>
+                    </cell>
+                    <cell id="1423">
+                        <label id="1424">
+                            <text-property name="text">老师早退</text-property>
+                        </label>
+                    </cell>
+                    <cell id="1425">
+                        <label id="1426">
+                            <text-property name="text">教学方法</text-property>
+                        </label>
+                    </cell>
+                    <cell id="1427">
+                        <label id="1428">
+                            <text-property name="text">评价等级</text-property>
+                        </label>
+                    </cell>
+                    <cell id="1429">
+                        <label id="1430">
+                            <text-property name="text">综合评价</text-property>
+                        </label>
+                    </cell>
+                    <cell id="1431">
+                        <label id="1432">
+                            <text-property name="text">建议</text-property>
+                        </label>
+                    </cell>
+                    <cell id="1433">
+                        <label id="1434">
+                            <text-property name="text">督导员</text-property>
+                        </label>
+                    </cell>
+                    <cell id="1435">
+                        <label id="1436">
+                            <text-property name="text">状态</text-property>
+                        </label>
+                    </cell>
+                    <cell id="1439">
+                        <label id="1440">
+                            <text-property name="text">学年学期</text-property>
+                        </label>
+                    </cell>
+                    <cell id="1559">
+                        <label id="1564">
+                            <text-property name="text">计酬日期</text-property>
+                        </label>
+                    </cell>
+                </row>
+            </header>
+            <detail>
+                <row id="1441">
+                    <cell id="1496">
+                        <data id="1497">
+                            <property name="resultSetColumn">_teacher</property>
+                        </data>
+                    </cell>
+                    <cell id="1446">
+                        <data id="1447">
+                            <property name="resultSetColumn">department_name</property>
+                        </data>
+                    </cell>
+                    <cell id="1452">
+                        <data id="1453">
+                            <property name="resultSetColumn">academic_title</property>
+                        </data>
+                    </cell>
+                    <cell id="1454">
+                        <data id="1566">
+                            <property name="resultSetColumn">_observer_type</property>
+                        </data>
+                    </cell>
+                    <cell id="1458">
+                        <data id="1459">
+                            <property name="resultSetColumn">course_name</property>
+                        </data>
+                    </cell>
+                    <cell id="1460">
+                        <data id="1461">
+                            <property name="resultSetColumn">lecture_week</property>
+                        </data>
+                    </cell>
+                    <cell id="1462">
+                        <data id="1463">
+                            <property name="resultSetColumn">supervisor_date</property>
+                        </data>
+                    </cell>
+                    <cell id="1464">
+                        <data id="1465">
+                            <property name="resultSetColumn">place_name</property>
+                        </data>
+                    </cell>
+                    <cell id="1466">
+                        <data id="1467">
+                            <property name="resultSetColumn">course_class_name</property>
+                        </data>
+                    </cell>
+                    <cell id="1470">
+                        <data id="1471">
+                            <property name="resultSetColumn">due_stds</property>
+                        </data>
+                    </cell>
+                    <cell id="1472">
+                        <data id="1473">
+                            <property name="resultSetColumn">attendant_stds</property>
+                        </data>
+                    </cell>
+                    <cell id="1474">
+                        <data id="1475">
+                            <property name="resultSetColumn">late_stds</property>
+                        </data>
+                    </cell>
+                    <cell id="1476">
+                        <data id="1477">
+                            <property name="resultSetColumn">leave_stds</property>
+                        </data>
+                    </cell>
+                    <cell id="1478">
+                        <data id="1479">
+                            <property name="resultSetColumn">earlier</property>
+                        </data>
+                    </cell>
+                    <cell id="1480">
+                        <data id="1481">
+                            <property name="resultSetColumn">late</property>
+                        </data>
+                    </cell>
+                    <cell id="1482">
+                        <data id="1483">
+                            <property name="resultSetColumn">leave</property>
+                        </data>
+                    </cell>
+                    <cell id="1484">
+                        <data id="1485">
+                            <property name="resultSetColumn">teaching_methods</property>
+                        </data>
+                    </cell>
+                    <cell id="1486">
+                        <data id="1487">
+                            <property name="resultSetColumn">evaluate_level</property>
+                        </data>
+                    </cell>
+                    <cell id="1488">
+                        <data id="1489">
+                            <property name="resultSetColumn">evaluation_text</property>
+                        </data>
+                    </cell>
+                    <cell id="1490">
+                        <data id="1491">
+                            <property name="resultSetColumn">suggest</property>
+                        </data>
+                    </cell>
+                    <cell id="1492">
+                        <data id="1493">
+                            <property name="resultSetColumn">_observer</property>
+                        </data>
+                    </cell>
+                    <cell id="1494">
+                        <data id="1495">
+                            <property name="resultSetColumn">_status</property>
+                        </data>
+                    </cell>
+                    <cell id="1498">
+                        <data id="1499">
+                            <property name="resultSetColumn">_term</property>
+                        </data>
+                    </cell>
+                    <cell id="1560">
+                        <data id="1565">
+                            <property name="resultSetColumn">reward_date</property>
+                        </data>
+                    </cell>
+                </row>
+            </detail>
+            <footer>
+                <row id="1500">
+                    <cell id="1528"/>
+                    <cell id="1503"/>
+                    <cell id="1506"/>
+                    <cell id="1507"/>
+                    <cell id="1509"/>
+                    <cell id="1510"/>
+                    <cell id="1511"/>
+                    <cell id="1512"/>
+                    <cell id="1513"/>
+                    <cell id="1515"/>
+                    <cell id="1516"/>
+                    <cell id="1517"/>
+                    <cell id="1518"/>
+                    <cell id="1519"/>
+                    <cell id="1520"/>
+                    <cell id="1521"/>
+                    <cell id="1522"/>
+                    <cell id="1523"/>
+                    <cell id="1524"/>
+                    <cell id="1525"/>
+                    <cell id="1526"/>
+                    <cell id="1527"/>
+                    <cell id="1529"/>
+                    <cell id="1561"/>
+                </row>
+            </footer>
+        </table>
+    </body>
+</report>
