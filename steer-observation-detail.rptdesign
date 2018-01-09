@@ -5,18 +5,6 @@
     <list-property name="propertyBindings">
         <structure>
             <property name="name">queryText</property>
-            <property name="id">6</property>
-        </structure>
-        <structure>
-            <property name="name">queryTimeOut</property>
-            <property name="id">6</property>
-        </structure>
-        <structure>
-            <property name="name">rowFetchSize</property>
-            <property name="id">6</property>
-        </structure>
-        <structure>
-            <property name="name">queryText</property>
             <property name="id">560</property>
         </structure>
         <structure>
@@ -103,6 +91,11 @@
                 <structure>
                     <property name="name">_term</property>
                     <expression name="expression">(Math.floor(row["term_id"]/10)).toString()+"-"+(Math.floor(row["term_id"]/10)+1).toString()+"学年 第"+(row["term_id"] % 10).toString()+"学期"</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">_type</property>
+                    <expression name="expression">['校督导','院督导','领导'][row["observer_type"]-1]</expression>
                     <property name="dataType">string</property>
                 </structure>
             </list-property>
@@ -346,6 +339,12 @@
                     <text-property name="heading">department_name</text-property>
                 </structure>
                 <structure>
+                    <property name="columnName">property</property>
+                    <property name="analysis">dimension</property>
+                    <text-property name="displayName">property</text-property>
+                    <text-property name="heading">property</text-property>
+                </structure>
+                <structure>
                     <property name="columnName">term_id</property>
                     <property name="alias">term_id</property>
                     <property name="analysis">measure</property>
@@ -410,7 +409,7 @@
                     <structure>
                         <property name="position">5</property>
                         <property name="name">evaluate_level</property>
-                        <property name="dataType">string</property>
+                        <property name="dataType">decimal</property>
                     </structure>
                     <structure>
                         <property name="position">6</property>
@@ -559,12 +558,22 @@
                     </structure>
                     <structure>
                         <property name="position">35</property>
+                        <property name="name">property</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">36</property>
                         <property name="name">term_id</property>
                         <property name="dataType">integer</property>
                     </structure>
                     <structure>
-                        <property name="position">36</property>
+                        <property name="position">37</property>
                         <property name="name">_term</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">38</property>
+                        <property name="name">_type</property>
                         <property name="dataType">string</property>
                     </structure>
                 </list-property>
@@ -576,216 +585,258 @@
                     <property name="name">id</property>
                     <property name="nativeName">id</property>
                     <property name="dataType">decimal</property>
+                    <property name="nativeDataType">-5</property>
                 </structure>
                 <structure>
                     <property name="position">2</property>
                     <property name="name">attendant_stds</property>
                     <property name="nativeName">attendant_stds</property>
                     <property name="dataType">integer</property>
+                    <property name="nativeDataType">4</property>
                 </structure>
                 <structure>
                     <property name="position">3</property>
                     <property name="name">due_stds</property>
                     <property name="nativeName">due_stds</property>
                     <property name="dataType">integer</property>
+                    <property name="nativeDataType">4</property>
                 </structure>
                 <structure>
                     <property name="position">4</property>
                     <property name="name">earlier</property>
                     <property name="nativeName">earlier</property>
                     <property name="dataType">integer</property>
+                    <property name="nativeDataType">4</property>
                 </structure>
                 <structure>
                     <property name="position">5</property>
                     <property name="name">evaluate_level</property>
                     <property name="nativeName">evaluate_level</property>
-                    <property name="dataType">string</property>
+                    <property name="dataType">decimal</property>
+                    <property name="nativeDataType">2</property>
                 </structure>
                 <structure>
                     <property name="position">6</property>
                     <property name="name">evaluation_text</property>
                     <property name="nativeName">evaluation_text</property>
                     <property name="dataType">string</property>
+                    <property name="nativeDataType">12</property>
                 </structure>
                 <structure>
                     <property name="position">7</property>
                     <property name="name">late</property>
                     <property name="nativeName">late</property>
                     <property name="dataType">integer</property>
+                    <property name="nativeDataType">4</property>
                 </structure>
                 <structure>
                     <property name="position">8</property>
                     <property name="name">late_stds</property>
                     <property name="nativeName">late_stds</property>
                     <property name="dataType">integer</property>
+                    <property name="nativeDataType">4</property>
                 </structure>
                 <structure>
                     <property name="position">9</property>
                     <property name="name">leave</property>
                     <property name="nativeName">leave</property>
                     <property name="dataType">integer</property>
+                    <property name="nativeDataType">4</property>
                 </structure>
                 <structure>
                     <property name="position">10</property>
                     <property name="name">leave_stds</property>
                     <property name="nativeName">leave_stds</property>
                     <property name="dataType">integer</property>
+                    <property name="nativeDataType">4</property>
                 </structure>
                 <structure>
                     <property name="position">11</property>
                     <property name="name">lecture_week</property>
                     <property name="nativeName">lecture_week</property>
                     <property name="dataType">integer</property>
+                    <property name="nativeDataType">4</property>
                 </structure>
                 <structure>
                     <property name="position">12</property>
                     <property name="name">status</property>
                     <property name="nativeName">status</property>
                     <property name="dataType">integer</property>
+                    <property name="nativeDataType">4</property>
                 </structure>
                 <structure>
                     <property name="position">13</property>
                     <property name="name">suggest</property>
                     <property name="nativeName">suggest</property>
                     <property name="dataType">string</property>
+                    <property name="nativeDataType">12</property>
                 </structure>
                 <structure>
                     <property name="position">14</property>
                     <property name="name">supervisor_id</property>
                     <property name="nativeName">supervisor_id</property>
                     <property name="dataType">string</property>
+                    <property name="nativeDataType">12</property>
                 </structure>
                 <structure>
                     <property name="position">15</property>
                     <property name="name">supervisor_date</property>
                     <property name="nativeName">supervisor_date</property>
                     <property name="dataType">string</property>
+                    <property name="nativeDataType">12</property>
                 </structure>
                 <structure>
                     <property name="position">16</property>
                     <property name="name">teaching_methods</property>
                     <property name="nativeName">teaching_methods</property>
                     <property name="dataType">string</property>
+                    <property name="nativeDataType">12</property>
                 </structure>
                 <structure>
                     <property name="position">17</property>
                     <property name="name">form_total_section</property>
                     <property name="nativeName">form_total_section</property>
                     <property name="dataType">integer</property>
+                    <property name="nativeDataType">4</property>
                 </structure>
                 <structure>
                     <property name="position">18</property>
                     <property name="name">record_date</property>
                     <property name="nativeName">record_date</property>
                     <property name="dataType">date-time</property>
+                    <property name="nativeDataType">93</property>
                 </structure>
                 <structure>
                     <property name="position">19</property>
                     <property name="name">reward_date</property>
                     <property name="nativeName">reward_date</property>
                     <property name="dataType">date-time</property>
+                    <property name="nativeDataType">93</property>
                 </structure>
                 <structure>
                     <property name="position">20</property>
                     <property name="name">supervisor_name</property>
                     <property name="nativeName">supervisor_name</property>
                     <property name="dataType">string</property>
+                    <property name="nativeDataType">12</property>
                 </structure>
                 <structure>
                     <property name="position">21</property>
                     <property name="name">observer_type</property>
                     <property name="nativeName">observer_type</property>
                     <property name="dataType">integer</property>
+                    <property name="nativeDataType">4</property>
                 </structure>
                 <structure>
                     <property name="position">22</property>
                     <property name="name">teacher_id</property>
                     <property name="nativeName">teacher_id</property>
                     <property name="dataType">string</property>
+                    <property name="nativeDataType">12</property>
                 </structure>
                 <structure>
                     <property name="position">23</property>
                     <property name="name">academic_title</property>
                     <property name="nativeName">academic_title</property>
                     <property name="dataType">string</property>
+                    <property name="nativeDataType">12</property>
                 </structure>
                 <structure>
                     <property name="position">24</property>
                     <property name="name">course_class_name</property>
                     <property name="nativeName">course_class_name</property>
                     <property name="dataType">string</property>
+                    <property name="nativeDataType">12</property>
                 </structure>
                 <structure>
                     <property name="position">25</property>
                     <property name="name">start_week</property>
                     <property name="nativeName">start_week</property>
                     <property name="dataType">integer</property>
+                    <property name="nativeDataType">4</property>
                 </structure>
                 <structure>
                     <property name="position">26</property>
                     <property name="name">end_week</property>
                     <property name="nativeName">end_week</property>
                     <property name="dataType">integer</property>
+                    <property name="nativeDataType">4</property>
                 </structure>
                 <structure>
                     <property name="position">27</property>
                     <property name="name">odd_even</property>
                     <property name="nativeName">odd_even</property>
                     <property name="dataType">integer</property>
+                    <property name="nativeDataType">4</property>
                 </structure>
                 <structure>
                     <property name="position">28</property>
                     <property name="name">day_of_week</property>
                     <property name="nativeName">day_of_week</property>
                     <property name="dataType">integer</property>
+                    <property name="nativeDataType">4</property>
                 </structure>
                 <structure>
                     <property name="position">29</property>
                     <property name="name">start_section</property>
                     <property name="nativeName">start_section</property>
                     <property name="dataType">integer</property>
+                    <property name="nativeDataType">4</property>
                 </structure>
                 <structure>
                     <property name="position">30</property>
                     <property name="name">total_section</property>
                     <property name="nativeName">total_section</property>
                     <property name="dataType">integer</property>
+                    <property name="nativeDataType">4</property>
                 </structure>
                 <structure>
                     <property name="position">31</property>
                     <property name="name">course_name</property>
                     <property name="nativeName">course_name</property>
                     <property name="dataType">string</property>
+                    <property name="nativeDataType">12</property>
                 </structure>
                 <structure>
                     <property name="position">32</property>
                     <property name="name">place_name</property>
                     <property name="nativeName">place_name</property>
                     <property name="dataType">string</property>
+                    <property name="nativeDataType">12</property>
                 </structure>
                 <structure>
                     <property name="position">33</property>
                     <property name="name">teacher_name</property>
                     <property name="nativeName">teacher_name</property>
                     <property name="dataType">string</property>
+                    <property name="nativeDataType">12</property>
                 </structure>
                 <structure>
                     <property name="position">34</property>
                     <property name="name">department_name</property>
                     <property name="nativeName">department_name</property>
                     <property name="dataType">string</property>
+                    <property name="nativeDataType">12</property>
                 </structure>
                 <structure>
                     <property name="position">35</property>
+                    <property name="name">property</property>
+                    <property name="nativeName">property</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">12</property>
+                </structure>
+                <structure>
+                    <property name="position">36</property>
                     <property name="name">term_id</property>
                     <property name="nativeName">term_id</property>
                     <property name="dataType">integer</property>
+                    <property name="nativeDataType">4</property>
                 </structure>
             </list-property>
-            <xml-property name="queryText"><![CDATA[select *
+            <xml-property name="queryText"><![CDATA[select id,attendant_stds,due_stds,earlier,evaluate_level,evaluation_text,late,late_stds,leave,leave_stds,lecture_week,status,suggest,supervisor_id,supervisor_date,teaching_methods,form_total_section,record_date,reward_date,supervisor_name,observer_type,teacher_id,academic_title,course_class_name,start_week,end_week,odd_even,day_of_week,start_section,total_section,course_name,place_name,teacher_name,department_name,property,term_id
 from tm.dv_observation_view
 
-where id = ? and (supervisor_id= ? or 'ROLE_OBSERVATION_ADMIN' = (select role_id from tm.user_role where user_id=?))]]></xml-property>
+where id = ? and (supervisor_id= ? or 'ROLE_OBSERVATION_ADMIN' in (select role_id from tm.user_role where user_id=?))]]></xml-property>
             <xml-property name="designerValues"><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
 <model:DesignValues xmlns:design="http://www.eclipse.org/datatools/connectivity/oda/design" xmlns:model="http://www.eclipse.org/birt/report/model/adapter/odaModel">
   <Version>2.0</Version>
@@ -2880,41 +2931,23 @@ order by ei.id]]></xml-property>
                     </text>
                 </cell>
                 <cell id="160">
-                    <property name="style">NewStyle</property>
-                    <property name="fontSize">12pt</property>
-                    <property name="textAlign">center</property>
-                    <property name="verticalAlign">middle</property>
-                </cell>
-                <cell id="396">
-                    <property name="colSpan">2</property>
+                    <property name="colSpan">4</property>
                     <property name="rowSpan">1</property>
                     <property name="style">NewStyle</property>
                     <property name="fontSize">12pt</property>
                     <property name="textAlign">center</property>
                     <property name="verticalAlign">middle</property>
-                    <text id="173">
-                        <property name="contentType">auto</property>
-                        <text-property name="content"><![CDATA[授课对象
-（专业、年级）
-]]></text-property>
-                    </text>
-                </cell>
-                <cell id="161">
-                    <property name="style">NewStyle</property>
-                    <property name="fontSize">12pt</property>
-                    <property name="textAlign">center</property>
-                    <property name="verticalAlign">middle</property>
-                    <data id="523">
+                    <data id="634">
                         <property name="dataSet">dataset</property>
                         <list-property name="boundDataColumns">
                             <structure>
-                                <property name="name">course_class_name</property>
-                                <text-property name="displayName">course_class_name</text-property>
-                                <expression name="expression" type="javascript">dataSetRow["course_class_name"]</expression>
+                                <property name="name">property</property>
+                                <text-property name="displayName">property</text-property>
+                                <expression name="expression" type="javascript">dataSetRow["property"]</expression>
                                 <property name="dataType">string</property>
                             </structure>
                         </list-property>
-                        <property name="resultSetColumn">course_class_name</property>
+                        <property name="resultSetColumn">property</property>
                     </data>
                 </cell>
             </row>
@@ -3121,17 +3154,17 @@ order by ei.id]]></xml-property>
                     <property name="fontSize">12pt</property>
                     <property name="textAlign">center</property>
                     <property name="verticalAlign">middle</property>
-                    <data id="631">
+                    <data id="633">
                         <property name="dataSet">dataset</property>
                         <list-property name="boundDataColumns">
                             <structure>
-                                <property name="name">observer_type</property>
-                                <text-property name="displayName">observer_type</text-property>
-                                <expression name="expression" type="javascript">dataSetRow["observer_type"]</expression>
-                                <property name="dataType">integer</property>
+                                <property name="name">_type</property>
+                                <text-property name="displayName">_type</text-property>
+                                <expression name="expression" type="javascript">dataSetRow["_type"]</expression>
+                                <property name="dataType">string</property>
                             </structure>
                         </list-property>
-                        <property name="resultSetColumn">observer_type</property>
+                        <property name="resultSetColumn">_type</property>
                     </data>
                 </cell>
             </row>

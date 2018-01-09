@@ -18,7 +18,7 @@
     </list-property>
     <property name="units">in</property>
     <property name="iconFile">/templates/blank_report.gif</property>
-    <property name="bidiLayoutOrientation">ltr</property>
+    <property name="bidiLayoutOrientation">rtl</property>
     <property name="imageDPI">96</property>
     <parameters>
         <scalar-parameter name="month" id="6">
