@@ -2,7 +2,6 @@
 <report xmlns="http://www.eclipse.org/birt/2005/design" version="3.2.23" id="1">
     <property name="createdBy">Eclipse BIRT Designer Version 4.6.0.v201606072122</property>
     <text-property name="title">当月未计酬清单</text-property>
-<<<<<<< HEAD
     <list-property name="propertyBindings">
         <structure>
             <property name="name">queryText</property>
@@ -19,12 +18,7 @@
     </list-property>
     <property name="units">in</property>
     <property name="iconFile">/templates/blank_report.gif</property>
-    <property name="bidiLayoutOrientation">rtl</property>
-=======
-    <property name="units">in</property>
-    <property name="iconFile">/templates/blank_report.gif</property>
     <property name="bidiLayoutOrientation">ltr</property>
->>>>>>> upstream/master
     <property name="imageDPI">96</property>
     <parameters>
         <scalar-parameter name="month" id="6">
@@ -60,29 +54,18 @@
                 </ex-property>
             </list-property>
             <property name="odaDriverClass">org.postgresql.Driver</property>
-<<<<<<< HEAD
-            <property name="odaURL">jdbc:postgresql://localhost:5432/bell</property>
-=======
             <property name="odaURL">jdbc:postgresql://172.20.26.181:5432/bell</property>
->>>>>>> upstream/master
             <property name="odaUser">tm</property>
             <encrypted-property name="odaPassword" encryptionID="base64">dG0=</encrypted-property>
         </oda-data-source>
     </data-sources>
     <data-sets>
         <oda-data-set extensionID="org.eclipse.birt.report.data.oda.jdbc.JdbcSelectDataSet" name="Data Set" id="5">
-<<<<<<< HEAD
             <property name="nullsOrdering">nulls lowest</property>
             <list-property name="computedColumns">
                 <structure>
                     <property name="name">_term</property>
                     <expression name="expression">(Math.floor(row["term_id"]/10)).toString()+"-"+(Math.floor(row["term_id"]/10)+1).toString()+"学年 第"+(row["term_id"] % 10).toString()+"学期"</expression>
-=======
-            <list-property name="computedColumns">
-                <structure>
-                    <property name="name">_term</property>
-                    <expression name="expression">(Math.floor(row["termid"]/10)).toString()+"-"+(Math.floor(row["termid"]/10)+1).toString()+"学年 第"+(row["termid"] % 10).toString()+"学期"</expression>
->>>>>>> upstream/master
                     <property name="dataType">string</property>
                 </structure>
                 <structure>
@@ -94,46 +77,33 @@
             <list-property name="columnHints">
                 <structure>
                     <property name="columnName">department_name</property>
-<<<<<<< HEAD
                     <property name="alias">department_name</property>
-=======
->>>>>>> upstream/master
                     <property name="analysis">dimension</property>
                     <text-property name="displayName">department_name</text-property>
                     <text-property name="heading">department_name</text-property>
                 </structure>
                 <structure>
                     <property name="columnName">teacher_name</property>
-<<<<<<< HEAD
                     <property name="alias">teacher_name</property>
-=======
->>>>>>> upstream/master
                     <property name="analysis">dimension</property>
                     <text-property name="displayName">teacher_name</text-property>
                     <text-property name="heading">teacher_name</text-property>
                 </structure>
                 <structure>
                     <property name="columnName">course_name</property>
-<<<<<<< HEAD
                     <property name="alias">course_name</property>
-=======
->>>>>>> upstream/master
                     <property name="analysis">dimension</property>
                     <text-property name="displayName">course_name</text-property>
                     <text-property name="heading">course_name</text-property>
                 </structure>
                 <structure>
                     <property name="columnName">supervisor_date</property>
-<<<<<<< HEAD
                     <property name="alias">supervisor_date</property>
-=======
->>>>>>> upstream/master
                     <property name="analysis">dimension</property>
                     <text-property name="displayName">supervisor_date</text-property>
                     <text-property name="heading">supervisor_date</text-property>
                 </structure>
                 <structure>
-<<<<<<< HEAD
                     <property name="columnName">term_id</property>
                     <property name="alias">term_id</property>
                     <property name="analysis">measure</property>
@@ -143,41 +113,25 @@
                 <structure>
                     <property name="columnName">supervisor_name</property>
                     <property name="alias">supervisor_name</property>
-=======
-                    <property name="columnName">termid</property>
-                    <property name="analysis">measure</property>
-                    <text-property name="displayName">termid</text-property>
-                    <text-property name="heading">termid</text-property>
-                </structure>
-                <structure>
-                    <property name="columnName">supervisor_name</property>
->>>>>>> upstream/master
                     <property name="analysis">dimension</property>
                     <text-property name="displayName">supervisor_name</text-property>
                     <text-property name="heading">supervisor_name</text-property>
                 </structure>
                 <structure>
                     <property name="columnName">supervisor_id</property>
-<<<<<<< HEAD
                     <property name="alias">supervisor_id</property>
-=======
->>>>>>> upstream/master
                     <property name="analysis">dimension</property>
                     <text-property name="displayName">supervisor_id</text-property>
                     <text-property name="heading">supervisor_id</text-property>
                 </structure>
                 <structure>
                     <property name="columnName">status</property>
-<<<<<<< HEAD
                     <property name="alias">status</property>
-=======
->>>>>>> upstream/master
                     <property name="analysis">measure</property>
                     <text-property name="displayName">status</text-property>
                     <text-property name="heading">status</text-property>
                 </structure>
                 <structure>
-<<<<<<< HEAD
                     <property name="columnName">form_total_section</property>
                     <property name="analysis">measure</property>
                     <text-property name="displayName">form_total_section</text-property>
@@ -186,15 +140,6 @@
                 <structure>
                     <property name="columnName">record_date</property>
                     <property name="alias">record_date</property>
-=======
-                    <property name="columnName">total_section</property>
-                    <property name="analysis">measure</property>
-                    <text-property name="displayName">total_section</text-property>
-                    <text-property name="heading">total_section</text-property>
-                </structure>
-                <structure>
-                    <property name="columnName">record_date</property>
->>>>>>> upstream/master
                     <property name="analysis">dimension</property>
                     <text-property name="displayName">record_date</text-property>
                     <text-property name="heading">record_date</text-property>
@@ -236,11 +181,7 @@
                     </structure>
                     <structure>
                         <property name="position">5</property>
-<<<<<<< HEAD
                         <property name="name">term_id</property>
-=======
-                        <property name="name">termid</property>
->>>>>>> upstream/master
                         <property name="dataType">integer</property>
                     </structure>
                     <structure>
@@ -260,11 +201,7 @@
                     </structure>
                     <structure>
                         <property name="position">9</property>
-<<<<<<< HEAD
                         <property name="name">form_total_section</property>
-=======
-                        <property name="name">total_section</property>
->>>>>>> upstream/master
                         <property name="dataType">integer</property>
                     </structure>
                     <structure>
@@ -291,106 +228,60 @@
                     <property name="name">department_name</property>
                     <property name="nativeName">department_name</property>
                     <property name="dataType">string</property>
-<<<<<<< HEAD
-=======
-                    <property name="nativeDataType">12</property>
->>>>>>> upstream/master
                 </structure>
                 <structure>
                     <property name="position">2</property>
                     <property name="name">teacher_name</property>
                     <property name="nativeName">teacher_name</property>
                     <property name="dataType">string</property>
-<<<<<<< HEAD
-=======
-                    <property name="nativeDataType">12</property>
->>>>>>> upstream/master
                 </structure>
                 <structure>
                     <property name="position">3</property>
                     <property name="name">course_name</property>
                     <property name="nativeName">course_name</property>
                     <property name="dataType">string</property>
-<<<<<<< HEAD
-=======
-                    <property name="nativeDataType">12</property>
->>>>>>> upstream/master
                 </structure>
                 <structure>
                     <property name="position">4</property>
                     <property name="name">supervisor_date</property>
                     <property name="nativeName">supervisor_date</property>
                     <property name="dataType">string</property>
-<<<<<<< HEAD
                 </structure>
                 <structure>
                     <property name="position">5</property>
                     <property name="name">term_id</property>
                     <property name="nativeName">term_id</property>
                     <property name="dataType">integer</property>
-=======
-                    <property name="nativeDataType">12</property>
-                </structure>
-                <structure>
-                    <property name="position">5</property>
-                    <property name="name">termid</property>
-                    <property name="nativeName">termid</property>
-                    <property name="dataType">integer</property>
-                    <property name="nativeDataType">4</property>
->>>>>>> upstream/master
                 </structure>
                 <structure>
                     <property name="position">6</property>
                     <property name="name">supervisor_name</property>
                     <property name="nativeName">supervisor_name</property>
                     <property name="dataType">string</property>
-<<<<<<< HEAD
-=======
-                    <property name="nativeDataType">12</property>
->>>>>>> upstream/master
                 </structure>
                 <structure>
                     <property name="position">7</property>
                     <property name="name">supervisor_id</property>
                     <property name="nativeName">supervisor_id</property>
                     <property name="dataType">string</property>
-<<<<<<< HEAD
-=======
-                    <property name="nativeDataType">12</property>
->>>>>>> upstream/master
                 </structure>
                 <structure>
                     <property name="position">8</property>
                     <property name="name">status</property>
                     <property name="nativeName">status</property>
                     <property name="dataType">integer</property>
-<<<<<<< HEAD
                 </structure>
                 <structure>
                     <property name="position">9</property>
                     <property name="name">form_total_section</property>
                     <property name="nativeName">form_total_section</property>
                     <property name="dataType">integer</property>
-=======
-                    <property name="nativeDataType">4</property>
-                </structure>
-                <structure>
-                    <property name="position">9</property>
-                    <property name="name">total_section</property>
-                    <property name="nativeName">total_section</property>
-                    <property name="dataType">integer</property>
-                    <property name="nativeDataType">4</property>
->>>>>>> upstream/master
                 </structure>
                 <structure>
                     <property name="position">10</property>
                     <property name="name">record_date</property>
                     <property name="nativeName">record_date</property>
                     <property name="dataType">date-time</property>
-<<<<<<< HEAD
-=======
-                    <property name="nativeDataType">93</property>
->>>>>>> upstream/master
                 </structure>
             </list-property>
             <xml-property name="queryText"><![CDATA[WITH active_term AS (
@@ -399,15 +290,9 @@
           WHERE term.active IS TRUE
         )
 select 
-<<<<<<< HEAD
 department_name,teacher_name,course_name,supervisor_date,term_id,supervisor_name,supervisor_id,status,form_total_section,record_date
 from tm.dv_observation_view 
 where term_id=(select id from active_term) and status>0 and substring(supervisor_date,6,2) = ? and observer_type=1 and reward_date is null]]></xml-property>
-=======
-department_name,teacher_name,course_name,supervisor_date,termid,supervisor_name,supervisor_id,status,total_section,record_date
-from tm.dv_observation_view 
-where termid=(select id from active_term) and status>0 and substring(supervisor_date,6,2) = ? and type_name='校督导']]></xml-property>
->>>>>>> upstream/master
             <xml-property name="designerValues"><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
 <model:DesignValues xmlns:design="http://www.eclipse.org/datatools/connectivity/oda/design" xmlns:model="http://www.eclipse.org/birt/report/model/adapter/odaModel">
   <Version>2.0</Version>
@@ -1153,15 +1038,6 @@ where termid=(select id from active_term) and status>0 and substring(supervisor_
                     <property name="dataType">string</property>
                 </structure>
                 <structure>
-<<<<<<< HEAD
-=======
-                    <property name="name">termid</property>
-                    <text-property name="displayName">termid</text-property>
-                    <expression name="expression" type="javascript">dataSetRow["termid"]</expression>
-                    <property name="dataType">integer</property>
-                </structure>
-                <structure>
->>>>>>> upstream/master
                     <property name="name">supervisor_name</property>
                     <text-property name="displayName">supervisor_name</text-property>
                     <expression name="expression" type="javascript">dataSetRow["supervisor_name"]</expression>
@@ -1186,15 +1062,6 @@ where termid=(select id from active_term) and status>0 and substring(supervisor_
                     <property name="dataType">integer</property>
                 </structure>
                 <structure>
-<<<<<<< HEAD
-=======
-                    <property name="name">total_section</property>
-                    <text-property name="displayName">total_section</text-property>
-                    <expression name="expression" type="javascript">dataSetRow["total_section"]</expression>
-                    <property name="dataType">integer</property>
-                </structure>
-                <structure>
->>>>>>> upstream/master
                     <property name="name">_term</property>
                     <text-property name="displayName">_term</text-property>
                     <expression name="expression" type="javascript">dataSetRow["_term"]</expression>
@@ -1206,7 +1073,6 @@ where termid=(select id from active_term) and status>0 and substring(supervisor_
                     <expression name="expression" type="javascript">dataSetRow["_status"]</expression>
                     <property name="dataType">string</property>
                 </structure>
-<<<<<<< HEAD
                 <structure>
                     <property name="name">form_total_section</property>
                     <text-property name="displayName">form_total_section</text-property>
@@ -1215,9 +1081,6 @@ where termid=(select id from active_term) and status>0 and substring(supervisor_
                 </structure>
             </list-property>
             <property name="pageBreakInterval">4000</property>
-=======
-            </list-property>
->>>>>>> upstream/master
             <column id="44"/>
             <column id="45"/>
             <column id="46"/>
@@ -1235,7 +1098,6 @@ where termid=(select id from active_term) and status>0 and substring(supervisor_
                     <cell id="9">
                         <property name="colSpan">11</property>
                         <property name="rowSpan">1</property>
-<<<<<<< HEAD
                         <property name="borderBottomStyle">solid</property>
                         <property name="borderBottomWidth">thin</property>
                         <property name="borderLeftStyle">solid</property>
@@ -1244,8 +1106,6 @@ where termid=(select id from active_term) and status>0 and substring(supervisor_
                         <property name="borderRightWidth">thin</property>
                         <property name="borderTopStyle">solid</property>
                         <property name="borderTopWidth">thin</property>
-=======
->>>>>>> upstream/master
                         <text id="55">
                             <property name="fontSize">14pt</property>
                             <property name="fontWeight">bold</property>
@@ -1257,7 +1117,6 @@ where termid=(select id from active_term) and status>0 and substring(supervisor_
                 <row id="56">
                     <property name="height">0.3125in</property>
                     <cell id="57">
-<<<<<<< HEAD
                         <property name="borderBottomStyle">solid</property>
                         <property name="borderBottomWidth">thin</property>
                         <property name="borderLeftStyle">solid</property>
@@ -1266,15 +1125,12 @@ where termid=(select id from active_term) and status>0 and substring(supervisor_
                         <property name="borderRightWidth">thin</property>
                         <property name="borderTopStyle">solid</property>
                         <property name="borderTopWidth">thin</property>
-=======
->>>>>>> upstream/master
                         <text id="68">
                             <property name="contentType">auto</property>
                             <text-property name="content"><![CDATA[学院]]></text-property>
                         </text>
                     </cell>
                     <cell id="58">
-<<<<<<< HEAD
                         <property name="borderBottomStyle">solid</property>
                         <property name="borderBottomWidth">thin</property>
                         <property name="borderLeftStyle">solid</property>
@@ -1283,15 +1139,12 @@ where termid=(select id from active_term) and status>0 and substring(supervisor_
                         <property name="borderRightWidth">thin</property>
                         <property name="borderTopStyle">solid</property>
                         <property name="borderTopWidth">thin</property>
-=======
->>>>>>> upstream/master
                         <text id="69">
                             <property name="contentType">auto</property>
                             <text-property name="content"><![CDATA[教师姓名]]></text-property>
                         </text>
                     </cell>
                     <cell id="59">
-<<<<<<< HEAD
                         <property name="borderBottomStyle">solid</property>
                         <property name="borderBottomWidth">thin</property>
                         <property name="borderLeftStyle">solid</property>
@@ -1300,15 +1153,12 @@ where termid=(select id from active_term) and status>0 and substring(supervisor_
                         <property name="borderRightWidth">thin</property>
                         <property name="borderTopStyle">solid</property>
                         <property name="borderTopWidth">thin</property>
-=======
->>>>>>> upstream/master
                         <text id="70">
                             <property name="contentType">auto</property>
                             <text-property name="content"><![CDATA[课程名称]]></text-property>
                         </text>
                     </cell>
                     <cell id="60">
-<<<<<<< HEAD
                         <property name="borderBottomStyle">solid</property>
                         <property name="borderBottomWidth">thin</property>
                         <property name="borderLeftStyle">solid</property>
@@ -1317,15 +1167,12 @@ where termid=(select id from active_term) and status>0 and substring(supervisor_
                         <property name="borderRightWidth">thin</property>
                         <property name="borderTopStyle">solid</property>
                         <property name="borderTopWidth">thin</property>
-=======
->>>>>>> upstream/master
                         <text id="71">
                             <property name="contentType">auto</property>
                             <text-property name="content"><![CDATA[听课日期]]></text-property>
                         </text>
                     </cell>
                     <cell id="61">
-<<<<<<< HEAD
                         <property name="borderBottomStyle">solid</property>
                         <property name="borderBottomWidth">thin</property>
                         <property name="borderLeftStyle">solid</property>
@@ -1334,15 +1181,12 @@ where termid=(select id from active_term) and status>0 and substring(supervisor_
                         <property name="borderRightWidth">thin</property>
                         <property name="borderTopStyle">solid</property>
                         <property name="borderTopWidth">thin</property>
-=======
->>>>>>> upstream/master
                         <text id="72">
                             <property name="contentType">auto</property>
                             <text-property name="content"><![CDATA[学期]]></text-property>
                         </text>
                     </cell>
                     <cell id="62">
-<<<<<<< HEAD
                         <property name="borderBottomStyle">solid</property>
                         <property name="borderBottomWidth">thin</property>
                         <property name="borderLeftStyle">solid</property>
@@ -1351,15 +1195,12 @@ where termid=(select id from active_term) and status>0 and substring(supervisor_
                         <property name="borderRightWidth">thin</property>
                         <property name="borderTopStyle">solid</property>
                         <property name="borderTopWidth">thin</property>
-=======
->>>>>>> upstream/master
                         <text id="73">
                             <property name="contentType">auto</property>
                             <text-property name="content"><![CDATA[督导姓名]]></text-property>
                         </text>
                     </cell>
                     <cell id="63">
-<<<<<<< HEAD
                         <property name="borderBottomStyle">solid</property>
                         <property name="borderBottomWidth">thin</property>
                         <property name="borderLeftStyle">solid</property>
@@ -1368,15 +1209,12 @@ where termid=(select id from active_term) and status>0 and substring(supervisor_
                         <property name="borderRightWidth">thin</property>
                         <property name="borderTopStyle">solid</property>
                         <property name="borderTopWidth">thin</property>
-=======
->>>>>>> upstream/master
                         <text id="74">
                             <property name="contentType">auto</property>
                             <text-property name="content"><![CDATA[督导工号]]></text-property>
                         </text>
                     </cell>
                     <cell id="64">
-<<<<<<< HEAD
                         <property name="borderBottomStyle">solid</property>
                         <property name="borderBottomWidth">thin</property>
                         <property name="borderLeftStyle">solid</property>
@@ -1385,15 +1223,12 @@ where termid=(select id from active_term) and status>0 and substring(supervisor_
                         <property name="borderRightWidth">thin</property>
                         <property name="borderTopStyle">solid</property>
                         <property name="borderTopWidth">thin</property>
-=======
->>>>>>> upstream/master
                         <text id="75">
                             <property name="contentType">auto</property>
                             <text-property name="content"><![CDATA[提交日期]]></text-property>
                         </text>
                     </cell>
                     <cell id="65">
-<<<<<<< HEAD
                         <property name="borderBottomStyle">solid</property>
                         <property name="borderBottomWidth">thin</property>
                         <property name="borderLeftStyle">solid</property>
@@ -1402,15 +1237,12 @@ where termid=(select id from active_term) and status>0 and substring(supervisor_
                         <property name="borderRightWidth">thin</property>
                         <property name="borderTopStyle">solid</property>
                         <property name="borderTopWidth">thin</property>
-=======
->>>>>>> upstream/master
                         <text id="76">
                             <property name="contentType">auto</property>
                             <text-property name="content"><![CDATA[状态]]></text-property>
                         </text>
                     </cell>
                     <cell id="66">
-<<<<<<< HEAD
                         <property name="borderBottomStyle">solid</property>
                         <property name="borderBottomWidth">thin</property>
                         <property name="borderLeftStyle">solid</property>
@@ -1419,15 +1251,12 @@ where termid=(select id from active_term) and status>0 and substring(supervisor_
                         <property name="borderRightWidth">thin</property>
                         <property name="borderTopStyle">solid</property>
                         <property name="borderTopWidth">thin</property>
-=======
->>>>>>> upstream/master
                         <text id="77">
                             <property name="contentType">auto</property>
                             <text-property name="content"><![CDATA[听课节数]]></text-property>
                         </text>
                     </cell>
                     <cell id="67">
-<<<<<<< HEAD
                         <property name="borderBottomStyle">solid</property>
                         <property name="borderBottomWidth">thin</property>
                         <property name="borderLeftStyle">solid</property>
@@ -1436,8 +1265,6 @@ where termid=(select id from active_term) and status>0 and substring(supervisor_
                         <property name="borderRightWidth">thin</property>
                         <property name="borderTopStyle">solid</property>
                         <property name="borderTopWidth">thin</property>
-=======
->>>>>>> upstream/master
                         <text id="78">
                             <property name="contentType">auto</property>
                             <text-property name="content"><![CDATA[课程性质]]></text-property>
@@ -1448,7 +1275,6 @@ where termid=(select id from active_term) and status>0 and substring(supervisor_
             <detail>
                 <row id="20">
                     <cell id="21">
-<<<<<<< HEAD
                         <property name="borderBottomStyle">solid</property>
                         <property name="borderBottomWidth">thin</property>
                         <property name="borderLeftStyle">solid</property>
@@ -1457,14 +1283,11 @@ where termid=(select id from active_term) and status>0 and substring(supervisor_
                         <property name="borderRightWidth">thin</property>
                         <property name="borderTopStyle">solid</property>
                         <property name="borderTopWidth">thin</property>
-=======
->>>>>>> upstream/master
                         <data id="79">
                             <property name="resultSetColumn">department_name</property>
                         </data>
                     </cell>
                     <cell id="22">
-<<<<<<< HEAD
                         <property name="borderBottomStyle">solid</property>
                         <property name="borderBottomWidth">thin</property>
                         <property name="borderLeftStyle">solid</property>
@@ -1473,14 +1296,11 @@ where termid=(select id from active_term) and status>0 and substring(supervisor_
                         <property name="borderRightWidth">thin</property>
                         <property name="borderTopStyle">solid</property>
                         <property name="borderTopWidth">thin</property>
-=======
->>>>>>> upstream/master
                         <data id="80">
                             <property name="resultSetColumn">teacher_name</property>
                         </data>
                     </cell>
                     <cell id="23">
-<<<<<<< HEAD
                         <property name="borderBottomStyle">solid</property>
                         <property name="borderBottomWidth">thin</property>
                         <property name="borderLeftStyle">solid</property>
@@ -1489,14 +1309,11 @@ where termid=(select id from active_term) and status>0 and substring(supervisor_
                         <property name="borderRightWidth">thin</property>
                         <property name="borderTopStyle">solid</property>
                         <property name="borderTopWidth">thin</property>
-=======
->>>>>>> upstream/master
                         <data id="81">
                             <property name="resultSetColumn">course_name</property>
                         </data>
                     </cell>
                     <cell id="24">
-<<<<<<< HEAD
                         <property name="borderBottomStyle">solid</property>
                         <property name="borderBottomWidth">thin</property>
                         <property name="borderLeftStyle">solid</property>
@@ -1505,14 +1322,11 @@ where termid=(select id from active_term) and status>0 and substring(supervisor_
                         <property name="borderRightWidth">thin</property>
                         <property name="borderTopStyle">solid</property>
                         <property name="borderTopWidth">thin</property>
-=======
->>>>>>> upstream/master
                         <data id="82">
                             <property name="resultSetColumn">supervisor_date</property>
                         </data>
                     </cell>
                     <cell id="25">
-<<<<<<< HEAD
                         <property name="borderBottomStyle">solid</property>
                         <property name="borderBottomWidth">thin</property>
                         <property name="borderLeftStyle">solid</property>
@@ -1521,14 +1335,11 @@ where termid=(select id from active_term) and status>0 and substring(supervisor_
                         <property name="borderRightWidth">thin</property>
                         <property name="borderTopStyle">solid</property>
                         <property name="borderTopWidth">thin</property>
-=======
->>>>>>> upstream/master
                         <data id="89">
                             <property name="resultSetColumn">_term</property>
                         </data>
                     </cell>
                     <cell id="26">
-<<<<<<< HEAD
                         <property name="borderBottomStyle">solid</property>
                         <property name="borderBottomWidth">thin</property>
                         <property name="borderLeftStyle">solid</property>
@@ -1537,14 +1348,11 @@ where termid=(select id from active_term) and status>0 and substring(supervisor_
                         <property name="borderRightWidth">thin</property>
                         <property name="borderTopStyle">solid</property>
                         <property name="borderTopWidth">thin</property>
-=======
->>>>>>> upstream/master
                         <data id="84">
                             <property name="resultSetColumn">supervisor_name</property>
                         </data>
                     </cell>
                     <cell id="27">
-<<<<<<< HEAD
                         <property name="borderBottomStyle">solid</property>
                         <property name="borderBottomWidth">thin</property>
                         <property name="borderLeftStyle">solid</property>
@@ -1553,14 +1361,11 @@ where termid=(select id from active_term) and status>0 and substring(supervisor_
                         <property name="borderRightWidth">thin</property>
                         <property name="borderTopStyle">solid</property>
                         <property name="borderTopWidth">thin</property>
-=======
->>>>>>> upstream/master
                         <data id="85">
                             <property name="resultSetColumn">supervisor_id</property>
                         </data>
                     </cell>
                     <cell id="28">
-<<<<<<< HEAD
                         <property name="borderBottomStyle">solid</property>
                         <property name="borderBottomWidth">thin</property>
                         <property name="borderLeftStyle">solid</property>
@@ -1569,14 +1374,11 @@ where termid=(select id from active_term) and status>0 and substring(supervisor_
                         <property name="borderRightWidth">thin</property>
                         <property name="borderTopStyle">solid</property>
                         <property name="borderTopWidth">thin</property>
-=======
->>>>>>> upstream/master
                         <data id="86">
                             <property name="resultSetColumn">record_date</property>
                         </data>
                     </cell>
                     <cell id="29">
-<<<<<<< HEAD
                         <property name="borderBottomStyle">solid</property>
                         <property name="borderBottomWidth">thin</property>
                         <property name="borderLeftStyle">solid</property>
@@ -1585,14 +1387,11 @@ where termid=(select id from active_term) and status>0 and substring(supervisor_
                         <property name="borderRightWidth">thin</property>
                         <property name="borderTopStyle">solid</property>
                         <property name="borderTopWidth">thin</property>
-=======
->>>>>>> upstream/master
                         <data id="90">
                             <property name="resultSetColumn">_status</property>
                         </data>
                     </cell>
                     <cell id="30">
-<<<<<<< HEAD
                         <property name="borderBottomStyle">solid</property>
                         <property name="borderBottomWidth">thin</property>
                         <property name="borderLeftStyle">solid</property>
@@ -1615,13 +1414,6 @@ where termid=(select id from active_term) and status>0 and substring(supervisor_
                         <property name="borderTopStyle">solid</property>
                         <property name="borderTopWidth">thin</property>
                     </cell>
-=======
-                        <data id="88">
-                            <property name="resultSetColumn">total_section</property>
-                        </data>
-                    </cell>
-                    <cell id="31"/>
->>>>>>> upstream/master
                 </row>
             </detail>
         </table>

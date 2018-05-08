@@ -38,11 +38,7 @@
                 </ex-property>
             </list-property>
             <property name="odaDriverClass">org.postgresql.Driver</property>
-<<<<<<< HEAD
-            <property name="odaURL">jdbc:postgresql://localhost:5432/bell</property>
-=======
             <property name="odaURL">jdbc:postgresql://172.20.26.181:5432/bell</property>
->>>>>>> upstream/master
             <property name="odaUser">tm</property>
             <encrypted-property name="odaPassword" encryptionID="base64">dG0=</encrypted-property>
         </oda-data-source>
