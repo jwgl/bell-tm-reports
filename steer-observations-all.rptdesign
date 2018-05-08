@@ -40,7 +40,11 @@
                 </ex-property>
             </list-property>
             <property name="odaDriverClass">org.postgresql.Driver</property>
+<<<<<<< HEAD
             <property name="odaURL">jdbc:postgresql://localhost:5432/bell</property>
+=======
+            <property name="odaURL">jdbc:postgresql://172.20.26.181:5432/bell</property>
+>>>>>>> upstream/master
             <property name="odaUser">tm</property>
             <encrypted-property name="odaPassword" encryptionID="base64">dG0=</encrypted-property>
         </oda-data-source>
@@ -66,12 +70,16 @@
                 </structure>
                 <structure>
                     <property name="name">_term</property>
+<<<<<<< HEAD
                     <expression name="expression">Math.floor(row["term_id"]/10).toString() + "-" +(Math.floor(row["term_id"]/10)+1).toString() + "学年 第" + Math.floor(row["term_id"] %10).toString() +"学期"</expression>
                     <property name="dataType">string</property>
                 </structure>
                 <structure>
                     <property name="name">_observer_type</property>
                     <expression name="expression">new Array("","校督导","院督导","校领导")[row["observer_type"]]</expression>
+=======
+                    <expression name="expression">Math.floor(row["termid"]/10).toString() + "-" +(Math.floor(row["termid"]/10)+1).toString() + "学年 第" + Math.floor(row["termid"] %10).toString() +"学期"</expression>
+>>>>>>> upstream/master
                     <property name="dataType">string</property>
                 </structure>
             </list-property>
@@ -119,6 +127,16 @@
                     <text-property name="heading">academic_title</text-property>
                 </structure>
                 <structure>
+<<<<<<< HEAD
+=======
+                    <property name="columnName">type_name</property>
+                    <property name="alias">type_name</property>
+                    <property name="analysis">dimension</property>
+                    <text-property name="displayName">type_name</text-property>
+                    <text-property name="heading">type_name</text-property>
+                </structure>
+                <structure>
+>>>>>>> upstream/master
                     <property name="columnName">status</property>
                     <property name="alias">status</property>
                     <property name="analysis">measure</property>
@@ -126,6 +144,7 @@
                     <text-property name="heading">status</text-property>
                 </structure>
                 <structure>
+<<<<<<< HEAD
                     <property name="columnName">form_total_section</property>
                     <property name="alias">form_total_section</property>
                     <property name="analysis">measure</property>
@@ -140,6 +159,8 @@
                     <text-property name="heading">observer_type</text-property>
                 </structure>
                 <structure>
+=======
+>>>>>>> upstream/master
                     <property name="columnName">course_name</property>
                     <property name="alias">course_name</property>
                     <property name="analysis">dimension</property>
@@ -162,7 +183,10 @@
                 </structure>
                 <structure>
                     <property name="columnName">reward_date</property>
+<<<<<<< HEAD
                     <property name="alias">reward_date</property>
+=======
+>>>>>>> upstream/master
                     <property name="analysis">dimension</property>
                     <text-property name="displayName">reward_date</text-property>
                     <text-property name="heading">reward_date</text-property>
@@ -182,11 +206,19 @@
                     <text-property name="heading">course_class_name</text-property>
                 </structure>
                 <structure>
+<<<<<<< HEAD
                     <property name="columnName">term_id</property>
                     <property name="alias">term_id</property>
                     <property name="analysis">measure</property>
                     <text-property name="displayName">term_id</text-property>
                     <text-property name="heading">term_id</text-property>
+=======
+                    <property name="columnName">termid</property>
+                    <property name="alias">termid</property>
+                    <property name="analysis">measure</property>
+                    <text-property name="displayName">termid</text-property>
+                    <text-property name="heading">termid</text-property>
+>>>>>>> upstream/master
                 </structure>
                 <structure>
                     <property name="columnName">due_stds</property>
@@ -238,12 +270,15 @@
                     <text-property name="heading">leave</text-property>
                 </structure>
                 <structure>
+<<<<<<< HEAD
                     <property name="columnName">property</property>
                     <property name="analysis">dimension</property>
                     <text-property name="displayName">property</text-property>
                     <text-property name="heading">property</text-property>
                 </structure>
                 <structure>
+=======
+>>>>>>> upstream/master
                     <property name="columnName">teaching_methods</property>
                     <property name="alias">teaching_methods</property>
                     <property name="analysis">dimension</property>
@@ -318,130 +353,225 @@
                     </structure>
                     <structure>
                         <property name="position">7</property>
+<<<<<<< HEAD
                         <property name="name">status</property>
                         <property name="dataType">integer</property>
                     </structure>
                     <structure>
                         <property name="position">8</property>
                         <property name="name">form_total_section</property>
+=======
+                        <property name="name">type_name</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">8</property>
+                        <property name="name">status</property>
+>>>>>>> upstream/master
                         <property name="dataType">integer</property>
                     </structure>
                     <structure>
                         <property name="position">9</property>
+<<<<<<< HEAD
                         <property name="name">observer_type</property>
                         <property name="dataType">integer</property>
                     </structure>
                     <structure>
                         <property name="position">10</property>
+=======
+>>>>>>> upstream/master
                         <property name="name">course_name</property>
                         <property name="dataType">string</property>
                     </structure>
                     <structure>
+<<<<<<< HEAD
                         <property name="position">11</property>
+=======
+                        <property name="position">10</property>
+>>>>>>> upstream/master
                         <property name="name">lecture_week</property>
                         <property name="dataType">integer</property>
                     </structure>
                     <structure>
+<<<<<<< HEAD
                         <property name="position">12</property>
+=======
+                        <property name="position">11</property>
+>>>>>>> upstream/master
                         <property name="name">supervisor_date</property>
                         <property name="dataType">string</property>
                     </structure>
                     <structure>
+<<<<<<< HEAD
                         <property name="position">13</property>
+=======
+                        <property name="position">12</property>
+>>>>>>> upstream/master
                         <property name="name">reward_date</property>
                         <property name="dataType">date-time</property>
                     </structure>
                     <structure>
+<<<<<<< HEAD
                         <property name="position">14</property>
+=======
+                        <property name="position">13</property>
+>>>>>>> upstream/master
                         <property name="name">place_name</property>
                         <property name="dataType">string</property>
                     </structure>
                     <structure>
+<<<<<<< HEAD
                         <property name="position">15</property>
+=======
+                        <property name="position">14</property>
+>>>>>>> upstream/master
                         <property name="name">course_class_name</property>
                         <property name="dataType">string</property>
                     </structure>
                     <structure>
+<<<<<<< HEAD
                         <property name="position">16</property>
                         <property name="name">term_id</property>
                         <property name="dataType">integer</property>
                     </structure>
                     <structure>
                         <property name="position">17</property>
+=======
+                        <property name="position">15</property>
+                        <property name="name">termid</property>
+                        <property name="dataType">integer</property>
+                    </structure>
+                    <structure>
+                        <property name="position">16</property>
+>>>>>>> upstream/master
                         <property name="name">due_stds</property>
                         <property name="dataType">integer</property>
                     </structure>
                     <structure>
+<<<<<<< HEAD
                         <property name="position">18</property>
+=======
+                        <property name="position">17</property>
+>>>>>>> upstream/master
                         <property name="name">attendant_stds</property>
                         <property name="dataType">integer</property>
                     </structure>
                     <structure>
+<<<<<<< HEAD
                         <property name="position">19</property>
+=======
+                        <property name="position">18</property>
+>>>>>>> upstream/master
                         <property name="name">late_stds</property>
                         <property name="dataType">integer</property>
                     </structure>
                     <structure>
+<<<<<<< HEAD
                         <property name="position">20</property>
+=======
+                        <property name="position">19</property>
+>>>>>>> upstream/master
                         <property name="name">leave_stds</property>
                         <property name="dataType">integer</property>
                     </structure>
                     <structure>
+<<<<<<< HEAD
                         <property name="position">21</property>
+=======
+                        <property name="position">20</property>
+>>>>>>> upstream/master
                         <property name="name">earlier</property>
                         <property name="dataType">integer</property>
                     </structure>
                     <structure>
+<<<<<<< HEAD
                         <property name="position">22</property>
+=======
+                        <property name="position">21</property>
+>>>>>>> upstream/master
                         <property name="name">late</property>
                         <property name="dataType">integer</property>
                     </structure>
                     <structure>
+<<<<<<< HEAD
                         <property name="position">23</property>
+=======
+                        <property name="position">22</property>
+>>>>>>> upstream/master
                         <property name="name">leave</property>
                         <property name="dataType">integer</property>
                     </structure>
                     <structure>
+<<<<<<< HEAD
                         <property name="position">24</property>
                         <property name="name">property</property>
                         <property name="dataType">string</property>
                     </structure>
                     <structure>
                         <property name="position">25</property>
+=======
+                        <property name="position">23</property>
+>>>>>>> upstream/master
                         <property name="name">teaching_methods</property>
                         <property name="dataType">string</property>
                     </structure>
                     <structure>
+<<<<<<< HEAD
                         <property name="position">26</property>
                         <property name="name">evaluate_level</property>
                         <property name="dataType">decimal</property>
                     </structure>
                     <structure>
                         <property name="position">27</property>
+=======
+                        <property name="position">24</property>
+                        <property name="name">evaluate_level</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">25</property>
+>>>>>>> upstream/master
                         <property name="name">evaluation_text</property>
                         <property name="dataType">string</property>
                     </structure>
                     <structure>
+<<<<<<< HEAD
                         <property name="position">28</property>
+=======
+                        <property name="position">26</property>
+>>>>>>> upstream/master
                         <property name="name">suggest</property>
                         <property name="dataType">string</property>
                     </structure>
                     <structure>
+<<<<<<< HEAD
                         <property name="position">29</property>
+=======
+                        <property name="position">27</property>
+>>>>>>> upstream/master
                         <property name="name">_observer</property>
                         <property name="dataType">string</property>
                     </structure>
                     <structure>
+<<<<<<< HEAD
                         <property name="position">30</property>
+=======
+                        <property name="position">28</property>
+>>>>>>> upstream/master
                         <property name="name">_status</property>
                         <property name="dataType">string</property>
                     </structure>
                     <structure>
+<<<<<<< HEAD
                         <property name="position">31</property>
+=======
+                        <property name="position">29</property>
+>>>>>>> upstream/master
                         <property name="name">_teacher</property>
                         <property name="dataType">string</property>
                     </structure>
                     <structure>
+<<<<<<< HEAD
                         <property name="position">32</property>
                         <property name="name">_term</property>
                         <property name="dataType">string</property>
@@ -451,6 +581,12 @@
                         <property name="name">_observer_type</property>
                         <property name="dataType">string</property>
                     </structure>
+=======
+                        <property name="position">30</property>
+                        <property name="name">_term</property>
+                        <property name="dataType">string</property>
+                    </structure>
+>>>>>>> upstream/master
                 </list-property>
             </structure>
             <property name="dataSource">Data Source</property>
@@ -460,41 +596,57 @@
                     <property name="name">supervisor_name</property>
                     <property name="nativeName">supervisor_name</property>
                     <property name="dataType">string</property>
+<<<<<<< HEAD
                     <property name="nativeDataType">12</property>
+=======
+>>>>>>> upstream/master
                 </structure>
                 <structure>
                     <property name="position">2</property>
                     <property name="name">supervisor_id</property>
                     <property name="nativeName">supervisor_id</property>
                     <property name="dataType">string</property>
+<<<<<<< HEAD
                     <property name="nativeDataType">12</property>
+=======
+>>>>>>> upstream/master
                 </structure>
                 <structure>
                     <property name="position">3</property>
                     <property name="name">department_name</property>
                     <property name="nativeName">department_name</property>
                     <property name="dataType">string</property>
+<<<<<<< HEAD
                     <property name="nativeDataType">12</property>
+=======
+>>>>>>> upstream/master
                 </structure>
                 <structure>
                     <property name="position">4</property>
                     <property name="name">teacher_name</property>
                     <property name="nativeName">teacher_name</property>
                     <property name="dataType">string</property>
+<<<<<<< HEAD
                     <property name="nativeDataType">12</property>
+=======
+>>>>>>> upstream/master
                 </structure>
                 <structure>
                     <property name="position">5</property>
                     <property name="name">teacher_id</property>
                     <property name="nativeName">teacher_id</property>
                     <property name="dataType">string</property>
+<<<<<<< HEAD
                     <property name="nativeDataType">12</property>
+=======
+>>>>>>> upstream/master
                 </structure>
                 <structure>
                     <property name="position">6</property>
                     <property name="name">academic_title</property>
                     <property name="nativeName">academic_title</property>
                     <property name="dataType">string</property>
+<<<<<<< HEAD
                     <property name="nativeDataType">12</property>
                 </structure>
                 <structure>
@@ -650,6 +802,128 @@
                     <property name="nativeName">suggest</property>
                     <property name="dataType">string</property>
                     <property name="nativeDataType">12</property>
+=======
+                </structure>
+                <structure>
+                    <property name="position">7</property>
+                    <property name="name">type_name</property>
+                    <property name="nativeName">type_name</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">8</property>
+                    <property name="name">status</property>
+                    <property name="nativeName">status</property>
+                    <property name="dataType">integer</property>
+                </structure>
+                <structure>
+                    <property name="position">9</property>
+                    <property name="name">course_name</property>
+                    <property name="nativeName">course_name</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">10</property>
+                    <property name="name">lecture_week</property>
+                    <property name="nativeName">lecture_week</property>
+                    <property name="dataType">integer</property>
+                </structure>
+                <structure>
+                    <property name="position">11</property>
+                    <property name="name">supervisor_date</property>
+                    <property name="nativeName">supervisor_date</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">12</property>
+                    <property name="name">reward_date</property>
+                    <property name="nativeName">reward_date</property>
+                    <property name="dataType">date-time</property>
+                </structure>
+                <structure>
+                    <property name="position">13</property>
+                    <property name="name">place_name</property>
+                    <property name="nativeName">place_name</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">14</property>
+                    <property name="name">course_class_name</property>
+                    <property name="nativeName">course_class_name</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">15</property>
+                    <property name="name">termid</property>
+                    <property name="nativeName">termid</property>
+                    <property name="dataType">integer</property>
+                </structure>
+                <structure>
+                    <property name="position">16</property>
+                    <property name="name">due_stds</property>
+                    <property name="nativeName">due_stds</property>
+                    <property name="dataType">integer</property>
+                </structure>
+                <structure>
+                    <property name="position">17</property>
+                    <property name="name">attendant_stds</property>
+                    <property name="nativeName">attendant_stds</property>
+                    <property name="dataType">integer</property>
+                </structure>
+                <structure>
+                    <property name="position">18</property>
+                    <property name="name">late_stds</property>
+                    <property name="nativeName">late_stds</property>
+                    <property name="dataType">integer</property>
+                </structure>
+                <structure>
+                    <property name="position">19</property>
+                    <property name="name">leave_stds</property>
+                    <property name="nativeName">leave_stds</property>
+                    <property name="dataType">integer</property>
+                </structure>
+                <structure>
+                    <property name="position">20</property>
+                    <property name="name">earlier</property>
+                    <property name="nativeName">earlier</property>
+                    <property name="dataType">integer</property>
+                </structure>
+                <structure>
+                    <property name="position">21</property>
+                    <property name="name">late</property>
+                    <property name="nativeName">late</property>
+                    <property name="dataType">integer</property>
+                </structure>
+                <structure>
+                    <property name="position">22</property>
+                    <property name="name">leave</property>
+                    <property name="nativeName">leave</property>
+                    <property name="dataType">integer</property>
+                </structure>
+                <structure>
+                    <property name="position">23</property>
+                    <property name="name">teaching_methods</property>
+                    <property name="nativeName">teaching_methods</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">24</property>
+                    <property name="name">evaluate_level</property>
+                    <property name="nativeName">evaluate_level</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">25</property>
+                    <property name="name">evaluation_text</property>
+                    <property name="nativeName">evaluation_text</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">26</property>
+                    <property name="name">suggest</property>
+                    <property name="nativeName">suggest</property>
+                    <property name="dataType">string</property>
+>>>>>>> upstream/master
                 </structure>
             </list-property>
             <xml-property name="queryText"><![CDATA[select distinct 
@@ -659,16 +933,25 @@ department_name,
 teacher_name,
 teacher_id,
 academic_title,
+<<<<<<< HEAD
 status,
 form_total_section,
 observer_type,
+=======
+type_name,
+status,
+>>>>>>> upstream/master
 course_name,
 lecture_week,
 supervisor_date,
 reward_date,
 place_name,
 course_class_name,
+<<<<<<< HEAD
 term_id,
+=======
+termid,
+>>>>>>> upstream/master
 due_stds,
 attendant_stds,
 late_stds,
@@ -676,13 +959,20 @@ leave_stds,
 earlier,
 late,
 leave,
+<<<<<<< HEAD
 property,
+=======
+>>>>>>> upstream/master
 teaching_methods,
 evaluate_level,
 evaluation_text,
 suggest
 from tm.dv_observation_view  
+<<<<<<< HEAD
 where  term_id=? and status>0
+=======
+where  termid=? and type_name ='校督导' and status>0 and status>0
+>>>>>>> upstream/master
 order by supervisor_name]]></xml-property>
             <xml-property name="designerValues"><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
 <model:DesignValues xmlns:design="http://www.eclipse.org/datatools/connectivity/oda/design" xmlns:model="http://www.eclipse.org/birt/report/model/adapter/odaModel">
@@ -1525,6 +1815,15 @@ order by supervisor_name]]></xml-property>
                     <property name="dataType">string</property>
                 </structure>
                 <structure>
+<<<<<<< HEAD
+=======
+                    <property name="name">type_name</property>
+                    <text-property name="displayName">type_name</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["type_name"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+>>>>>>> upstream/master
                     <property name="name">status</property>
                     <text-property name="displayName">status</text-property>
                     <expression name="expression" type="javascript">dataSetRow["status"]</expression>
@@ -1561,6 +1860,15 @@ order by supervisor_name]]></xml-property>
                     <property name="dataType">string</property>
                 </structure>
                 <structure>
+<<<<<<< HEAD
+=======
+                    <property name="name">termid</property>
+                    <text-property name="displayName">termid</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["termid"]</expression>
+                    <property name="dataType">integer</property>
+                </structure>
+                <structure>
+>>>>>>> upstream/master
                     <property name="name">due_stds</property>
                     <text-property name="displayName">due_stds</text-property>
                     <expression name="expression" type="javascript">dataSetRow["due_stds"]</expression>
@@ -1656,6 +1964,7 @@ order by supervisor_name]]></xml-property>
                     <expression name="expression" type="javascript">dataSetRow["reward_date"]</expression>
                     <property name="dataType">date-time</property>
                 </structure>
+<<<<<<< HEAD
                 <structure>
                     <property name="name">_observer_type</property>
                     <text-property name="displayName">_observer_type</text-property>
@@ -1676,6 +1985,9 @@ order by supervisor_name]]></xml-property>
                 </structure>
             </list-property>
             <property name="pageBreakInterval">9999</property>
+=======
+            </list-property>
+>>>>>>> upstream/master
             <column id="1557">
                 <property name="repeat">1</property>
             </column>
@@ -1686,7 +1998,10 @@ order by supervisor_name]]></xml-property>
             <column id="1536"/>
             <column id="1538"/>
             <column id="1539"/>
+<<<<<<< HEAD
             <column id="1570"/>
+=======
+>>>>>>> upstream/master
             <column id="1540"/>
             <column id="1541"/>
             <column id="1542"/>
@@ -1705,7 +2020,10 @@ order by supervisor_name]]></xml-property>
             <column id="1556"/>
             <column id="1558"/>
             <column id="1562"/>
+<<<<<<< HEAD
             <column id="1576"/>
+=======
+>>>>>>> upstream/master
             <header>
                 <row id="1382">
                     <property name="fontWeight">bold</property>
@@ -1739,12 +2057,15 @@ order by supervisor_name]]></xml-property>
                             <text-property name="text">听课周</text-property>
                         </label>
                     </cell>
+<<<<<<< HEAD
                     <cell id="1567">
                         <text id="1571">
                             <property name="contentType">auto</property>
                             <text-property name="content"><![CDATA[节数]]></text-property>
                         </text>
                     </cell>
+=======
+>>>>>>> upstream/master
                     <cell id="1403">
                         <label id="1404">
                             <text-property name="text">听课日期</text-property>
@@ -1835,11 +2156,14 @@ order by supervisor_name]]></xml-property>
                             <text-property name="text">计酬日期</text-property>
                         </label>
                     </cell>
+<<<<<<< HEAD
                     <cell id="1573">
                         <label id="1577">
                             <text-property name="text">课程性质</text-property>
                         </label>
                     </cell>
+=======
+>>>>>>> upstream/master
                 </row>
             </header>
             <detail>
@@ -1860,8 +2184,13 @@ order by supervisor_name]]></xml-property>
                         </data>
                     </cell>
                     <cell id="1454">
+<<<<<<< HEAD
                         <data id="1566">
                             <property name="resultSetColumn">_observer_type</property>
+=======
+                        <data id="1455">
+                            <property name="resultSetColumn">type_name</property>
+>>>>>>> upstream/master
                         </data>
                     </cell>
                     <cell id="1458">
@@ -1874,11 +2203,14 @@ order by supervisor_name]]></xml-property>
                             <property name="resultSetColumn">lecture_week</property>
                         </data>
                     </cell>
+<<<<<<< HEAD
                     <cell id="1568">
                         <data id="1572">
                             <property name="resultSetColumn">form_total_section</property>
                         </data>
                     </cell>
+=======
+>>>>>>> upstream/master
                     <cell id="1462">
                         <data id="1463">
                             <property name="resultSetColumn">supervisor_date</property>
@@ -1969,11 +2301,14 @@ order by supervisor_name]]></xml-property>
                             <property name="resultSetColumn">reward_date</property>
                         </data>
                     </cell>
+<<<<<<< HEAD
                     <cell id="1574">
                         <data id="1578">
                             <property name="resultSetColumn">property</property>
                         </data>
                     </cell>
+=======
+>>>>>>> upstream/master
                 </row>
             </detail>
             <footer>
@@ -1984,7 +2319,10 @@ order by supervisor_name]]></xml-property>
                     <cell id="1507"/>
                     <cell id="1509"/>
                     <cell id="1510"/>
+<<<<<<< HEAD
                     <cell id="1569"/>
+=======
+>>>>>>> upstream/master
                     <cell id="1511"/>
                     <cell id="1512"/>
                     <cell id="1513"/>
@@ -2003,7 +2341,10 @@ order by supervisor_name]]></xml-property>
                     <cell id="1527"/>
                     <cell id="1529"/>
                     <cell id="1561"/>
+<<<<<<< HEAD
                     <cell id="1575"/>
+=======
+>>>>>>> upstream/master
                 </row>
             </footer>
         </table>
