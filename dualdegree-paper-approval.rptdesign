@@ -633,7 +633,7 @@ where af.award_id=? and dt.id=? and af.id=?;]]></xml-property>
             <property name="marginBottom">5pt</property>
             <property name="textAlign">center</property>
             <property name="contentType">auto</property>
-            <text-property name="content"><![CDATA[中外联合培养本科双学位项目学生论文成绩互认申请表]]></text-property>
+            <text-property name="content"><![CDATA[中外联合培养本科双学位项目学生毕业论文评审申请表]]></text-property>
         </text>
         <grid id="612">
             <property name="height">5.59375in</property>
@@ -722,7 +722,7 @@ where af.award_id=? and dt.id=? and af.id=?;]]></xml-property>
                                 <property name="style">main</property>
                                 <text id="618">
                                     <property name="contentType">auto</property>
-                                    <text-property name="content"><![CDATA[国（境）外合作院校名称]]></text-property>
+                                    <text-property name="content"><![CDATA[境外合作院校名称]]></text-property>
                                 </text>
                             </cell>
                             <cell id="508">
@@ -746,7 +746,7 @@ where af.award_id=? and dt.id=? and af.id=?;]]></xml-property>
                                 <property name="style">main</property>
                                 <text id="619">
                                     <property name="contentType">auto</property>
-                                    <text-property name="content"><![CDATA[国（境）外合作院校就读专业]]></text-property>
+                                    <text-property name="content"><![CDATA[境外合作院校就读专业]]></text-property>
                                 </text>
                             </cell>
                             <cell id="632">
@@ -773,7 +773,7 @@ where af.award_id=? and dt.id=? and af.id=?;]]></xml-property>
                                 <property name="style">main</property>
                                 <text id="620">
                                     <property name="contentType">auto</property>
-                                    <text-property name="content"><![CDATA[我校就读学院]]></text-property>
+                                    <text-property name="content"><![CDATA[我校就读学院名称]]></text-property>
                                 </text>
                             </cell>
                             <cell id="513">
@@ -785,6 +785,46 @@ where af.award_id=? and dt.id=? and af.id=?;]]></xml-property>
                                             <property name="name">departmentname</property>
                                             <text-property name="displayName">departmentname</text-property>
                                             <expression name="expression" type="javascript">dataSetRow["departmentname"]</expression>
+                                            <property name="dataType">string</property>
+                                        </structure>
+                                        <structure>
+                                            <property name="name">studentname</property>
+                                            <expression name="expression" type="javascript">dataSetRow["studentname"]</expression>
+                                            <property name="dataType">string</property>
+                                        </structure>
+                                        <structure>
+                                            <property name="name">studentid</property>
+                                            <expression name="expression" type="javascript">dataSetRow["studentid"]</expression>
+                                            <property name="dataType">string</property>
+                                        </structure>
+                                        <structure>
+                                            <property name="name">university_cooperative</property>
+                                            <expression name="expression" type="javascript">dataSetRow["university_cooperative"]</expression>
+                                            <property name="dataType">string</property>
+                                        </structure>
+                                        <structure>
+                                            <property name="name">major_cooperative</property>
+                                            <expression name="expression" type="javascript">dataSetRow["major_cooperative"]</expression>
+                                            <property name="dataType">string</property>
+                                        </structure>
+                                        <structure>
+                                            <property name="name">majorname</property>
+                                            <expression name="expression" type="javascript">dataSetRow["majorname"]</expression>
+                                            <property name="dataType">string</property>
+                                        </structure>
+                                        <structure>
+                                            <property name="name">papertype</property>
+                                            <expression name="expression" type="javascript">dataSetRow["papertype"]</expression>
+                                            <property name="dataType">integer</property>
+                                        </structure>
+                                        <structure>
+                                            <property name="name">english_title</property>
+                                            <expression name="expression" type="javascript">dataSetRow["english_title"]</expression>
+                                            <property name="dataType">string</property>
+                                        </structure>
+                                        <structure>
+                                            <property name="name">chinese_title</property>
+                                            <expression name="expression" type="javascript">dataSetRow["chinese_title"]</expression>
                                             <property name="dataType">string</property>
                                         </structure>
                                     </list-property>
@@ -816,78 +856,6 @@ where af.award_id=? and dt.id=? and af.id=?;]]></xml-property>
                                     </list-property>
                                     <property name="resultSetColumn">majorname</property>
                                 </data>
-                            </cell>
-                        </row>
-                        <row id="516">
-                            <property name="height">1.22cm</property>
-                            <cell id="517">
-                                <property name="style">main</property>
-                                <text id="622">
-                                    <property name="contentType">auto</property>
-                                    <text-property name="content"><![CDATA[国（境）外互认课程类别]]></text-property>
-                                </text>
-                            </cell>
-                            <cell id="518">
-                                <property name="colSpan">5</property>
-                                <property name="rowSpan">1</property>
-                                <property name="style">main</property>
-                                <data id="713">
-                                    <property name="dataSet">Data Set</property>
-                                    <list-property name="boundDataColumns">
-                                        <structure>
-                                            <property name="name">_typename</property>
-                                            <text-property name="displayName">_typename</text-property>
-                                            <expression name="expression" type="javascript">dataSetRow["_typename"]</expression>
-                                            <property name="dataType">string</property>
-                                        </structure>
-                                    </list-property>
-                                    <property name="resultSetColumn">_typename</property>
-                                </data>
-                            </cell>
-                        </row>
-                        <row id="521">
-                            <property name="height">1.22cm</property>
-                            <cell id="522">
-                                <property name="style">main</property>
-                                <text id="623">
-                                    <property name="contentType">auto</property>
-                                    <text-property name="content"><![CDATA[国（境）外互认课程名称]]></text-property>
-                                </text>
-                            </cell>
-                            <cell id="523">
-                                <property name="style">main</property>
-                                <data id="712">
-                                    <property name="dataSet">Data Set</property>
-                                    <list-property name="boundDataColumns">
-                                        <structure>
-                                            <property name="name">papercoursename</property>
-                                            <text-property name="displayName">papercoursename</text-property>
-                                            <expression name="expression" type="javascript">dataSetRow["papercoursename"]</expression>
-                                            <property name="dataType">string</property>
-                                        </structure>
-                                    </list-property>
-                                    <property name="resultSetColumn">papercoursename</property>
-                                </data>
-                            </cell>
-                            <cell id="524">
-                                <property name="style">main</property>
-                                <text id="673">
-                                    <property name="contentType">auto</property>
-                                    <text-property name="content"><![CDATA[国（境）外互认课程成绩]]></text-property>
-                                </text>
-                            </cell>
-                            <cell id="645">
-                                <property name="style">main</property>
-                            </cell>
-                            <cell id="635">
-                                <property name="style">main</property>
-                                <text id="674">
-                                    <property name="contentType">auto</property>
-                                    <text-property name="content"><![CDATA[认定我校毕业论文成绩]]></text-property>
-                                </text>
-                            </cell>
-                            <cell id="525">
-                                <property name="style">main</property>
                             </cell>
                         </row>
                         <row id="526">
@@ -960,11 +928,11 @@ where af.award_id=? and dt.id=? and af.id=?;]]></xml-property>
                                 </data>
                             </cell>
                         </row>
-                        <row id="536">
-                            <property name="height">9em</property>
-                            <cell id="537">
+                        <row id="716">
+                            <property name="height">0.5cm</property>
+                            <cell id="717">
                                 <property name="colSpan">1</property>
-                                <property name="rowSpan">2</property>
+                                <property name="rowSpan">4</property>
                                 <property name="style">main</property>
                                 <text id="663">
                                     <property name="contentType">auto</property>
@@ -972,6 +940,38 @@ where af.award_id=? and dt.id=? and af.id=?;]]></xml-property>
 意见]]></text-property>
                                 </text>
                             </cell>
+                            <cell id="718">
+                                <property name="colSpan">5</property>
+                                <property name="rowSpan">1</property>
+                                <property name="style">main</property>
+                                <property name="borderBottomColor">#FFFFFF</property>
+                                <property name="borderBottomStyle">solid</property>
+                                <property name="borderBottomWidth">thin</property>
+                                <text id="730">
+                                    <property name="textAlign">left</property>
+                                    <property name="contentType">auto</property>
+                                    <text-property name="content"><![CDATA[毕业论文（设计）成绩：         分]]></text-property>
+                                </text>
+                            </cell>
+                        </row>
+                        <row id="723">
+                            <property name="height">0.5cm</property>
+                            <cell id="725">
+                                <property name="colSpan">5</property>
+                                <property name="rowSpan">1</property>
+                                <property name="style">main</property>
+                                <property name="borderBottomColor">#FFFFFF</property>
+                                <property name="borderBottomStyle">solid</property>
+                                <property name="borderBottomWidth">thin</property>
+                                <text id="731">
+                                    <property name="textAlign">left</property>
+                                    <property name="contentType">auto</property>
+                                    <text-property name="content"><![CDATA[意见：]]></text-property>
+                                </text>
+                            </cell>
+                        </row>
+                        <row id="536">
+                            <property name="height">10em</property>
                             <cell id="538">
                                 <property name="colSpan">5</property>
                                 <property name="rowSpan">1</property>
@@ -984,21 +984,39 @@ where af.award_id=? and dt.id=? and af.id=?;]]></xml-property>
                         <row id="666">
                             <property name="height">0.5cm</property>
                             <cell id="668">
-                                <property name="colSpan">5</property>
+                                <property name="colSpan">3</property>
                                 <property name="rowSpan">1</property>
                                 <property name="style">main</property>
+                                <property name="borderRightColor">#FFFFFF</property>
+                                <property name="borderRightStyle">solid</property>
+                                <property name="borderRightWidth">thin</property>
                                 <property name="borderTopColor">#FFFFFF</property>
                                 <property name="borderTopStyle">solid</property>
                                 <property name="borderTopWidth">thin</property>
                                 <text id="679">
                                     <property name="textAlign">left</property>
                                     <property name="contentType">auto</property>
-                                    <text-property name="content"><![CDATA[审核人签名:                                    年   月   日]]></text-property>
+                                    <text-property name="content"><![CDATA[审核人签名: ]]></text-property>
+                                </text>
+                            </cell>
+                            <cell id="734">
+                                <property name="colSpan">2</property>
+                                <property name="rowSpan">1</property>
+                                <property name="style">main</property>
+                                <property name="borderLeftColor">#FFFFFF</property>
+                                <property name="borderLeftStyle">solid</property>
+                                <property name="borderLeftWidth">thin</property>
+                                <property name="borderTopColor">#FFFFFF</property>
+                                <property name="borderTopStyle">solid</property>
+                                <property name="borderTopWidth">thin</property>
+                                <text id="877">
+                                    <property name="contentType">auto</property>
+                                    <text-property name="content"><![CDATA[年   月   日]]></text-property>
                                 </text>
                             </cell>
                         </row>
                         <row id="541">
-                            <property name="height">9em</property>
+                            <property name="height">10em</property>
                             <cell id="542">
                                 <property name="colSpan">1</property>
                                 <property name="rowSpan">2</property>
@@ -1021,18 +1039,39 @@ where af.award_id=? and dt.id=? and af.id=?;]]></xml-property>
                         <row id="680">
                             <property name="height">0.5cm</property>
                             <cell id="682">
-                                <property name="colSpan">5</property>
+                                <property name="colSpan">3</property>
                                 <property name="rowSpan">1</property>
                                 <property name="style">main</property>
+                                <property name="borderBottomStyle">solid</property>
+                                <property name="borderBottomWidth">thin</property>
+                                <property name="borderLeftStyle">solid</property>
+                                <property name="borderLeftWidth">thin</property>
+                                <property name="borderRightStyle">none</property>
+                                <property name="borderTopStyle">none</property>
                                 <text id="701">
                                     <property name="textAlign">left</property>
                                     <property name="contentType">auto</property>
-                                    <text-property name="content"><![CDATA[院（部）长签名：        学院（部）章           年   月   日]]></text-property>
+                                    <text-property name="content"><![CDATA[院（部）长签名：             学院（部）章 ]]></text-property>
+                                </text>
+                            </cell>
+                            <cell id="880">
+                                <property name="colSpan">2</property>
+                                <property name="rowSpan">1</property>
+                                <property name="style">main</property>
+                                <property name="borderBottomStyle">solid</property>
+                                <property name="borderBottomWidth">thin</property>
+                                <property name="borderLeftStyle">none</property>
+                                <property name="borderRightStyle">solid</property>
+                                <property name="borderRightWidth">thin</property>
+                                <property name="borderTopStyle">none</property>
+                                <text id="883">
+                                    <property name="contentType">auto</property>
+                                    <text-property name="content"><![CDATA[年   月   日]]></text-property>
                                 </text>
                             </cell>
                         </row>
                         <row id="687">
-                            <property name="height">9em</property>
+                            <property name="height">10em</property>
                             <cell id="688">
                                 <property name="colSpan">1</property>
                                 <property name="rowSpan">2</property>
@@ -1054,13 +1093,34 @@ where af.award_id=? and dt.id=? and af.id=?;]]></xml-property>
                         <row id="694">
                             <property name="height">0.5cm</property>
                             <cell id="696">
-                                <property name="colSpan">5</property>
+                                <property name="colSpan">3</property>
                                 <property name="rowSpan">1</property>
                                 <property name="style">main</property>
+                                <property name="borderRightColor">#FFFFFF</property>
+                                <property name="borderRightStyle">solid</property>
+                                <property name="borderRightWidth">medium</property>
+                                <property name="borderTopColor">#FFFFFF</property>
+                                <property name="borderTopStyle">solid</property>
+                                <property name="borderTopWidth">medium</property>
                                 <text id="704">
                                     <property name="textAlign">left</property>
                                     <property name="contentType">auto</property>
-                                    <text-property name="content"><![CDATA[院（部）长签名：        教务处章               年   月   日]]></text-property>
+                                    <text-property name="content"><![CDATA[处长签名：                     教务处章    ]]></text-property>
+                                </text>
+                            </cell>
+                            <cell id="890">
+                                <property name="colSpan">2</property>
+                                <property name="rowSpan">1</property>
+                                <property name="style">main</property>
+                                <property name="borderLeftColor">#FFFFFF</property>
+                                <property name="borderLeftStyle">solid</property>
+                                <property name="borderLeftWidth">medium</property>
+                                <property name="borderTopColor">#FFFFFF</property>
+                                <property name="borderTopStyle">solid</property>
+                                <property name="borderTopWidth">medium</property>
+                                <text id="887">
+                                    <property name="contentType">auto</property>
+                                    <text-property name="content"><![CDATA[年   月   日]]></text-property>
                                 </text>
                             </cell>
                         </row>

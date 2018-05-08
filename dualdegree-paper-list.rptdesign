@@ -141,6 +141,12 @@
                     <text-property name="heading">papercoursename</text-property>
                 </structure>
                 <structure>
+                    <property name="columnName">mentor</property>
+                    <property name="analysis">dimension</property>
+                    <text-property name="displayName">mentor</text-property>
+                    <text-property name="heading">mentor</text-property>
+                </structure>
+                <structure>
                     <property name="columnName">english_title</property>
                     <property name="analysis">dimension</property>
                     <text-property name="displayName">english_title</text-property>
@@ -236,16 +242,21 @@
                     </structure>
                     <structure>
                         <property name="position">12</property>
-                        <property name="name">english_title</property>
+                        <property name="name">mentor</property>
                         <property name="dataType">string</property>
                     </structure>
                     <structure>
                         <property name="position">13</property>
-                        <property name="name">chinese_title</property>
+                        <property name="name">english_title</property>
                         <property name="dataType">string</property>
                     </structure>
                     <structure>
                         <property name="position">14</property>
+                        <property name="name">chinese_title</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">15</property>
                         <property name="name">_typename</property>
                         <property name="dataType">string</property>
                     </structure>
@@ -332,13 +343,20 @@
                 </structure>
                 <structure>
                     <property name="position">12</property>
+                    <property name="name">mentor</property>
+                    <property name="nativeName">mentor</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">12</property>
+                </structure>
+                <structure>
+                    <property name="position">13</property>
                     <property name="name">english_title</property>
                     <property name="nativeName">english_title</property>
                     <property name="dataType">string</property>
                     <property name="nativeDataType">12</property>
                 </structure>
                 <structure>
-                    <property name="position">13</property>
+                    <property name="position">14</property>
                     <property name="name">chinese_title</property>
                     <property name="nativeName">chinese_title</property>
                     <property name="dataType">string</property>
@@ -356,6 +374,7 @@
 	sj.name as majorName,
 	pf.type as paperType,
 	pf.name as paperCourseName,
+	tc.name as mentor,
 	pf.english_title,
 	pf.chinese_title
 from tm_dual.degree_application af 
@@ -364,42 +383,11 @@ join ea.student st on st.id=af.student_id
 join ea.department dt on st.department_id=dt.id
 join ea.major mj on st.major_id=mj.id
 join ea.subject sj on mj.subject_id=sj.id
+left join ea.teacher tc on af.paper_approver_id=tc.id
 where af.award_id=? and dt.id=?;]]></xml-property>
             <xml-property name="designerValues"><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
 <model:DesignValues xmlns:design="http://www.eclipse.org/datatools/connectivity/oda/design" xmlns:model="http://www.eclipse.org/birt/report/model/adapter/odaModel">
   <Version>2.0</Version>
-  <DataSetParameters>
-    <parameter>
-      <design:ParameterDefinition>
-        <design:inOutMode>In</design:inOutMode>
-        <design:attributes>
-          <design:identifier>
-            <design:name></design:name>
-            <design:position>1</design:position>
-          </design:identifier>
-          <design:nativeDataTypeCode>-5</design:nativeDataTypeCode>
-          <design:precision>0</design:precision>
-          <design:scale>0</design:scale>
-          <design:nullability>Unknown</design:nullability>
-        </design:attributes>
-      </design:ParameterDefinition>
-    </parameter>
-    <parameter>
-      <design:ParameterDefinition>
-        <design:inOutMode>In</design:inOutMode>
-        <design:attributes>
-          <design:identifier>
-            <design:name></design:name>
-            <design:position>2</design:position>
-          </design:identifier>
-          <design:nativeDataTypeCode>12</design:nativeDataTypeCode>
-          <design:precision>0</design:precision>
-          <design:scale>0</design:scale>
-          <design:nullability>Unknown</design:nullability>
-        </design:attributes>
-      </design:ParameterDefinition>
-    </parameter>
-  </DataSetParameters>
   <design:ResultSets derivedMetaData="true">
     <design:resultSetDefinitions>
       <design:resultSetColumns>
@@ -787,6 +775,12 @@ where af.award_id=? and dt.id=?;]]></xml-property>
                     <expression name="expression" type="javascript">dataSetRow["_typename"]</expression>
                     <property name="dataType">string</property>
                 </structure>
+                <structure>
+                    <property name="name">mentor</property>
+                    <text-property name="displayName">mentor</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["mentor"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
             </list-property>
             <column id="93"/>
             <column id="77"/>
@@ -803,6 +797,7 @@ where af.award_id=? and dt.id=?;]]></xml-property>
             <column id="89"/>
             <column id="100"/>
             <column id="104"/>
+            <column id="120"/>
             <column id="108"/>
             <column id="115"/>
             <header>
@@ -884,6 +879,11 @@ where af.award_id=? and dt.id=?;]]></xml-property>
                             <property name="contentType">auto</property>
                             <text-property name="content"><![CDATA[认定论文成绩]]></text-property>
                         </text>
+                    </cell>
+                    <cell id="117">
+                        <label id="121">
+                            <text-property name="text">指导老师</text-property>
+                        </label>
                     </cell>
                     <cell id="105">
                         <text id="111">
@@ -968,6 +968,11 @@ where af.award_id=? and dt.id=?;]]></xml-property>
                     </cell>
                     <cell id="98"/>
                     <cell id="102"/>
+                    <cell id="118">
+                        <data id="122">
+                            <property name="resultSetColumn">mentor</property>
+                        </data>
+                    </cell>
                     <cell id="106"/>
                     <cell id="113"/>
                 </row>
@@ -989,6 +994,7 @@ where af.award_id=? and dt.id=?;]]></xml-property>
                     <cell id="76"/>
                     <cell id="99"/>
                     <cell id="103"/>
+                    <cell id="119"/>
                     <cell id="107"/>
                     <cell id="114"/>
                 </row>
