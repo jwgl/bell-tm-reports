@@ -63,7 +63,7 @@
             <list-property name="computedColumns">
                 <structure>
                     <property name="name">_statusLabel</property>
-                    <expression name="expression">JSON.parse('{"CREATED": "未提交", "REJECTED": "初审退回", "FINISHED": "完成", "STEP1": "提交", "STEP2": "初审通过", "STEP3": "论文提交", "STEP4": "导师审核中", "STEP5": "论文退回"}')[row["status"]]</expression>
+                    <expression name="expression">JSON.parse('{"CREATED": "未提交", "REJECTED": "初审退回", "FINISHED": "论文通过", "STEP1": "提交", "STEP2": "初审通过", "STEP3": "论文提交", "STEP4": "导师审核中", "STEP5": "论文退回", "CLOSED": "关闭"}')[row["status"]]</expression>
                     <property name="dataType">string</property>
                 </structure>
             </list-property>
@@ -398,62 +398,78 @@ where af.award_id=? and dt.id=?;]]></xml-property>
             <column id="67"/>
             <column id="68"/>
             <column id="69"/>
-            <column id="70"/>
-            <header>
-                <row id="9">
-                    <cell id="72">
-                        <text id="76">
-                            <property name="contentType">auto</property>
-                            <text-property name="content"><![CDATA[序号]]></text-property>
-                        </text>
-                    </cell>
-                    <cell id="10">
-                        <label id="11">
-                            <text-property name="text">姓名</text-property>
-                        </label>
-                    </cell>
-                    <cell id="12">
-                        <label id="13">
-                            <text-property name="text">学号</text-property>
-                        </label>
-                    </cell>
-                    <cell id="14">
-                        <label id="15">
-                            <text-property name="text">国外大学</text-property>
-                        </label>
-                    </cell>
-                    <cell id="16">
-                        <label id="17">
-                            <text-property name="text">主修专业</text-property>
-                        </label>
-                    </cell>
-                    <cell id="18">
-                        <label id="19">
-                            <text-property name="text">紧急联系人</text-property>
-                        </label>
-                    </cell>
-                    <cell id="20">
-                        <label id="21">
-                            <text-property name="text">电话</text-property>
-                        </label>
-                    </cell>
-                    <cell id="22">
-                        <label id="23">
-                            <text-property name="text">Email</text-property>
-                        </label>
-                    </cell>
-                    <cell id="24">
-                        <label id="25">
-                            <text-property name="text">申请日期</text-property>
-                        </label>
-                    </cell>
-                    <cell id="26">
-                        <label id="27">
-                            <text-property name="text">状态</text-property>
-                        </label>
-                    </cell>
-                </row>
-            </header>
+            <group id="82">
+                <property name="groupName">NewTableGroup1</property>
+                <expression name="keyExpr" type="javascript">row["_statusLabel"]</expression>
+                <structure name="toc">
+                    <expression name="expressionValue" type="javascript">row["_statusLabel"]</expression>
+                </structure>
+                <property name="hideDetail">false</property>
+                <property name="pageBreakAfter">always-excluding-last</property>
+                <header>
+                    <row id="83">
+                        <cell id="84">
+                            <text id="76">
+                                <property name="contentType">auto</property>
+                                <text-property name="content"><![CDATA[序号]]></text-property>
+                            </text>
+                        </cell>
+                        <cell id="85">
+                            <label id="11">
+                                <text-property name="text">姓名</text-property>
+                            </label>
+                        </cell>
+                        <cell id="86">
+                            <label id="13">
+                                <text-property name="text">学号</text-property>
+                            </label>
+                        </cell>
+                        <cell id="87">
+                            <label id="15">
+                                <text-property name="text">国外大学</text-property>
+                            </label>
+                        </cell>
+                        <cell id="88">
+                            <label id="17">
+                                <text-property name="text">主修专业</text-property>
+                            </label>
+                        </cell>
+                        <cell id="89">
+                            <label id="19">
+                                <text-property name="text">紧急联系人</text-property>
+                            </label>
+                        </cell>
+                        <cell id="90">
+                            <label id="21">
+                                <text-property name="text">电话</text-property>
+                            </label>
+                        </cell>
+                        <cell id="91">
+                            <label id="23">
+                                <text-property name="text">Email</text-property>
+                            </label>
+                        </cell>
+                        <cell id="92">
+                            <label id="25">
+                                <text-property name="text">申请日期</text-property>
+                            </label>
+                        </cell>
+                    </row>
+                </header>
+                <footer>
+                    <row id="93">
+                        <cell id="94"/>
+                        <cell id="95"/>
+                        <cell id="96"/>
+                        <cell id="97"/>
+                        <cell id="98"/>
+                        <cell id="99"/>
+                        <cell id="100"/>
+                        <cell id="101"/>
+                        <cell id="102"/>
+                    </row>
+                </footer>
+            </group>
             <detail>
                 <row id="30">
                     <cell id="73">
@@ -501,11 +517,6 @@ where af.award_id=? and dt.id=?;]]></xml-property>
                             <property name="resultSetColumn">date_submitted</property>
                         </data>
                     </cell>
-                    <cell id="47">
-                        <data id="78">
-                            <property name="resultSetColumn">_statusLabel</property>
-                        </data>
-                    </cell>
                 </row>
             </detail>
             <footer>
@@ -519,7 +530,6 @@ where af.award_id=? and dt.id=?;]]></xml-property>
                     <cell id="57"/>
                     <cell id="58"/>
                     <cell id="59"/>
-                    <cell id="60"/>
                 </row>
             </footer>
         </table>
