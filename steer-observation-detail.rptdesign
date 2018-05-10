@@ -5,18 +5,6 @@
     <list-property name="propertyBindings">
         <structure>
             <property name="name">queryText</property>
-            <property name="id">6</property>
-        </structure>
-        <structure>
-            <property name="name">queryTimeOut</property>
-            <property name="id">6</property>
-        </structure>
-        <structure>
-            <property name="name">rowFetchSize</property>
-            <property name="id">6</property>
-        </structure>
-        <structure>
-            <property name="name">queryText</property>
             <property name="id">560</property>
         </structure>
         <structure>
@@ -91,7 +79,7 @@
                 </ex-property>
             </list-property>
             <property name="odaDriverClass">org.postgresql.Driver</property>
-            <property name="odaURL">jdbc:postgresql://172.20.26.181:5432/bell</property>
+            <property name="odaURL">jdbc:postgresql://localhost:5432/bell</property>
             <property name="odaUser">tm</property>
             <encrypted-property name="odaPassword" encryptionID="base64">dG0=</encrypted-property>
         </oda-data-source>
@@ -102,7 +90,12 @@
             <list-property name="computedColumns">
                 <structure>
                     <property name="name">_term</property>
-                    <expression name="expression">(Math.floor(row["termid"]/10)).toString()+"-"+(Math.floor(row["termid"]/10)+1).toString()+"学年 第"+(row["termid"] % 10).toString()+"学期"</expression>
+                    <expression name="expression">(Math.floor(row["term_id"]/10)).toString()+"-"+(Math.floor(row["term_id"]/10)+1).toString()+"学年 第"+(row["term_id"] % 10).toString()+"学期"</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">_type</property>
+                    <expression name="expression">['校督导','院督导','领导'][row["observer_type"]-1]</expression>
                     <property name="dataType">string</property>
                 </structure>
             </list-property>
@@ -235,6 +228,7 @@
                 </structure>
                 <structure>
                     <property name="columnName">reward_date</property>
+                    <property name="alias">reward_date</property>
                     <property name="analysis">dimension</property>
                     <text-property name="displayName">reward_date</text-property>
                     <text-property name="heading">reward_date</text-property>
@@ -247,11 +241,11 @@
                     <text-property name="heading">supervisor_name</text-property>
                 </structure>
                 <structure>
-                    <property name="columnName">type_name</property>
-                    <property name="alias">type_name</property>
-                    <property name="analysis">dimension</property>
-                    <text-property name="displayName">type_name</text-property>
-                    <text-property name="heading">type_name</text-property>
+                    <property name="columnName">observer_type</property>
+                    <property name="alias">observer_type</property>
+                    <property name="analysis">measure</property>
+                    <text-property name="displayName">observer_type</text-property>
+                    <text-property name="heading">observer_type</text-property>
                 </structure>
                 <structure>
                     <property name="columnName">teacher_id</property>
@@ -345,11 +339,17 @@
                     <text-property name="heading">department_name</text-property>
                 </structure>
                 <structure>
-                    <property name="columnName">termid</property>
-                    <property name="alias">termid</property>
+                    <property name="columnName">property</property>
+                    <property name="analysis">dimension</property>
+                    <text-property name="displayName">property</text-property>
+                    <text-property name="heading">property</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">term_id</property>
+                    <property name="alias">term_id</property>
                     <property name="analysis">measure</property>
-                    <text-property name="displayName">termid</text-property>
-                    <text-property name="heading">termid</text-property>
+                    <text-property name="displayName">term_id</text-property>
+                    <text-property name="heading">term_id</text-property>
                 </structure>
             </list-property>
             <list-property name="parameters">
@@ -409,7 +409,7 @@
                     <structure>
                         <property name="position">5</property>
                         <property name="name">evaluate_level</property>
-                        <property name="dataType">string</property>
+                        <property name="dataType">decimal</property>
                     </structure>
                     <structure>
                         <property name="position">6</property>
@@ -488,8 +488,8 @@
                     </structure>
                     <structure>
                         <property name="position">21</property>
-                        <property name="name">type_name</property>
-                        <property name="dataType">string</property>
+                        <property name="name">observer_type</property>
+                        <property name="dataType">integer</property>
                     </structure>
                     <structure>
                         <property name="position">22</property>
@@ -558,12 +558,22 @@
                     </structure>
                     <structure>
                         <property name="position">35</property>
-                        <property name="name">termid</property>
-                        <property name="dataType">integer</property>
+                        <property name="name">property</property>
+                        <property name="dataType">string</property>
                     </structure>
                     <structure>
                         <property name="position">36</property>
+                        <property name="name">term_id</property>
+                        <property name="dataType">integer</property>
+                    </structure>
+                    <structure>
+                        <property name="position">37</property>
                         <property name="name">_term</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">38</property>
+                        <property name="name">_type</property>
                         <property name="dataType">string</property>
                     </structure>
                 </list-property>
@@ -602,8 +612,8 @@
                     <property name="position">5</property>
                     <property name="name">evaluate_level</property>
                     <property name="nativeName">evaluate_level</property>
-                    <property name="dataType">string</property>
-                    <property name="nativeDataType">12</property>
+                    <property name="dataType">decimal</property>
+                    <property name="nativeDataType">2</property>
                 </structure>
                 <structure>
                     <property name="position">6</property>
@@ -712,10 +722,10 @@
                 </structure>
                 <structure>
                     <property name="position">21</property>
-                    <property name="name">type_name</property>
-                    <property name="nativeName">type_name</property>
-                    <property name="dataType">string</property>
-                    <property name="nativeDataType">12</property>
+                    <property name="name">observer_type</property>
+                    <property name="nativeName">observer_type</property>
+                    <property name="dataType">integer</property>
+                    <property name="nativeDataType">4</property>
                 </structure>
                 <structure>
                     <property name="position">22</property>
@@ -810,36 +820,26 @@
                 </structure>
                 <structure>
                     <property name="position">35</property>
-                    <property name="name">termid</property>
-                    <property name="nativeName">termid</property>
+                    <property name="name">property</property>
+                    <property name="nativeName">property</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">12</property>
+                </structure>
+                <structure>
+                    <property name="position">36</property>
+                    <property name="name">term_id</property>
+                    <property name="nativeName">term_id</property>
                     <property name="dataType">integer</property>
                     <property name="nativeDataType">4</property>
                 </structure>
             </list-property>
-            <xml-property name="queryText"><![CDATA[select *
+            <xml-property name="queryText"><![CDATA[select id,attendant_stds,due_stds,earlier,evaluate_level,evaluation_text,late,late_stds,leave,leave_stds,lecture_week,status,suggest,supervisor_id,supervisor_date,teaching_methods,form_total_section,record_date,reward_date,supervisor_name,observer_type,teacher_id,academic_title,course_class_name,start_week,end_week,odd_even,day_of_week,start_section,total_section,course_name,place_name,teacher_name,department_name,property,term_id
 from tm.dv_observation_view
 
-where id = ? and (supervisor_id= ? or ? =(select teacher_id from tm.observer where observer_type_id =0))]]></xml-property>
+where id = ? and (supervisor_id= ? or 'ROLE_OBSERVATION_ADMIN' in (select role_id from tm.user_role where user_id=?))]]></xml-property>
             <xml-property name="designerValues"><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
 <model:DesignValues xmlns:design="http://www.eclipse.org/datatools/connectivity/oda/design" xmlns:model="http://www.eclipse.org/birt/report/model/adapter/odaModel">
   <Version>2.0</Version>
-  <DataSetParameters>
-    <parameter>
-      <design:ParameterDefinition>
-        <design:inOutMode>In</design:inOutMode>
-        <design:attributes>
-          <design:identifier>
-            <design:name></design:name>
-            <design:position>3</design:position>
-          </design:identifier>
-          <design:nativeDataTypeCode>12</design:nativeDataTypeCode>
-          <design:precision>0</design:precision>
-          <design:scale>0</design:scale>
-          <design:nullability>Unknown</design:nullability>
-        </design:attributes>
-      </design:ParameterDefinition>
-    </parameter>
-  </DataSetParameters>
   <design:ResultSets derivedMetaData="true">
     <design:resultSetDefinitions>
       <design:resultSetColumns>
@@ -2931,41 +2931,23 @@ order by ei.id]]></xml-property>
                     </text>
                 </cell>
                 <cell id="160">
-                    <property name="style">NewStyle</property>
-                    <property name="fontSize">12pt</property>
-                    <property name="textAlign">center</property>
-                    <property name="verticalAlign">middle</property>
-                </cell>
-                <cell id="396">
-                    <property name="colSpan">2</property>
+                    <property name="colSpan">4</property>
                     <property name="rowSpan">1</property>
                     <property name="style">NewStyle</property>
                     <property name="fontSize">12pt</property>
                     <property name="textAlign">center</property>
                     <property name="verticalAlign">middle</property>
-                    <text id="173">
-                        <property name="contentType">auto</property>
-                        <text-property name="content"><![CDATA[授课对象
-（专业、年级）
-]]></text-property>
-                    </text>
-                </cell>
-                <cell id="161">
-                    <property name="style">NewStyle</property>
-                    <property name="fontSize">12pt</property>
-                    <property name="textAlign">center</property>
-                    <property name="verticalAlign">middle</property>
-                    <data id="523">
+                    <data id="634">
                         <property name="dataSet">dataset</property>
                         <list-property name="boundDataColumns">
                             <structure>
-                                <property name="name">course_class_name</property>
-                                <text-property name="displayName">course_class_name</text-property>
-                                <expression name="expression" type="javascript">dataSetRow["course_class_name"]</expression>
+                                <property name="name">property</property>
+                                <text-property name="displayName">property</text-property>
+                                <expression name="expression" type="javascript">dataSetRow["property"]</expression>
                                 <property name="dataType">string</property>
                             </structure>
                         </list-property>
-                        <property name="resultSetColumn">course_class_name</property>
+                        <property name="resultSetColumn">property</property>
                     </data>
                 </cell>
             </row>
@@ -3172,17 +3154,17 @@ order by ei.id]]></xml-property>
                     <property name="fontSize">12pt</property>
                     <property name="textAlign">center</property>
                     <property name="verticalAlign">middle</property>
-                    <data id="529">
+                    <data id="633">
                         <property name="dataSet">dataset</property>
                         <list-property name="boundDataColumns">
                             <structure>
-                                <property name="name">type_name</property>
-                                <text-property name="displayName">type_name</text-property>
-                                <expression name="expression" type="javascript">dataSetRow["type_name"]</expression>
+                                <property name="name">_type</property>
+                                <text-property name="displayName">_type</text-property>
+                                <expression name="expression" type="javascript">dataSetRow["_type"]</expression>
                                 <property name="dataType">string</property>
                             </structure>
                         </list-property>
-                        <property name="resultSetColumn">type_name</property>
+                        <property name="resultSetColumn">_type</property>
                     </data>
                 </cell>
             </row>
@@ -3543,8 +3525,8 @@ order by ei.id]]></xml-property>
                                     <property name="borderTopWidth">thin</property>
                                     <property name="textAlign">center</property>
                                     <property name="verticalAlign">middle</property>
-                                    <data id="627">
-                                        <property name="resultSetColumn">_value</property>
+                                    <data id="632">
+                                        <property name="resultSetColumn">value</property>
                                     </data>
                                 </cell>
                             </row>
@@ -3713,7 +3695,7 @@ order by ei.id]]></xml-property>
                         <property name="contentType">auto</property>
                         <text-property name="content"><![CDATA[1、“课程性质”包括通识必修、通识选修、专业课、实践（实验）课。
 2、听课时间请注明具体时间如“2月27日，第7节；2月28日，第3、4节”。
-3、等级评定分“优+” （4.7分）、“优”（4.5分）、“优－”（4.3分）、“良+” （4.15分）、“良”（4分）、“良－”（3.85分）、“中”（3.75分）、“差（3.5分）”八个等级。
+3、等级评定分“优” （4.5分）、“良”（3.5分）、“中”（2.5分）、“差（0分）”四个等级。
 4、课堂教学纪律纳入综合评价，教师迟到则取消其评 “优”资格。
 5、请在听课后将《听课记录表》送教务处以便汇总意见和建议。
 ]]></text-property>
