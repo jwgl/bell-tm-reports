@@ -1,0 +1,867 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<report xmlns="http://www.eclipse.org/birt/2005/design" version="3.2.23" id="1">
+    <property name="createdBy">Eclipse BIRT Designer Version 4.6.0.v201606072122</property>
+    <text-property name="title">学生申请汇总</text-property>
+    <property name="units">in</property>
+    <property name="iconFile">/templates/blank_report.gif</property>
+    <property name="bidiLayoutOrientation">ltr</property>
+    <property name="imageDPI">96</property>
+    <parameters>
+        <scalar-parameter name="query" id="6">
+            <property name="valueType">static</property>
+            <property name="isRequired">true</property>
+            <property name="dataType">string</property>
+            <property name="distinct">true</property>
+            <list-property name="selectionList"/>
+            <property name="paramType">simple</property>
+            <property name="concealValue">false</property>
+            <property name="controlType">text-box</property>
+            <structure name="format">
+                <property name="category">Unformatted</property>
+            </structure>
+        </scalar-parameter>
+    </parameters>
+    <data-sources>
+        <oda-data-source extensionID="org.eclipse.birt.report.data.oda.jdbc" name="tm_dual" id="4">
+            <list-property name="privateDriverProperties">
+                <ex-property>
+                    <name>metadataBidiFormatStr</name>
+                    <value>ILYNN</value>
+                </ex-property>
+                <ex-property>
+                    <name>disabledMetadataBidiFormatStr</name>
+                </ex-property>
+                <ex-property>
+                    <name>contentBidiFormatStr</name>
+                    <value>ILYNN</value>
+                </ex-property>
+                <ex-property>
+                    <name>disabledContentBidiFormatStr</name>
+                </ex-property>
+            </list-property>
+            <property name="odaDriverClass">org.postgresql.Driver</property>
+            <property name="odaURL">jdbc:postgresql://localhost:5432/bell</property>
+            <property name="odaUser">tm</property>
+            <encrypted-property name="odaPassword" encryptionID="base64">dG0=</encrypted-property>
+        </oda-data-source>
+    </data-sources>
+    <data-sets>
+        <oda-data-set extensionID="org.eclipse.birt.report.data.oda.jdbc.JdbcSelectDataSet" name="application list" id="5">
+            <list-property name="computedColumns">
+                <structure>
+                    <property name="name">_statusLabel</property>
+                    <expression name="expression">JSON.parse('{"CREATED": "未提交", "REJECTED": "初审退回", "FINISHED": "论文通过", "STEP1": "提交", "STEP2": "初审通过", "STEP3": "论文提交", "STEP4": "导师审核中", "STEP5": "论文退回", "CLOSED": "关闭"}')[row["status"]]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+            </list-property>
+            <list-property name="columnHints">
+                <structure>
+                    <property name="columnName">id</property>
+                    <property name="analysis">measure</property>
+                    <text-property name="displayName">id</text-property>
+                    <text-property name="heading">id</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">studentname</property>
+                    <property name="analysis">dimension</property>
+                    <text-property name="displayName">studentname</text-property>
+                    <text-property name="heading">studentname</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">studentid</property>
+                    <property name="analysis">dimension</property>
+                    <text-property name="displayName">studentid</text-property>
+                    <text-property name="heading">studentid</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">sex</property>
+                    <property name="analysis">dimension</property>
+                    <text-property name="displayName">sex</text-property>
+                    <text-property name="heading">sex</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">departmentname</property>
+                    <property name="analysis">dimension</property>
+                    <text-property name="displayName">departmentname</text-property>
+                    <text-property name="heading">departmentname</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">classname</property>
+                    <property name="analysis">dimension</property>
+                    <text-property name="displayName">classname</text-property>
+                    <text-property name="heading">classname</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">mentor</property>
+                    <property name="analysis">dimension</property>
+                    <text-property name="displayName">mentor</text-property>
+                    <text-property name="heading">mentor</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">university_cooperative</property>
+                    <property name="analysis">dimension</property>
+                    <text-property name="displayName">university_cooperative</text-property>
+                    <text-property name="heading">university_cooperative</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">major_cooperative</property>
+                    <property name="analysis">dimension</property>
+                    <text-property name="displayName">major_cooperative</text-property>
+                    <text-property name="heading">major_cooperative</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">bachelor</property>
+                    <property name="analysis">dimension</property>
+                    <text-property name="displayName">bachelor</text-property>
+                    <text-property name="heading">bachelor</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">bachelor_year</property>
+                    <property name="analysis">measure</property>
+                    <text-property name="displayName">bachelor_year</text-property>
+                    <text-property name="heading">bachelor_year</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">chinese_title</property>
+                    <property name="analysis">dimension</property>
+                    <text-property name="displayName">chinese_title</text-property>
+                    <text-property name="heading">chinese_title</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">status</property>
+                    <property name="analysis">dimension</property>
+                    <text-property name="displayName">status</text-property>
+                    <text-property name="heading">status</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">request_begin</property>
+                    <property name="analysis">dimension</property>
+                    <text-property name="displayName">request_begin</text-property>
+                    <text-property name="heading">request_begin</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">date_submitted</property>
+                    <property name="analysis">dimension</property>
+                    <text-property name="displayName">date_submitted</text-property>
+                    <text-property name="heading">date_submitted</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">date_approved</property>
+                    <property name="analysis">dimension</property>
+                    <text-property name="displayName">date_approved</text-property>
+                    <text-property name="heading">date_approved</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">date_paper_submitted</property>
+                    <property name="analysis">dimension</property>
+                    <text-property name="displayName">date_paper_submitted</text-property>
+                    <text-property name="heading">date_paper_submitted</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">date_paper_approved</property>
+                    <property name="analysis">dimension</property>
+                    <text-property name="displayName">date_paper_approved</text-property>
+                    <text-property name="heading">date_paper_approved</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">comment</property>
+                    <property name="analysis">dimension</property>
+                    <text-property name="displayName">comment</text-property>
+                    <text-property name="heading">comment</text-property>
+                </structure>
+            </list-property>
+            <list-property name="parameters">
+                <structure>
+                    <property name="name">dartment_name</property>
+                    <property name="paramName">query</property>
+                    <property name="nativeName"></property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">12</property>
+                    <property name="position">1</property>
+                    <property name="isInput">true</property>
+                    <property name="isOutput">false</property>
+                </structure>
+                <structure>
+                    <property name="name">student_id</property>
+                    <property name="paramName">query</property>
+                    <property name="nativeName"></property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">12</property>
+                    <property name="position">2</property>
+                    <property name="isInput">true</property>
+                    <property name="isOutput">false</property>
+                </structure>
+                <structure>
+                    <property name="name">student_name</property>
+                    <property name="paramName">query</property>
+                    <property name="nativeName"></property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">12</property>
+                    <property name="position">3</property>
+                    <property name="isInput">true</property>
+                    <property name="isOutput">false</property>
+                </structure>
+            </list-property>
+            <structure name="cachedMetaData">
+                <list-property name="resultSet">
+                    <structure>
+                        <property name="position">1</property>
+                        <property name="name">id</property>
+                        <property name="dataType">decimal</property>
+                    </structure>
+                    <structure>
+                        <property name="position">2</property>
+                        <property name="name">studentname</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">3</property>
+                        <property name="name">studentid</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">4</property>
+                        <property name="name">sex</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">5</property>
+                        <property name="name">departmentname</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">6</property>
+                        <property name="name">classname</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">7</property>
+                        <property name="name">mentor</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">8</property>
+                        <property name="name">university_cooperative</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">9</property>
+                        <property name="name">major_cooperative</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">10</property>
+                        <property name="name">bachelor</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">11</property>
+                        <property name="name">bachelor_year</property>
+                        <property name="dataType">integer</property>
+                    </structure>
+                    <structure>
+                        <property name="position">12</property>
+                        <property name="name">chinese_title</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">13</property>
+                        <property name="name">status</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">14</property>
+                        <property name="name">request_begin</property>
+                        <property name="dataType">date</property>
+                    </structure>
+                    <structure>
+                        <property name="position">15</property>
+                        <property name="name">date_submitted</property>
+                        <property name="dataType">date-time</property>
+                    </structure>
+                    <structure>
+                        <property name="position">16</property>
+                        <property name="name">date_approved</property>
+                        <property name="dataType">date-time</property>
+                    </structure>
+                    <structure>
+                        <property name="position">17</property>
+                        <property name="name">date_paper_submitted</property>
+                        <property name="dataType">date-time</property>
+                    </structure>
+                    <structure>
+                        <property name="position">18</property>
+                        <property name="name">date_paper_approved</property>
+                        <property name="dataType">date-time</property>
+                    </structure>
+                    <structure>
+                        <property name="position">19</property>
+                        <property name="name">comment</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">20</property>
+                        <property name="name">_statusLabel</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                </list-property>
+            </structure>
+            <property name="dataSource">tm_dual</property>
+            <list-property name="resultSet">
+                <structure>
+                    <property name="position">1</property>
+                    <property name="name">id</property>
+                    <property name="nativeName">id</property>
+                    <property name="dataType">decimal</property>
+                    <property name="nativeDataType">-5</property>
+                </structure>
+                <structure>
+                    <property name="position">2</property>
+                    <property name="name">studentname</property>
+                    <property name="nativeName">studentname</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">12</property>
+                </structure>
+                <structure>
+                    <property name="position">3</property>
+                    <property name="name">studentid</property>
+                    <property name="nativeName">studentid</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">12</property>
+                </structure>
+                <structure>
+                    <property name="position">4</property>
+                    <property name="name">sex</property>
+                    <property name="nativeName">sex</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">12</property>
+                </structure>
+                <structure>
+                    <property name="position">5</property>
+                    <property name="name">departmentname</property>
+                    <property name="nativeName">departmentname</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">12</property>
+                </structure>
+                <structure>
+                    <property name="position">6</property>
+                    <property name="name">classname</property>
+                    <property name="nativeName">classname</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">12</property>
+                </structure>
+                <structure>
+                    <property name="position">7</property>
+                    <property name="name">mentor</property>
+                    <property name="nativeName">mentor</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">12</property>
+                </structure>
+                <structure>
+                    <property name="position">8</property>
+                    <property name="name">university_cooperative</property>
+                    <property name="nativeName">university_cooperative</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">12</property>
+                </structure>
+                <structure>
+                    <property name="position">9</property>
+                    <property name="name">major_cooperative</property>
+                    <property name="nativeName">major_cooperative</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">12</property>
+                </structure>
+                <structure>
+                    <property name="position">10</property>
+                    <property name="name">bachelor</property>
+                    <property name="nativeName">bachelor</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">12</property>
+                </structure>
+                <structure>
+                    <property name="position">11</property>
+                    <property name="name">bachelor_year</property>
+                    <property name="nativeName">bachelor_year</property>
+                    <property name="dataType">integer</property>
+                    <property name="nativeDataType">4</property>
+                </structure>
+                <structure>
+                    <property name="position">12</property>
+                    <property name="name">chinese_title</property>
+                    <property name="nativeName">chinese_title</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">12</property>
+                </structure>
+                <structure>
+                    <property name="position">13</property>
+                    <property name="name">status</property>
+                    <property name="nativeName">status</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">12</property>
+                </structure>
+                <structure>
+                    <property name="position">14</property>
+                    <property name="name">request_begin</property>
+                    <property name="nativeName">request_begin</property>
+                    <property name="dataType">date</property>
+                    <property name="nativeDataType">91</property>
+                </structure>
+                <structure>
+                    <property name="position">15</property>
+                    <property name="name">date_submitted</property>
+                    <property name="nativeName">date_submitted</property>
+                    <property name="dataType">date-time</property>
+                    <property name="nativeDataType">93</property>
+                </structure>
+                <structure>
+                    <property name="position">16</property>
+                    <property name="name">date_approved</property>
+                    <property name="nativeName">date_approved</property>
+                    <property name="dataType">date-time</property>
+                    <property name="nativeDataType">93</property>
+                </structure>
+                <structure>
+                    <property name="position">17</property>
+                    <property name="name">date_paper_submitted</property>
+                    <property name="nativeName">date_paper_submitted</property>
+                    <property name="dataType">date-time</property>
+                    <property name="nativeDataType">93</property>
+                </structure>
+                <structure>
+                    <property name="position">18</property>
+                    <property name="name">date_paper_approved</property>
+                    <property name="nativeName">date_paper_approved</property>
+                    <property name="dataType">date-time</property>
+                    <property name="nativeDataType">93</property>
+                </structure>
+                <structure>
+                    <property name="position">19</property>
+                    <property name="name">comment</property>
+                    <property name="nativeName">comment</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">12</property>
+                </structure>
+            </list-property>
+            <xml-property name="queryText"><![CDATA[select  af.id as id,
+	st.name as studentName,
+	st.id as studentId,
+	st.sex,
+	dt.name as departmentName,
+	clazz.name as className,
+	mentor.name as mentor,
+	af.university_cooperative,
+	af.major_cooperative,
+	af.bachelor,
+	af.bachelor_year,
+	pf.chinese_title,
+	af.status,
+	award.request_begin,
+	af.date_submitted,
+	af.date_approved,
+	af.date_paper_submitted,
+	af.date_paper_approved,
+	pf.comment
+from tm_dual.degree_application af
+join tm_dual.award on af.award_id=award.id 
+join ea.student st on st.id=af.student_id
+join ea.admin_class clazz on clazz.id=st.admin_class_id
+join ea.department dt on st.department_id=dt.id
+join ea.teacher mentor on af.paper_approver_id=mentor.id
+left join tm_dual.paper_form pf on af.id=pf.form_id
+where dt.id = ? or st.id = ? or st.name = ?;]]></xml-property>
+        </oda-data-set>
+    </data-sets>
+    <page-setup>
+        <simple-master-page name="Simple MasterPage" id="2">
+            <page-footer>
+                <text id="3">
+                    <property name="contentType">html</property>
+                    <text-property name="content"><![CDATA[<value-of>new Date()</value-of>]]></text-property>
+                </text>
+            </page-footer>
+        </simple-master-page>
+    </page-setup>
+    <body>
+        <table id="8">
+            <property name="dataSet">application list</property>
+            <list-property name="boundDataColumns">
+                <structure>
+                    <property name="name">studentid</property>
+                    <text-property name="displayName">studentid</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["studentid"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">university_cooperative</property>
+                    <text-property name="displayName">university_cooperative</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["university_cooperative"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">major_cooperative</property>
+                    <text-property name="displayName">major_cooperative</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["major_cooperative"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">date_submitted</property>
+                    <text-property name="displayName">date_submitted</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["date_submitted"]</expression>
+                    <property name="dataType">date</property>
+                    <property name="allowExport">true</property>
+                </structure>
+                <structure>
+                    <property name="name">status</property>
+                    <text-property name="displayName">status</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["status"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">departmentname</property>
+                    <text-property name="displayName">departmentname</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["departmentname"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">Column Binding</property>
+                    <expression name="expression" type="javascript">row.__rownum+1</expression>
+                    <property name="dataType">string</property>
+                    <property name="allowExport">true</property>
+                </structure>
+                <structure>
+                    <property name="name">_statusLabel</property>
+                    <text-property name="displayName">_statusLabel</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["_statusLabel"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">studentname</property>
+                    <text-property name="displayName">studentname</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["studentname"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">sex</property>
+                    <text-property name="displayName">sex</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["sex"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">classname</property>
+                    <text-property name="displayName">classname</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["classname"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">mentor</property>
+                    <text-property name="displayName">mentor</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["mentor"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">bachelor</property>
+                    <text-property name="displayName">bachelor</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["bachelor"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">bachelor_year</property>
+                    <text-property name="displayName">bachelor_year</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["bachelor_year"]</expression>
+                    <property name="dataType">integer</property>
+                </structure>
+                <structure>
+                    <property name="name">chinese_title</property>
+                    <text-property name="displayName">chinese_title</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["chinese_title"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">date_approved</property>
+                    <text-property name="displayName">date_approved</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["date_approved"]</expression>
+                    <property name="dataType">date-time</property>
+                </structure>
+                <structure>
+                    <property name="name">date_paper_submitted</property>
+                    <text-property name="displayName">date_paper_submitted</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["date_paper_submitted"]</expression>
+                    <property name="dataType">date-time</property>
+                </structure>
+                <structure>
+                    <property name="name">date_paper_approved</property>
+                    <text-property name="displayName">date_paper_approved</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["date_paper_approved"]</expression>
+                    <property name="dataType">date-time</property>
+                </structure>
+                <structure>
+                    <property name="name">comment</property>
+                    <text-property name="displayName">comment</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["comment"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+            </list-property>
+            <property name="pageBreakInterval">999</property>
+            <column id="75"/>
+            <column id="107"/>
+            <column id="62"/>
+            <column id="63"/>
+            <column id="114"/>
+            <column id="121"/>
+            <column id="128"/>
+            <column id="64"/>
+            <column id="65"/>
+            <column id="66"/>
+            <column id="136"/>
+            <column id="67"/>
+            <column id="68"/>
+            <column id="69"/>
+            <column id="155"/>
+            <column id="160"/>
+            <column id="150"/>
+            <column id="145"/>
+            <group id="82">
+                <property name="groupName">NewTableGroup1</property>
+                <expression name="keyExpr" type="javascript">row["_statusLabel"]</expression>
+                <structure name="toc">
+                    <expression name="expressionValue" type="javascript">row["_statusLabel"]</expression>
+                </structure>
+                <property name="hideDetail">false</property>
+                <property name="pageBreakAfter">always-excluding-last</property>
+                <header>
+                    <row id="83">
+                        <cell id="84">
+                            <text id="76">
+                                <property name="contentType">auto</property>
+                                <text-property name="content"><![CDATA[序号]]></text-property>
+                            </text>
+                        </cell>
+                        <cell id="103">
+                            <label id="13">
+                                <text-property name="text">学号</text-property>
+                            </label>
+                        </cell>
+                        <cell id="85">
+                            <label id="11">
+                                <text-property name="text">姓名</text-property>
+                            </label>
+                        </cell>
+                        <cell id="86">
+                            <label id="108">
+                                <text-property name="text">性别</text-property>
+                            </label>
+                        </cell>
+                        <cell id="110">
+                            <label id="115">
+                                <text-property name="text">学院</text-property>
+                            </label>
+                        </cell>
+                        <cell id="117">
+                            <label id="122">
+                                <text-property name="text">班级</text-property>
+                            </label>
+                        </cell>
+                        <cell id="124">
+                            <label id="129">
+                                <text-property name="text">导师</text-property>
+                            </label>
+                        </cell>
+                        <cell id="87">
+                            <label id="15">
+                                <text-property name="text">国外大学</text-property>
+                            </label>
+                        </cell>
+                        <cell id="88">
+                            <label id="17">
+                                <text-property name="text">主修专业</text-property>
+                            </label>
+                        </cell>
+                        <cell id="89">
+                            <label id="19">
+                                <text-property name="text">学位</text-property>
+                            </label>
+                        </cell>
+                        <cell id="132">
+                            <label id="137">
+                                <text-property name="text">获得学位年份</text-property>
+                            </label>
+                        </cell>
+                        <cell id="90">
+                            <label id="21">
+                                <text-property name="text">论文题目</text-property>
+                            </label>
+                        </cell>
+                        <cell id="91">
+                            <label id="23">
+                                <text-property name="text">状态</text-property>
+                            </label>
+                        </cell>
+                        <cell id="92">
+                            <label id="25">
+                                <text-property name="text">申请日期</text-property>
+                            </label>
+                        </cell>
+                        <cell id="151">
+                            <label id="161">
+                                <text-property name="text">初审</text-property>
+                            </label>
+                        </cell>
+                        <cell id="156">
+                            <label id="162">
+                                <text-property name="text">论文提交</text-property>
+                            </label>
+                        </cell>
+                        <cell id="146">
+                            <label id="163">
+                                <text-property name="text">论文审核</text-property>
+                            </label>
+                        </cell>
+                        <cell id="141">
+                            <label id="164">
+                                <text-property name="text">审核意见</text-property>
+                            </label>
+                        </cell>
+                    </row>
+                </header>
+                <footer>
+                    <row id="93">
+                        <cell id="94"/>
+                        <cell id="105"/>
+                        <cell id="95"/>
+                        <cell id="96"/>
+                        <cell id="112"/>
+                        <cell id="119"/>
+                        <cell id="126"/>
+                        <cell id="97"/>
+                        <cell id="98"/>
+                        <cell id="99"/>
+                        <cell id="134"/>
+                        <cell id="100"/>
+                        <cell id="101"/>
+                        <cell id="102"/>
+                        <cell id="153"/>
+                        <cell id="158"/>
+                        <cell id="148"/>
+                        <cell id="143"/>
+                    </row>
+                </footer>
+            </group>
+            <detail>
+                <row id="30">
+                    <cell id="73">
+                        <data id="77">
+                            <property name="resultSetColumn">Column Binding</property>
+                        </data>
+                    </cell>
+                    <cell id="104">
+                        <data id="34">
+                            <property name="resultSetColumn">studentid</property>
+                        </data>
+                    </cell>
+                    <cell id="31">
+                        <data id="81">
+                            <property name="resultSetColumn">studentname</property>
+                        </data>
+                    </cell>
+                    <cell id="33">
+                        <data id="109">
+                            <property name="resultSetColumn">sex</property>
+                        </data>
+                    </cell>
+                    <cell id="111">
+                        <data id="116">
+                            <property name="resultSetColumn">departmentname</property>
+                        </data>
+                    </cell>
+                    <cell id="118">
+                        <data id="123">
+                            <property name="resultSetColumn">classname</property>
+                        </data>
+                    </cell>
+                    <cell id="125">
+                        <data id="130">
+                            <property name="resultSetColumn">mentor</property>
+                        </data>
+                    </cell>
+                    <cell id="35">
+                        <data id="36">
+                            <property name="resultSetColumn">university_cooperative</property>
+                        </data>
+                    </cell>
+                    <cell id="37">
+                        <data id="38">
+                            <property name="resultSetColumn">major_cooperative</property>
+                        </data>
+                    </cell>
+                    <cell id="39">
+                        <data id="131">
+                            <property name="resultSetColumn">bachelor</property>
+                        </data>
+                    </cell>
+                    <cell id="133">
+                        <data id="138">
+                            <property name="resultSetColumn">bachelor_year</property>
+                        </data>
+                    </cell>
+                    <cell id="41">
+                        <data id="139">
+                            <property name="resultSetColumn">chinese_title</property>
+                        </data>
+                    </cell>
+                    <cell id="43">
+                        <data id="140">
+                            <property name="resultSetColumn">_statusLabel</property>
+                        </data>
+                    </cell>
+                    <cell id="45">
+                        <data id="80">
+                            <property name="resultSetColumn">date_submitted</property>
+                        </data>
+                    </cell>
+                    <cell id="152">
+                        <data id="165">
+                            <property name="resultSetColumn">date_approved</property>
+                        </data>
+                    </cell>
+                    <cell id="157">
+                        <data id="166">
+                            <property name="resultSetColumn">date_paper_submitted</property>
+                        </data>
+                    </cell>
+                    <cell id="147">
+                        <data id="167">
+                            <property name="resultSetColumn">date_paper_approved</property>
+                        </data>
+                    </cell>
+                    <cell id="142">
+                        <data id="168">
+                            <property name="resultSetColumn">comment</property>
+                        </data>
+                    </cell>
+                </row>
+            </detail>
+            <footer>
+                <row id="51">
+                    <cell id="74"/>
+                    <cell id="106"/>
+                    <cell id="52"/>
+                    <cell id="53"/>
+                    <cell id="113"/>
+                    <cell id="120"/>
+                    <cell id="127"/>
+                    <cell id="54"/>
+                    <cell id="55"/>
+                    <cell id="56"/>
+                    <cell id="135"/>
+                    <cell id="57"/>
+                    <cell id="58"/>
+                    <cell id="59"/>
+                    <cell id="154"/>
+                    <cell id="159"/>
+                    <cell id="149"/>
+                    <cell id="144"/>
+                </row>
+            </footer>
+        </table>
+    </body>
+</report>
