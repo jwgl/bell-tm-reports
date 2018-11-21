@@ -2,20 +2,6 @@
 <report xmlns="http://www.eclipse.org/birt/2005/design" version="3.2.23" id="1">
     <property name="createdBy">Eclipse BIRT Designer Version 4.6.0.v201606072122</property>
     <text-property name="title">考勤统计</text-property>
-    <list-property name="propertyBindings">
-        <structure>
-            <property name="name">queryText</property>
-            <property name="id">6</property>
-        </structure>
-        <structure>
-            <property name="name">queryTimeOut</property>
-            <property name="id">6</property>
-        </structure>
-        <structure>
-            <property name="name">rowFetchSize</property>
-            <property name="id">6</property>
-        </structure>
-    </list-property>
     <property name="units">in</property>
     <property name="theme">tm-common.defaultTheme</property>
     <property name="iconFile">/templates/blank_report.gif</property>
@@ -80,10 +66,10 @@
                     <text-property name="heading">name</text-property>
                 </structure>
                 <structure>
-                    <property name="columnName">adminclass</property>
+                    <property name="columnName">admin_class</property>
                     <property name="analysis">dimension</property>
-                    <text-property name="displayName">adminclass</text-property>
-                    <text-property name="heading">adminclass</text-property>
+                    <text-property name="displayName">admin_class</text-property>
+                    <text-property name="heading">admin_class</text-property>
                 </structure>
                 <structure>
                     <property name="columnName">absent</property>
@@ -128,22 +114,12 @@
                     <property name="isOutput">false</property>
                 </structure>
                 <structure>
-                    <property name="name">counsellorId</property>
+                    <property name="name">userId</property>
                     <property name="paramName">userId</property>
                     <property name="nativeName"></property>
                     <property name="dataType">string</property>
                     <property name="nativeDataType">12</property>
                     <property name="position">2</property>
-                    <property name="isInput">true</property>
-                    <property name="isOutput">false</property>
-                </structure>
-                <structure>
-                    <property name="name">supervisorId</property>
-                    <property name="paramName">userId</property>
-                    <property name="nativeName"></property>
-                    <property name="dataType">string</property>
-                    <property name="nativeDataType">12</property>
-                    <property name="position">3</property>
                     <property name="isInput">true</property>
                     <property name="isOutput">false</property>
                 </structure>
@@ -162,7 +138,7 @@
                     </structure>
                     <structure>
                         <property name="position">3</property>
-                        <property name="name">adminclass</property>
+                        <property name="name">admin_class</property>
                         <property name="dataType">string</property>
                     </structure>
                     <structure>
@@ -210,8 +186,8 @@
                 </structure>
                 <structure>
                     <property name="position">3</property>
-                    <property name="name">adminclass</property>
-                    <property name="nativeName">adminclass</property>
+                    <property name="name">admin_class</property>
+                    <property name="nativeName">admin_class</property>
                     <property name="dataType">string</property>
                     <property name="nativeDataType">12</property>
                 </structure>
@@ -220,7 +196,7 @@
                     <property name="name">absent</property>
                     <property name="nativeName">absent</property>
                     <property name="dataType">decimal</property>
-                    <property name="nativeDataType">-5</property>
+                    <property name="nativeDataType">2</property>
                 </structure>
                 <structure>
                     <property name="position">5</property>
@@ -234,7 +210,7 @@
                     <property name="name">early</property>
                     <property name="nativeName">early</property>
                     <property name="dataType">decimal</property>
-                    <property name="nativeDataType">-5</property>
+                    <property name="nativeDataType">2</property>
                 </structure>
                 <structure>
                     <property name="position">7</property>
@@ -248,48 +224,14 @@
                     <property name="name">leave</property>
                     <property name="nativeName">leave</property>
                     <property name="dataType">decimal</property>
-                    <property name="nativeDataType">-5</property>
+                    <property name="nativeDataType">2</property>
                 </structure>
             </list-property>
-            <xml-property name="queryText"><![CDATA[select s.id as id,
-  s.name as name,
-  ac.name as adminClass,
-  sum(case type when 1 then ts.total_section else 0 end) as absent,
-  sum(case type when 2 then 0.5 else 0 end) as late,
-  sum(case type when 3 then ts.total_section when 5 then ts.total_section else 0 end) as early,
-  sum(case type when 1 then ts.total_section else 0 end) +
-  sum(case type when 2 then 0.5 else 0 end) +
-  sum(case type when 3 then ts.total_section when 5 then ts.total_section else 0 end) as total,
-  sum(case type when 4 then ts.total_section else 0 end) as leave
-from tm.dv_student_attendance sa
-join ea.student s on sa.student_id = s.id
-join ea.task_schedule ts on sa.task_schedule_id = ts.id
-join ea.admin_class ac on s.admin_class_id = ac.id
-where sa.term_id = ?
-and (ac.counsellor_id = ? or ac.supervisor_id = ?)
-and sa.valid = true
-group by s.id, ac.id
-order by total desc]]></xml-property>
+            <xml-property name="queryText"><![CDATA[select id, name, admin_class, absent, late, early, total, leave
+from tm.sp_get_student_attendance_stats_by_administrator(?, ?, 2000)]]></xml-property>
             <xml-property name="designerValues"><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
 <model:DesignValues xmlns:design="http://www.eclipse.org/datatools/connectivity/oda/design" xmlns:model="http://www.eclipse.org/birt/report/model/adapter/odaModel">
   <Version>2.0</Version>
-  <DataSetParameters>
-    <parameter>
-      <design:ParameterDefinition>
-        <design:inOutMode>In</design:inOutMode>
-        <design:attributes>
-          <design:identifier>
-            <design:name></design:name>
-            <design:position>3</design:position>
-          </design:identifier>
-          <design:nativeDataTypeCode>12</design:nativeDataTypeCode>
-          <design:precision>0</design:precision>
-          <design:scale>0</design:scale>
-          <design:nullability>Unknown</design:nullability>
-        </design:attributes>
-      </design:ParameterDefinition>
-    </parameter>
-  </DataSetParameters>
   <design:ResultSets derivedMetaData="true">
     <design:resultSetDefinitions>
       <design:resultSetColumns>
@@ -491,9 +433,10 @@ order by total desc]]></xml-property>
                 </structure>
                 <structure>
                     <property name="name">adminclass</property>
-                    <text-property name="displayName">adminclass</text-property>
-                    <expression name="expression" type="javascript">dataSetRow["adminclass"]</expression>
+                    <text-property name="displayName">admin_class</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["admin_class"]</expression>
                     <property name="dataType">string</property>
+                    <property name="allowExport">true</property>
                 </structure>
                 <structure>
                     <property name="name">absent</property>
@@ -524,6 +467,12 @@ order by total desc]]></xml-property>
                     <text-property name="displayName">leave</text-property>
                     <expression name="expression" type="javascript">dataSetRow["leave"]</expression>
                     <property name="dataType">decimal</property>
+                </structure>
+                <structure>
+                    <property name="name">admin_class</property>
+                    <text-property name="displayName">admin_class</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["admin_class"]</expression>
+                    <property name="dataType">string</property>
                 </structure>
             </list-property>
             <property name="repeatHeader">false</property>
@@ -593,8 +542,8 @@ order by total desc]]></xml-property>
                         </data>
                     </cell>
                     <cell id="30">
-                        <data id="31">
-                            <property name="resultSetColumn">adminclass</property>
+                        <data id="61">
+                            <property name="resultSetColumn">admin_class</property>
                         </data>
                     </cell>
                     <cell id="32">

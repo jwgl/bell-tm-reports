@@ -2,24 +2,17 @@
 <report xmlns="http://www.eclipse.org/birt/2005/design" version="3.2.23" id="1">
     <property name="createdBy">Eclipse BIRT Designer Version 4.6.0.v201606072122</property>
     <text-property name="title">教室借用通知单</text-property>
-    <list-property name="propertyBindings">
-        <structure>
-            <property name="name">queryText</property>
-            <property name="id">73</property>
-        </structure>
-        <structure>
-            <property name="name">queryTimeOut</property>
-            <property name="id">73</property>
-        </structure>
-        <structure>
-            <property name="name">rowFetchSize</property>
-            <property name="id">73</property>
-        </structure>
-    </list-property>
     <property name="units">in</property>
+    <method name="initialize"><![CDATA[function wraptext(textToWrap) {
+	if (textToWrap.length > 6) { 
+		return textToWrap.replace('）', '').replace('（', '\n');
+	} else {
+	    return textToWrap;
+	}
+}]]></method>
     <property name="theme">tm-common.defaultTheme</property>
     <property name="iconFile">/templates/blank_report.gif</property>
-    <property name="layoutPreference">fixed layout</property>
+    <property name="layoutPreference">auto layout</property>
     <property name="bidiLayoutOrientation">ltr</property>
     <property name="imageDPI">96</property>
     <list-property name="libraries">
@@ -166,6 +159,12 @@
                     <text-property name="heading">reason</text-property>
                 </structure>
                 <structure>
+                    <property name="columnName">numberofusers</property>
+                    <property name="analysis">measure</property>
+                    <text-property name="displayName">numberofusers</text-property>
+                    <text-property name="heading">numberofusers</text-property>
+                </structure>
+                <structure>
                     <property name="columnName">status</property>
                     <property name="analysis">dimension</property>
                     <text-property name="displayName">status</text-property>
@@ -264,21 +263,26 @@
                     </structure>
                     <structure>
                         <property name="position">16</property>
+                        <property name="name">numberofusers</property>
+                        <property name="dataType">integer</property>
+                    </structure>
+                    <structure>
+                        <property name="position">17</property>
                         <property name="name">status</property>
                         <property name="dataType">string</property>
                     </structure>
                     <structure>
-                        <property name="position">17</property>
+                        <property name="position">18</property>
                         <property name="name">_weeks</property>
                         <property name="dataType">string</property>
                     </structure>
                     <structure>
-                        <property name="position">18</property>
+                        <property name="position">19</property>
                         <property name="name">_dayOfWeek</property>
                         <property name="dataType">string</property>
                     </structure>
                     <structure>
-                        <property name="position">19</property>
+                        <property name="position">20</property>
                         <property name="name">_description</property>
                         <property name="dataType">string</property>
                     </structure>
@@ -393,6 +397,13 @@
                 </structure>
                 <structure>
                     <property name="position">16</property>
+                    <property name="name">numberofusers</property>
+                    <property name="nativeName">numberofusers</property>
+                    <property name="dataType">integer</property>
+                    <property name="nativeDataType">4</property>
+                </structure>
+                <structure>
+                    <property name="position">17</property>
                     <property name="name">status</property>
                     <property name="nativeName">status</property>
                     <property name="dataType">string</property>
@@ -414,6 +425,7 @@
   checker.name as checkerName,
   checker.office_phone as checkerPhone,
   form.reason as reason,
+  number_of_users as numberOfUsers,
   form.status as status
 from tm.booking_form form
 join tm.booking_report report on report.id = form.report_id
@@ -749,7 +761,8 @@ order by openGroup, startWeek, endWeek, dayOfWeek, section.start]]></xml-propert
     </page-setup>
     <body>
         <table id="5">
-            <property name="pageBreakInside">auto</property>
+            <property name="pageBreakAfter">auto</property>
+            <property name="pageBreakInside">avoid</property>
             <property name="dataSet">Report</property>
             <list-property name="boundDataColumns">
                 <structure>
@@ -767,8 +780,9 @@ order by openGroup, startWeek, endWeek, dayOfWeek, section.start]]></xml-propert
                 <structure>
                     <property name="name">section</property>
                     <text-property name="displayName">section</text-property>
-                    <expression name="expression" type="javascript">dataSetRow["section"]</expression>
+                    <expression name="expression" type="javascript">wraptext(dataSetRow["section"])</expression>
                     <property name="dataType">string</property>
+                    <property name="allowExport">true</property>
                 </structure>
                 <structure>
                     <property name="name">RowNumber</property>
@@ -802,6 +816,7 @@ order by openGroup, startWeek, endWeek, dayOfWeek, section.start]]></xml-propert
                     <text-property name="displayName">_dayOfWeek</text-property>
                     <expression name="expression" type="javascript">dataSetRow["_dayOfWeek"]</expression>
                     <property name="dataType">string</property>
+                    <property name="allowExport">true</property>
                 </structure>
                 <structure>
                     <property name="name">_weeks</property>
@@ -827,28 +842,38 @@ order by openGroup, startWeek, endWeek, dayOfWeek, section.start]]></xml-propert
                     <expression name="expression" type="javascript">dataSetRow["opengroup"]</expression>
                     <property name="dataType">string</property>
                 </structure>
+                <structure>
+                    <property name="name">numberofusers</property>
+                    <text-property name="displayName">numberofusers</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["numberofusers"]</expression>
+                    <property name="dataType">integer</property>
+                </structure>
             </list-property>
+            <property name="repeatHeader">false</property>
             <property name="pageBreakInterval">0</property>
             <column id="33">
                 <property name="width">10mm</property>
             </column>
             <column id="34">
-                <property name="width">24mm</property>
+                <property name="width">16mm</property>
             </column>
             <column id="35">
                 <property name="width">16mm</property>
             </column>
             <column id="36">
-                <property name="width">20mm</property>
+                <property name="width">16mm</property>
             </column>
             <column id="37">
                 <property name="width">20mm</property>
             </column>
             <column id="38">
-                <property name="width">38mm</property>
+                <property name="width">32mm</property>
+            </column>
+            <column id="198">
+                <property name="width">10mm</property>
             </column>
             <column id="39">
-                <property name="width">95mm</property>
+                <property name="width">90mm</property>
             </column>
             <column id="40">
                 <property name="width">20mm</property>
@@ -866,7 +891,7 @@ order by openGroup, startWeek, endWeek, dayOfWeek, section.start]]></xml-propert
                     <row id="147">
                         <property name="height">0.4479166666666667in</property>
                         <cell id="148">
-                            <property name="colSpan">8</property>
+                            <property name="colSpan">9</property>
                             <property name="rowSpan">1</property>
                             <text id="184">
                                 <property name="fontSize">20pt</property>
@@ -901,6 +926,7 @@ order by openGroup, startWeek, endWeek, dayOfWeek, section.start]]></xml-propert
                         </cell>
                         <cell id="180"/>
                         <cell id="181"/>
+                        <cell id="195"/>
                         <cell id="182"/>
                         <cell id="183"/>
                     </row>
@@ -914,7 +940,7 @@ order by openGroup, startWeek, endWeek, dayOfWeek, section.start]]></xml-propert
                         <cell id="130">
                             <property name="style">border_cell</property>
                             <label id="65">
-                                <text-property name="text">开始结束周</text-property>
+                                <text-property name="text">起止周</text-property>
                             </label>
                         </cell>
                         <cell id="131">
@@ -939,6 +965,12 @@ order by openGroup, startWeek, endWeek, dayOfWeek, section.start]]></xml-propert
                             <property name="style">border_cell</property>
                             <label id="69">
                                 <text-property name="text">借用单位</text-property>
+                            </label>
+                        </cell>
+                        <cell id="196">
+                            <property name="style">border_cell</property>
+                            <label id="200">
+                                <text-property name="text">人数</text-property>
                             </label>
                         </cell>
                         <cell id="135">
@@ -971,11 +1003,13 @@ order by openGroup, startWeek, endWeek, dayOfWeek, section.start]]></xml-propert
                     </cell>
                     <cell id="18">
                         <data id="84">
+                            <property name="display">block</property>
                             <property name="resultSetColumn">_dayOfWeek</property>
                         </data>
                     </cell>
                     <cell id="19">
                         <data id="77">
+                            <property name="display">block</property>
                             <property name="resultSetColumn">section</property>
                         </data>
                     </cell>
@@ -989,9 +1023,22 @@ order by openGroup, startWeek, endWeek, dayOfWeek, section.start]]></xml-propert
                             <property name="resultSetColumn">department</property>
                         </data>
                     </cell>
+                    <cell id="197">
+                        <data id="199">
+                            <property name="resultSetColumn">numberofusers</property>
+                        </data>
+                    </cell>
                     <cell id="22">
                         <data id="86">
                             <property name="fontSize">10pt</property>
+                            <property name="marginTop">0pt</property>
+                            <property name="marginLeft">0pt</property>
+                            <property name="marginBottom">0pt</property>
+                            <property name="marginRight">0pt</property>
+                            <property name="paddingTop">1pt</property>
+                            <property name="paddingLeft">1pt</property>
+                            <property name="paddingBottom">1pt</property>
+                            <property name="paddingRight">1pt</property>
                             <property name="resultSetColumn">_description</property>
                         </data>
                     </cell>
