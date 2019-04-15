@@ -273,7 +273,7 @@
                     <property name="name">status</property>
                     <property name="nativeName">status</property>
                     <property name="dataType">string</property>
-                    <property name="nativeDataType">1111</property>
+                    <property name="nativeDataType">12</property>
                 </structure>
                 <structure>
                     <property name="position">10</property>
@@ -294,7 +294,6 @@
 	af.status,
 	dt.name as departmentName
 from tm_dual.degree_application af 
-join tm_dual.paper_form pf on af.id=pf.form_id
 join ea.student st on st.id=af.student_id
 join ea.department dt on st.department_id=dt.id
 where af.award_id=? and dt.id=?;]]></xml-property>
