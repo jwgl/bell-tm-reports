@@ -76,39 +76,52 @@
             <list-property name="columnHints">
                 <structure>
                     <property name="columnName">studentname</property>
+                    <property name="alias">studentname</property>
                     <property name="analysis">dimension</property>
                     <text-property name="displayName">studentname</text-property>
                     <text-property name="heading">studentname</text-property>
                 </structure>
                 <structure>
                     <property name="columnName">studentid</property>
+                    <property name="alias">studentid</property>
                     <property name="analysis">dimension</property>
                     <text-property name="displayName">studentid</text-property>
                     <text-property name="heading">studentid</text-property>
                 </structure>
                 <structure>
                     <property name="columnName">teachername</property>
+                    <property name="alias">teachername</property>
                     <property name="analysis">dimension</property>
                     <text-property name="displayName">teachername</text-property>
                     <text-property name="heading">teachername</text-property>
                 </structure>
                 <structure>
                     <property name="columnName">mentoremail</property>
+                    <property name="alias">mentoremail</property>
                     <property name="analysis">dimension</property>
                     <text-property name="displayName">mentoremail</text-property>
                     <text-property name="heading">mentoremail</text-property>
                 </structure>
                 <structure>
                     <property name="columnName">status</property>
+                    <property name="alias">status</property>
                     <property name="analysis">dimension</property>
                     <text-property name="displayName">status</text-property>
                     <text-property name="heading">status</text-property>
                 </structure>
                 <structure>
                     <property name="columnName">note</property>
+                    <property name="alias">note</property>
                     <property name="analysis">dimension</property>
                     <text-property name="displayName">note</text-property>
                     <text-property name="heading">note</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">university</property>
+                    <property name="alias">university</property>
+                    <property name="analysis">dimension</property>
+                    <text-property name="displayName">university</text-property>
+                    <text-property name="heading">university</text-property>
                 </structure>
             </list-property>
             <list-property name="parameters">
@@ -169,6 +182,11 @@
                     </structure>
                     <structure>
                         <property name="position">7</property>
+                        <property name="name">university</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">8</property>
                         <property name="name">_statusLabel</property>
                         <property name="dataType">string</property>
                     </structure>
@@ -181,42 +199,42 @@
                     <property name="name">studentname</property>
                     <property name="nativeName">studentname</property>
                     <property name="dataType">string</property>
-                    <property name="nativeDataType">12</property>
                 </structure>
                 <structure>
                     <property name="position">2</property>
                     <property name="name">studentid</property>
                     <property name="nativeName">studentid</property>
                     <property name="dataType">string</property>
-                    <property name="nativeDataType">12</property>
                 </structure>
                 <structure>
                     <property name="position">3</property>
                     <property name="name">teachername</property>
                     <property name="nativeName">teachername</property>
                     <property name="dataType">string</property>
-                    <property name="nativeDataType">12</property>
                 </structure>
                 <structure>
                     <property name="position">4</property>
                     <property name="name">mentoremail</property>
                     <property name="nativeName">mentoremail</property>
                     <property name="dataType">string</property>
-                    <property name="nativeDataType">12</property>
                 </structure>
                 <structure>
                     <property name="position">5</property>
                     <property name="name">status</property>
                     <property name="nativeName">status</property>
                     <property name="dataType">string</property>
-                    <property name="nativeDataType">12</property>
                 </structure>
                 <structure>
                     <property name="position">6</property>
                     <property name="name">note</property>
                     <property name="nativeName">note</property>
                     <property name="dataType">string</property>
-                    <property name="nativeDataType">12</property>
+                </structure>
+                <structure>
+                    <property name="position">7</property>
+                    <property name="name">university</property>
+                    <property name="nativeName">university</property>
+                    <property name="dataType">string</property>
                 </structure>
             </list-property>
             <xml-property name="queryText"><![CDATA[select st.name as studentName,
@@ -224,7 +242,8 @@
 	tc.name as teacherName,
 	mt.email as mentorEmail,
 	af.status,
-	array_to_string(array_agg(DISTINCT wi.note), ','::text, '*'::text) AS note
+	array_to_string(array_agg(DISTINCT wi.note), ','::text, '*'::text) AS note,
+	af.university_cooperative as university
 from tm_dual.degree_application af 
 join ea.student st on st.id=af.student_id
 join ea.department dt on st.department_id=dt.id
@@ -232,42 +251,10 @@ left join tm_dual.mentor mt on af.paper_approver_id=mt.teacher_id and mt.departm
 left join ea.teacher tc on af.paper_approver_id=tc.id
 left join tm.workitem wi on af.workflow_instance_id=wi.instance and wi.from_user = tc.id
 where af.award_id=? and dt.id=?
-group by st.name,st.id,tc.name,mt.email,af.status;]]></xml-property>
+group by st.name,st.id,tc.name,mt.email,af.status,af.university_cooperative;]]></xml-property>
             <xml-property name="designerValues"><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
 <model:DesignValues xmlns:design="http://www.eclipse.org/datatools/connectivity/oda/design" xmlns:model="http://www.eclipse.org/birt/report/model/adapter/odaModel">
   <Version>2.0</Version>
-  <DataSetParameters>
-    <parameter>
-      <design:ParameterDefinition>
-        <design:inOutMode>In</design:inOutMode>
-        <design:attributes>
-          <design:identifier>
-            <design:name></design:name>
-            <design:position>1</design:position>
-          </design:identifier>
-          <design:nativeDataTypeCode>-5</design:nativeDataTypeCode>
-          <design:precision>0</design:precision>
-          <design:scale>0</design:scale>
-          <design:nullability>Unknown</design:nullability>
-        </design:attributes>
-      </design:ParameterDefinition>
-    </parameter>
-    <parameter>
-      <design:ParameterDefinition>
-        <design:inOutMode>In</design:inOutMode>
-        <design:attributes>
-          <design:identifier>
-            <design:name></design:name>
-            <design:position>2</design:position>
-          </design:identifier>
-          <design:nativeDataTypeCode>12</design:nativeDataTypeCode>
-          <design:precision>0</design:precision>
-          <design:scale>0</design:scale>
-          <design:nullability>Unknown</design:nullability>
-        </design:attributes>
-      </design:ParameterDefinition>
-    </parameter>
-  </DataSetParameters>
   <design:ResultSets derivedMetaData="true">
     <design:resultSetDefinitions>
       <design:resultSetColumns>
@@ -466,11 +453,18 @@ group by st.name,st.id,tc.name,mt.email,af.status;]]></xml-property>
                     <expression name="expression" type="javascript">dataSetRow["_statusLabel"]</expression>
                     <property name="dataType">string</property>
                 </structure>
+                <structure>
+                    <property name="name">university</property>
+                    <text-property name="displayName">university</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["university"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
             </list-property>
             <property name="pageBreakInterval">999</property>
             <column id="51"/>
             <column id="42"/>
             <column id="43"/>
+            <column id="81"/>
             <column id="44"/>
             <column id="45"/>
             <column id="47"/>
@@ -500,6 +494,11 @@ group by st.name,st.id,tc.name,mt.email,af.status;]]></xml-property>
                                 <text-property name="text">学号</text-property>
                             </label>
                         </cell>
+                        <cell id="77">
+                            <label id="82">
+                                <text-property name="text">合作大学</text-property>
+                            </label>
+                        </cell>
                         <cell id="60">
                             <label id="15">
                                 <text-property name="text">导师</text-property>
@@ -522,6 +521,7 @@ group by st.name,st.id,tc.name,mt.email,af.status;]]></xml-property>
                         <cell id="64"/>
                         <cell id="65"/>
                         <cell id="66"/>
+                        <cell id="79"/>
                         <cell id="67"/>
                         <cell id="68"/>
                         <cell id="69"/>
@@ -543,6 +543,11 @@ group by st.name,st.id,tc.name,mt.email,af.status;]]></xml-property>
                     <cell id="25">
                         <data id="26">
                             <property name="resultSetColumn">studentid</property>
+                        </data>
+                    </cell>
+                    <cell id="78">
+                        <data id="83">
+                            <property name="resultSetColumn">university</property>
                         </data>
                     </cell>
                     <cell id="27">
@@ -567,6 +572,7 @@ group by st.name,st.id,tc.name,mt.email,af.status;]]></xml-property>
                     <cell id="50"/>
                     <cell id="36"/>
                     <cell id="37"/>
+                    <cell id="80"/>
                     <cell id="38"/>
                     <cell id="39"/>
                     <cell id="41"/>

@@ -32,14 +32,12 @@
                 <property name="category">Unformatted</property>
             </structure>
         </scalar-parameter>
-        <scalar-parameter name="myid" id="889">
+        <scalar-parameter name="myid" id="908">
             <property name="valueType">static</property>
-            <property name="isRequired">true</property>
-            <property name="dataType">decimal</property>
+            <property name="dataType">string</property>
             <property name="distinct">true</property>
             <list-property name="selectionList"/>
             <property name="paramType">simple</property>
-            <property name="concealValue">false</property>
             <property name="controlType">text-box</property>
             <structure name="format">
                 <property name="category">Unformatted</property>
@@ -76,6 +74,11 @@
                 <structure>
                     <property name="name">_typename</property>
                     <expression name="expression">['','合作院校毕业论文','国外院校硕士论文','合作院校本科课程论文'][row["papertype"]]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">_major_cooperative</property>
+                    <expression name="expression">row["major_cooperative"] == '-' ? '' : row["major_cooperative"]</expression>
                     <property name="dataType">string</property>
                 </structure>
             </list-property>
@@ -139,6 +142,12 @@
                     <property name="analysis">dimension</property>
                     <text-property name="displayName">chinese_title</text-property>
                     <text-property name="heading">chinese_title</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">comments</property>
+                    <property name="analysis">dimension</property>
+                    <text-property name="displayName">comments</text-property>
+                    <text-property name="heading">comments</text-property>
                 </structure>
             </list-property>
             <list-property name="parameters">
@@ -227,7 +236,17 @@
                     </structure>
                     <structure>
                         <property name="position">11</property>
+                        <property name="name">comments</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">12</property>
                         <property name="name">_typename</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">13</property>
+                        <property name="name">_major_cooperative</property>
                         <property name="dataType">string</property>
                     </structure>
                 </list-property>
@@ -304,6 +323,13 @@
                     <property name="dataType">string</property>
                     <property name="nativeDataType">12</property>
                 </structure>
+                <structure>
+                    <property name="position">11</property>
+                    <property name="name">comments</property>
+                    <property name="nativeName">comments</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">12</property>
+                </structure>
             </list-property>
             <xml-property name="queryText"><![CDATA[select st.name as studentName,
 	st.id as studentId,
@@ -314,34 +340,19 @@
 	pf.type as paperType,
 	pf.name as paperCourseName,
 	pf.english_title,
-	pf.chinese_title
+	pf.chinese_title,
+	pf.comment as comments
 from tm_dual.degree_application af 
 join tm_dual.paper_form pf on af.id=pf.form_id
 join ea.student st on st.id=af.student_id
 join ea.department dt on st.department_id=dt.id
 join ea.major mj on st.major_id=mj.id
 join ea.subject sj on mj.subject_id=sj.id
-where af.award_id=? and dt.id=? and af.id=?;]]></xml-property>
+where af.award_id=? and dt.id=? and af.id=? and af.status='FINISHED'
+order by af.paper_approver_id;]]></xml-property>
             <xml-property name="designerValues"><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
 <model:DesignValues xmlns:design="http://www.eclipse.org/datatools/connectivity/oda/design" xmlns:model="http://www.eclipse.org/birt/report/model/adapter/odaModel">
   <Version>2.0</Version>
-  <DataSetParameters>
-    <parameter>
-      <design:ParameterDefinition>
-        <design:inOutMode>In</design:inOutMode>
-        <design:attributes>
-          <design:identifier>
-            <design:name></design:name>
-            <design:position>3</design:position>
-          </design:identifier>
-          <design:nativeDataTypeCode>-5</design:nativeDataTypeCode>
-          <design:precision>0</design:precision>
-          <design:scale>0</design:scale>
-          <design:nullability>Unknown</design:nullability>
-        </design:attributes>
-      </design:ParameterDefinition>
-    </parameter>
-  </DataSetParameters>
   <design:ResultSets derivedMetaData="true">
     <design:resultSetDefinitions>
       <design:resultSetColumns>
@@ -659,6 +670,18 @@ where af.award_id=? and dt.id=? and af.id=?;]]></xml-property>
                     <expression name="expression" type="javascript">dataSetRow["english_title"]</expression>
                     <property name="dataType">string</property>
                 </structure>
+                <structure>
+                    <property name="name">comments</property>
+                    <text-property name="displayName">comments</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["comments"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">_major_cooperative</property>
+                    <text-property name="displayName">_major_cooperative</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["_major_cooperative"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
             </list-property>
             <property name="pageBreakInterval">1</property>
             <column id="839"/>
@@ -838,11 +861,8 @@ where af.award_id=? and dt.id=? and af.id=?;]]></xml-property>
                                                 <property name="colSpan">2</property>
                                                 <property name="rowSpan">1</property>
                                                 <property name="style">main</property>
-                                                <data id="850">
-                                                    <property name="style">text-style</property>
-                                                    <property name="fontSize">10.5pt</property>
-                                                    <property name="whiteSpace">pre</property>
-                                                    <property name="resultSetColumn">major_cooperative</property>
+                                                <data id="907">
+                                                    <property name="resultSetColumn">_major_cooperative</property>
                                                 </data>
                                             </cell>
                                         </row>
@@ -1066,7 +1086,8 @@ where af.award_id=? and dt.id=? and af.id=?;]]></xml-property>
                                                     <text-property name="content"><![CDATA[中文：]]></text-property>
                                                 </text>
                                                 <data id="855">
-                                                    <property name="textUnderline">underline</property>
+                                                    <property name="fontFamily">"宋体"</property>
+                                                    <property name="textUnderline">none</property>
                                                     <property name="display">inline</property>
                                                     <property name="resultSetColumn">chinese_title</property>
                                                 </data>
@@ -1089,7 +1110,7 @@ where af.award_id=? and dt.id=? and af.id=?;]]></xml-property>
                                                 </text>
                                                 <data id="856">
                                                     <property name="fontSize">10.5pt</property>
-                                                    <property name="textUnderline">underline</property>
+                                                    <property name="textUnderline">none</property>
                                                     <property name="display">inline</property>
                                                     <property name="resultSetColumn">english_title</property>
                                                 </data>
@@ -1155,6 +1176,12 @@ where af.award_id=? and dt.id=? and af.id=?;]]></xml-property>
                                                 <property name="borderBottomColor">#FFFFFF</property>
                                                 <property name="borderBottomStyle">solid</property>
                                                 <property name="borderBottomWidth">thin</property>
+                                                <property name="textAlign">left</property>
+                                                <property name="verticalAlign">top</property>
+                                                <data id="906">
+                                                    <property name="textUnderline">none</property>
+                                                    <property name="resultSetColumn">comments</property>
+                                                </data>
                                             </cell>
                                         </row>
                                         <row id="666">
@@ -1192,7 +1219,7 @@ where af.award_id=? and dt.id=? and af.id=?;]]></xml-property>
                                             </cell>
                                         </row>
                                         <row id="541">
-                                            <property name="height">11em</property>
+                                            <property name="height">9em</property>
                                             <cell id="542">
                                                 <property name="colSpan">1</property>
                                                 <property name="rowSpan">3</property>
