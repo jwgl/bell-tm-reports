@@ -4,6 +4,7 @@
     <text-property name="title">学生申请汇总</text-property>
     <property name="units">in</property>
     <property name="iconFile">/templates/blank_report.gif</property>
+    <property name="layoutPreference">auto layout</property>
     <property name="bidiLayoutOrientation">ltr</property>
     <property name="imageDPI">96</property>
     <parameters>
@@ -70,63 +71,199 @@
             <list-property name="columnHints">
                 <structure>
                     <property name="columnName">studentname</property>
+                    <property name="alias">studentname</property>
                     <property name="analysis">dimension</property>
                     <text-property name="displayName">studentname</text-property>
                     <text-property name="heading">studentname</text-property>
                 </structure>
                 <structure>
                     <property name="columnName">studentid</property>
+                    <property name="alias">studentid</property>
                     <property name="analysis">dimension</property>
                     <text-property name="displayName">studentid</text-property>
                     <text-property name="heading">studentid</text-property>
                 </structure>
                 <structure>
                     <property name="columnName">university_cooperative</property>
+                    <property name="alias">university_cooperative</property>
                     <property name="analysis">dimension</property>
                     <text-property name="displayName">university_cooperative</text-property>
                     <text-property name="heading">university_cooperative</text-property>
                 </structure>
                 <structure>
                     <property name="columnName">major_cooperative</property>
+                    <property name="alias">major_cooperative</property>
                     <property name="analysis">dimension</property>
                     <text-property name="displayName">major_cooperative</text-property>
                     <text-property name="heading">major_cooperative</text-property>
                 </structure>
                 <structure>
                     <property name="columnName">linkman</property>
+                    <property name="alias">linkman</property>
                     <property name="analysis">dimension</property>
                     <text-property name="displayName">linkman</text-property>
                     <text-property name="heading">linkman</text-property>
                 </structure>
                 <structure>
                     <property name="columnName">phone</property>
+                    <property name="alias">phone</property>
                     <property name="analysis">dimension</property>
                     <text-property name="displayName">phone</text-property>
                     <text-property name="heading">phone</text-property>
                 </structure>
                 <structure>
                     <property name="columnName">email</property>
+                    <property name="alias">email</property>
                     <property name="analysis">dimension</property>
                     <text-property name="displayName">email</text-property>
                     <text-property name="heading">email</text-property>
                 </structure>
                 <structure>
                     <property name="columnName">date_submitted</property>
+                    <property name="alias">date_submitted</property>
                     <property name="analysis">dimension</property>
                     <text-property name="displayName">date_submitted</text-property>
                     <text-property name="heading">date_submitted</text-property>
                 </structure>
                 <structure>
                     <property name="columnName">status</property>
+                    <property name="alias">status</property>
                     <property name="analysis">dimension</property>
                     <text-property name="displayName">status</text-property>
                     <text-property name="heading">status</text-property>
                 </structure>
                 <structure>
                     <property name="columnName">departmentname</property>
+                    <property name="alias">departmentname</property>
                     <property name="analysis">dimension</property>
                     <text-property name="displayName">departmentname</text-property>
                     <text-property name="heading">departmentname</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">used_name</property>
+                    <property name="analysis">dimension</property>
+                    <text-property name="displayName">used_name</text-property>
+                    <text-property name="heading">used_name</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">sex</property>
+                    <property name="analysis">dimension</property>
+                    <text-property name="displayName">sex</text-property>
+                    <text-property name="heading">sex</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">subject_name</property>
+                    <property name="analysis">dimension</property>
+                    <text-property name="displayName">subject_name</text-property>
+                    <text-property name="heading">subject_name</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">admin_class_name</property>
+                    <property name="analysis">dimension</property>
+                    <text-property name="displayName">admin_class_name</text-property>
+                    <text-property name="heading">admin_class_name</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">grade</property>
+                    <property name="analysis">measure</property>
+                    <text-property name="displayName">grade</text-property>
+                    <text-property name="heading">grade</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">birthday</property>
+                    <property name="analysis">dimension</property>
+                    <text-property name="displayName">birthday</text-property>
+                    <text-property name="heading">birthday</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">nationality</property>
+                    <property name="analysis">dimension</property>
+                    <text-property name="displayName">nationality</text-property>
+                    <text-property name="heading">nationality</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">political_status</property>
+                    <property name="analysis">dimension</property>
+                    <text-property name="displayName">political_status</text-property>
+                    <text-property name="heading">political_status</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">household_address</property>
+                    <property name="analysis">dimension</property>
+                    <text-property name="displayName">household_address</text-property>
+                    <text-property name="heading">household_address</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">from_city</property>
+                    <property name="analysis">dimension</property>
+                    <text-property name="displayName">from_city</text-property>
+                    <text-property name="heading">from_city</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">category</property>
+                    <property name="analysis">dimension</property>
+                    <text-property name="displayName">category</text-property>
+                    <text-property name="heading">category</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">length_of_schooling</property>
+                    <property name="analysis">measure</property>
+                    <text-property name="displayName">length_of_schooling</text-property>
+                    <text-property name="heading">length_of_schooling</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">direction</property>
+                    <property name="analysis">dimension</property>
+                    <text-property name="displayName">direction</text-property>
+                    <text-property name="heading">direction</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">date_enrolled</property>
+                    <property name="analysis">dimension</property>
+                    <text-property name="displayName">date_enrolled</text-property>
+                    <text-property name="heading">date_enrolled</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">phone_number</property>
+                    <property name="analysis">dimension</property>
+                    <text-property name="displayName">phone_number</text-property>
+                    <text-property name="heading">phone_number</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">id_number</property>
+                    <property name="analysis">dimension</property>
+                    <text-property name="displayName">id_number</text-property>
+                    <text-property name="heading">id_number</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">candidate_number</property>
+                    <property name="analysis">dimension</property>
+                    <text-property name="displayName">candidate_number</text-property>
+                    <text-property name="heading">candidate_number</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">home_address</property>
+                    <property name="analysis">dimension</property>
+                    <text-property name="displayName">home_address</text-property>
+                    <text-property name="heading">home_address</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">from_province</property>
+                    <property name="analysis">dimension</property>
+                    <text-property name="displayName">from_province</text-property>
+                    <text-property name="heading">from_province</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">bachelor_year</property>
+                    <property name="analysis">measure</property>
+                    <text-property name="displayName">bachelor_year</text-property>
+                    <text-property name="heading">bachelor_year</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">pinyin_name</property>
+                    <property name="analysis">dimension</property>
+                    <text-property name="displayName">pinyin_name</text-property>
+                    <text-property name="heading">pinyin_name</text-property>
                 </structure>
             </list-property>
             <list-property name="parameters">
@@ -205,6 +342,111 @@
                     </structure>
                     <structure>
                         <property name="position">11</property>
+                        <property name="name">used_name</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">12</property>
+                        <property name="name">sex</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">13</property>
+                        <property name="name">subject_name</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">14</property>
+                        <property name="name">admin_class_name</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">15</property>
+                        <property name="name">grade</property>
+                        <property name="dataType">integer</property>
+                    </structure>
+                    <structure>
+                        <property name="position">16</property>
+                        <property name="name">birthday</property>
+                        <property name="dataType">date</property>
+                    </structure>
+                    <structure>
+                        <property name="position">17</property>
+                        <property name="name">nationality</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">18</property>
+                        <property name="name">political_status</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">19</property>
+                        <property name="name">household_address</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">20</property>
+                        <property name="name">from_city</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">21</property>
+                        <property name="name">category</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">22</property>
+                        <property name="name">length_of_schooling</property>
+                        <property name="dataType">integer</property>
+                    </structure>
+                    <structure>
+                        <property name="position">23</property>
+                        <property name="name">direction</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">24</property>
+                        <property name="name">date_enrolled</property>
+                        <property name="dataType">date</property>
+                    </structure>
+                    <structure>
+                        <property name="position">25</property>
+                        <property name="name">phone_number</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">26</property>
+                        <property name="name">id_number</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">27</property>
+                        <property name="name">candidate_number</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">28</property>
+                        <property name="name">home_address</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">29</property>
+                        <property name="name">from_province</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">30</property>
+                        <property name="name">bachelor_year</property>
+                        <property name="dataType">integer</property>
+                    </structure>
+                    <structure>
+                        <property name="position">31</property>
+                        <property name="name">pinyin_name</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">32</property>
                         <property name="name">_statusLabel</property>
                         <property name="dataType">string</property>
                     </structure>
@@ -282,6 +524,153 @@
                     <property name="dataType">string</property>
                     <property name="nativeDataType">12</property>
                 </structure>
+                <structure>
+                    <property name="position">11</property>
+                    <property name="name">used_name</property>
+                    <property name="nativeName">used_name</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">12</property>
+                </structure>
+                <structure>
+                    <property name="position">12</property>
+                    <property name="name">sex</property>
+                    <property name="nativeName">sex</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">12</property>
+                </structure>
+                <structure>
+                    <property name="position">13</property>
+                    <property name="name">subject_name</property>
+                    <property name="nativeName">subject_name</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">12</property>
+                </structure>
+                <structure>
+                    <property name="position">14</property>
+                    <property name="name">admin_class_name</property>
+                    <property name="nativeName">admin_class_name</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">12</property>
+                </structure>
+                <structure>
+                    <property name="position">15</property>
+                    <property name="name">grade</property>
+                    <property name="nativeName">grade</property>
+                    <property name="dataType">integer</property>
+                    <property name="nativeDataType">4</property>
+                </structure>
+                <structure>
+                    <property name="position">16</property>
+                    <property name="name">birthday</property>
+                    <property name="nativeName">birthday</property>
+                    <property name="dataType">date</property>
+                    <property name="nativeDataType">91</property>
+                </structure>
+                <structure>
+                    <property name="position">17</property>
+                    <property name="name">nationality</property>
+                    <property name="nativeName">nationality</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">12</property>
+                </structure>
+                <structure>
+                    <property name="position">18</property>
+                    <property name="name">political_status</property>
+                    <property name="nativeName">political_status</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">12</property>
+                </structure>
+                <structure>
+                    <property name="position">19</property>
+                    <property name="name">household_address</property>
+                    <property name="nativeName">household_address</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">12</property>
+                </structure>
+                <structure>
+                    <property name="position">20</property>
+                    <property name="name">from_city</property>
+                    <property name="nativeName">from_city</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">12</property>
+                </structure>
+                <structure>
+                    <property name="position">21</property>
+                    <property name="name">category</property>
+                    <property name="nativeName">category</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">12</property>
+                </structure>
+                <structure>
+                    <property name="position">22</property>
+                    <property name="name">length_of_schooling</property>
+                    <property name="nativeName">length_of_schooling</property>
+                    <property name="dataType">integer</property>
+                    <property name="nativeDataType">4</property>
+                </structure>
+                <structure>
+                    <property name="position">23</property>
+                    <property name="name">direction</property>
+                    <property name="nativeName">direction</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">12</property>
+                </structure>
+                <structure>
+                    <property name="position">24</property>
+                    <property name="name">date_enrolled</property>
+                    <property name="nativeName">date_enrolled</property>
+                    <property name="dataType">date</property>
+                    <property name="nativeDataType">91</property>
+                </structure>
+                <structure>
+                    <property name="position">25</property>
+                    <property name="name">phone_number</property>
+                    <property name="nativeName">phone_number</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">12</property>
+                </structure>
+                <structure>
+                    <property name="position">26</property>
+                    <property name="name">id_number</property>
+                    <property name="nativeName">id_number</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">12</property>
+                </structure>
+                <structure>
+                    <property name="position">27</property>
+                    <property name="name">candidate_number</property>
+                    <property name="nativeName">candidate_number</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">12</property>
+                </structure>
+                <structure>
+                    <property name="position">28</property>
+                    <property name="name">home_address</property>
+                    <property name="nativeName">home_address</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">12</property>
+                </structure>
+                <structure>
+                    <property name="position">29</property>
+                    <property name="name">from_province</property>
+                    <property name="nativeName">from_province</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">12</property>
+                </structure>
+                <structure>
+                    <property name="position">30</property>
+                    <property name="name">bachelor_year</property>
+                    <property name="nativeName">bachelor_year</property>
+                    <property name="dataType">integer</property>
+                    <property name="nativeDataType">4</property>
+                </structure>
+                <structure>
+                    <property name="position">31</property>
+                    <property name="name">pinyin_name</property>
+                    <property name="nativeName">pinyin_name</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">12</property>
+                </structure>
             </list-property>
             <xml-property name="queryText"><![CDATA[select st.name as studentName,
 	st.id as studentId,
@@ -292,10 +681,37 @@
 	af.email,
 	af.date_submitted,
 	af.status,
-	dt.name as departmentName
+	dt.name as departmentName,
+	ad.used_name,
+	ad.sex as sex,
+	sj.name as subject_name,
+	ac.name as admin_class_name,
+	mj.grade,
+	ad.birthday,
+	ad.nationality,
+	ad.political_status,
+	ad.household_address,
+	ad.from_city,
+	sc.name as category,
+	sj.length_of_schooling,
+	dc.name as direction,
+	st.date_enrolled,
+	ad.phone_number,
+	ad.id_number,
+	ad.candidate_number,
+	ad.home_address,
+	ad.from_province,
+	af.bachelor_year,
+	st.pinyin_name
 from tm_dual.degree_application af 
 join ea.student st on st.id=af.student_id
 join ea.department dt on st.department_id=dt.id
+left join ea.admission ad on st.admission_id=ad.id
+join ea.major mj on st.major_id=mj.id
+join ea.subject sj on mj.subject_id=sj.id
+left join ea.admin_class ac on st.admin_class_id=ac.id
+left join ea.student_category sc on st.category = sc.id
+left join ea.direction dc on st.direction_id=dc.id
 where af.award_id=? and dt.id=?;]]></xml-property>
         </oda-data-set>
     </data-sets>
@@ -386,17 +802,171 @@ where af.award_id=? and dt.id=?;]]></xml-property>
                     <expression name="expression" type="javascript">dataSetRow["studentname"]</expression>
                     <property name="dataType">string</property>
                 </structure>
+                <structure>
+                    <property name="name">used_name</property>
+                    <text-property name="displayName">used_name</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["used_name"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">sex</property>
+                    <text-property name="displayName">sex</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["sex"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">subject_name</property>
+                    <text-property name="displayName">subject_name</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["subject_name"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">admin_class_name</property>
+                    <text-property name="displayName">admin_class_name</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["admin_class_name"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">grade</property>
+                    <text-property name="displayName">grade</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["grade"]</expression>
+                    <property name="dataType">integer</property>
+                </structure>
+                <structure>
+                    <property name="name">birthday</property>
+                    <text-property name="displayName">birthday</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["birthday"]</expression>
+                    <property name="dataType">date</property>
+                </structure>
+                <structure>
+                    <property name="name">nationality</property>
+                    <text-property name="displayName">nationality</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["nationality"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">political_status</property>
+                    <text-property name="displayName">political_status</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["political_status"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">household_address</property>
+                    <text-property name="displayName">household_address</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["household_address"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">from_city</property>
+                    <text-property name="displayName">from_city</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["from_city"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">category</property>
+                    <text-property name="displayName">category</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["category"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">length_of_schooling</property>
+                    <text-property name="displayName">length_of_schooling</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["length_of_schooling"]</expression>
+                    <property name="dataType">integer</property>
+                </structure>
+                <structure>
+                    <property name="name">direction</property>
+                    <text-property name="displayName">direction</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["direction"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">date_enrolled</property>
+                    <text-property name="displayName">date_enrolled</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["date_enrolled"]</expression>
+                    <property name="dataType">date</property>
+                </structure>
+                <structure>
+                    <property name="name">phone_number</property>
+                    <text-property name="displayName">phone_number</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["phone_number"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">id_number</property>
+                    <text-property name="displayName">id_number</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["id_number"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">candidate_number</property>
+                    <text-property name="displayName">candidate_number</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["candidate_number"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">home_address</property>
+                    <text-property name="displayName">home_address</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["home_address"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">from_province</property>
+                    <text-property name="displayName">from_province</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["from_province"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">bachelor_year</property>
+                    <text-property name="displayName">bachelor_year</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["bachelor_year"]</expression>
+                    <property name="dataType">integer</property>
+                </structure>
+                <structure>
+                    <property name="name">pinyin_name</property>
+                    <text-property name="displayName">pinyin_name</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["pinyin_name"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
             </list-property>
             <property name="pageBreakInterval">999</property>
             <column id="75"/>
             <column id="62"/>
+            <column id="269"/>
             <column id="63"/>
             <column id="64"/>
             <column id="65"/>
-            <column id="66"/>
+            <column id="263">
+                <property name="width">4em</property>
+            </column>
+            <column id="66">
+                <property name="width">0.6145833333333334in</property>
+            </column>
             <column id="67"/>
             <column id="68"/>
             <column id="69"/>
+            <column id="107"/>
+            <column id="112"/>
+            <column id="117"/>
+            <column id="122"/>
+            <column id="127"/>
+            <column id="132"/>
+            <column id="143"/>
+            <column id="148"/>
+            <column id="153"/>
+            <column id="158"/>
+            <column id="163"/>
+            <column id="173"/>
+            <column id="178"/>
+            <column id="183"/>
+            <column id="191"/>
+            <column id="196"/>
+            <column id="201"/>
+            <column id="209"/>
+            <column id="224"/>
+            <column id="219"/>
+            <column id="214"/>
+            <column id="233"/>
             <group id="82">
                 <property name="groupName">NewTableGroup1</property>
                 <expression name="keyExpr" type="javascript">row["_statusLabel"]</expression>
@@ -418,6 +988,11 @@ where af.award_id=? and dt.id=?;]]></xml-property>
                                 <text-property name="text">姓名</text-property>
                             </label>
                         </cell>
+                        <cell id="265">
+                            <label id="270">
+                                <text-property name="text">拼音</text-property>
+                            </label>
+                        </cell>
                         <cell id="86">
                             <label id="13">
                                 <text-property name="text">学号</text-property>
@@ -431,6 +1006,11 @@ where af.award_id=? and dt.id=?;]]></xml-property>
                         <cell id="88">
                             <label id="17">
                                 <text-property name="text">主修专业</text-property>
+                            </label>
+                        </cell>
+                        <cell id="259">
+                            <label id="264">
+                                <text-property name="text">合作大学证书授予年份</text-property>
                             </label>
                         </cell>
                         <cell id="89">
@@ -453,19 +1033,153 @@ where af.award_id=? and dt.id=?;]]></xml-property>
                                 <text-property name="text">申请日期</text-property>
                             </label>
                         </cell>
+                        <cell id="103">
+                            <label id="133">
+                                <text-property name="text">曾用名</text-property>
+                            </label>
+                        </cell>
+                        <cell id="108">
+                            <label id="134">
+                                <text-property name="text">性别</text-property>
+                            </label>
+                        </cell>
+                        <cell id="113">
+                            <label id="135">
+                                <text-property name="text">专业名称</text-property>
+                            </label>
+                        </cell>
+                        <cell id="118">
+                            <label id="136">
+                                <text-property name="text">行政班</text-property>
+                            </label>
+                        </cell>
+                        <cell id="123">
+                            <label id="137">
+                                <text-property name="text">年级</text-property>
+                            </label>
+                        </cell>
+                        <cell id="128">
+                            <label id="138">
+                                <text-property name="text">出生日期</text-property>
+                            </label>
+                        </cell>
+                        <cell id="139">
+                            <label id="164">
+                                <text-property name="text">民族</text-property>
+                            </label>
+                        </cell>
+                        <cell id="144">
+                            <label id="165">
+                                <text-property name="text">政治面貌</text-property>
+                            </label>
+                        </cell>
+                        <cell id="149">
+                            <label id="166">
+                                <text-property name="text">籍贯</text-property>
+                            </label>
+                        </cell>
+                        <cell id="154">
+                            <label id="167">
+                                <text-property name="text">户口所在地</text-property>
+                            </label>
+                        </cell>
+                        <cell id="159">
+                            <label id="168">
+                                <text-property name="text">来源地区</text-property>
+                            </label>
+                        </cell>
+                        <cell id="169">
+                            <label id="184">
+                                <text-property name="text">出生地</text-property>
+                            </label>
+                        </cell>
+                        <cell id="174">
+                            <label id="185">
+                                <text-property name="text">学生类别</text-property>
+                            </label>
+                        </cell>
+                        <cell id="179">
+                            <label id="186">
+                                <text-property name="text">学制</text-property>
+                            </label>
+                        </cell>
+                        <cell id="187">
+                            <label id="202">
+                                <text-property name="text">专业方向</text-property>
+                            </label>
+                        </cell>
+                        <cell id="192">
+                            <label id="203">
+                                <text-property name="text">入学日期</text-property>
+                            </label>
+                        </cell>
+                        <cell id="197">
+                            <label id="204">
+                                <text-property name="text">电子邮箱地址</text-property>
+                            </label>
+                        </cell>
+                        <cell id="205">
+                            <label id="225">
+                                <text-property name="text">联系电话</text-property>
+                            </label>
+                        </cell>
+                        <cell id="220">
+                            <label id="226">
+                                <text-property name="text">身份证号</text-property>
+                            </label>
+                        </cell>
+                        <cell id="215">
+                            <label id="227">
+                                <text-property name="text">考生号</text-property>
+                            </label>
+                        </cell>
+                        <cell id="210">
+                            <label id="228">
+                                <text-property name="text">家庭所在地</text-property>
+                            </label>
+                        </cell>
+                        <cell id="229">
+                            <label id="234">
+                                <text-property name="text">来源省</text-property>
+                            </label>
+                        </cell>
                     </row>
                 </header>
                 <footer>
                     <row id="93">
                         <cell id="94"/>
                         <cell id="95"/>
+                        <cell id="267"/>
                         <cell id="96"/>
                         <cell id="97"/>
                         <cell id="98"/>
+                        <cell id="261"/>
                         <cell id="99"/>
                         <cell id="100"/>
                         <cell id="101"/>
                         <cell id="102"/>
+                        <cell id="105"/>
+                        <cell id="110"/>
+                        <cell id="115"/>
+                        <cell id="120"/>
+                        <cell id="125"/>
+                        <cell id="130"/>
+                        <cell id="141"/>
+                        <cell id="146"/>
+                        <cell id="151"/>
+                        <cell id="156"/>
+                        <cell id="161"/>
+                        <cell id="171"/>
+                        <cell id="176"/>
+                        <cell id="181"/>
+                        <cell id="189"/>
+                        <cell id="194"/>
+                        <cell id="199"/>
+                        <cell id="207"/>
+                        <cell id="222"/>
+                        <cell id="217"/>
+                        <cell id="212"/>
+                        <cell id="231"/>
                     </row>
                 </footer>
             </group>
@@ -481,6 +1195,11 @@ where af.award_id=? and dt.id=?;]]></xml-property>
                             <property name="resultSetColumn">studentname</property>
                         </data>
                     </cell>
+                    <cell id="266">
+                        <data id="272">
+                            <property name="resultSetColumn">pinyin_name</property>
+                        </data>
+                    </cell>
                     <cell id="33">
                         <data id="34">
                             <property name="resultSetColumn">studentid</property>
@@ -494,6 +1213,11 @@ where af.award_id=? and dt.id=?;]]></xml-property>
                     <cell id="37">
                         <data id="38">
                             <property name="resultSetColumn">major_cooperative</property>
+                        </data>
+                    </cell>
+                    <cell id="260">
+                        <data id="271">
+                            <property name="resultSetColumn">bachelor_year</property>
                         </data>
                     </cell>
                     <cell id="39">
@@ -516,19 +1240,141 @@ where af.award_id=? and dt.id=?;]]></xml-property>
                             <property name="resultSetColumn">date_submitted</property>
                         </data>
                     </cell>
+                    <cell id="104">
+                        <data id="235">
+                            <property name="resultSetColumn">used_name</property>
+                        </data>
+                    </cell>
+                    <cell id="109">
+                        <data id="236">
+                            <property name="resultSetColumn">sex</property>
+                        </data>
+                    </cell>
+                    <cell id="114">
+                        <data id="237">
+                            <property name="resultSetColumn">subject_name</property>
+                        </data>
+                    </cell>
+                    <cell id="119">
+                        <data id="238">
+                            <property name="resultSetColumn">admin_class_name</property>
+                        </data>
+                    </cell>
+                    <cell id="124">
+                        <data id="239">
+                            <property name="resultSetColumn">grade</property>
+                        </data>
+                    </cell>
+                    <cell id="129">
+                        <data id="240">
+                            <property name="resultSetColumn">birthday</property>
+                        </data>
+                    </cell>
+                    <cell id="140">
+                        <data id="241">
+                            <property name="resultSetColumn">nationality</property>
+                        </data>
+                    </cell>
+                    <cell id="145">
+                        <data id="242">
+                            <property name="resultSetColumn">political_status</property>
+                        </data>
+                    </cell>
+                    <cell id="150"/>
+                    <cell id="155">
+                        <data id="243">
+                            <property name="resultSetColumn">household_address</property>
+                        </data>
+                    </cell>
+                    <cell id="160">
+                        <data id="244">
+                            <property name="resultSetColumn">from_city</property>
+                        </data>
+                    </cell>
+                    <cell id="170"/>
+                    <cell id="175">
+                        <data id="245">
+                            <property name="resultSetColumn">category</property>
+                        </data>
+                    </cell>
+                    <cell id="180">
+                        <data id="246">
+                            <property name="resultSetColumn">length_of_schooling</property>
+                        </data>
+                    </cell>
+                    <cell id="188">
+                        <data id="247">
+                            <property name="resultSetColumn">direction</property>
+                        </data>
+                    </cell>
+                    <cell id="193">
+                        <data id="248">
+                            <property name="resultSetColumn">date_enrolled</property>
+                        </data>
+                    </cell>
+                    <cell id="198"/>
+                    <cell id="206">
+                        <data id="249">
+                            <property name="resultSetColumn">phone_number</property>
+                        </data>
+                    </cell>
+                    <cell id="221">
+                        <data id="250">
+                            <property name="resultSetColumn">id_number</property>
+                        </data>
+                    </cell>
+                    <cell id="216">
+                        <data id="251">
+                            <property name="resultSetColumn">candidate_number</property>
+                        </data>
+                    </cell>
+                    <cell id="211">
+                        <data id="252">
+                            <property name="resultSetColumn">home_address</property>
+                        </data>
+                    </cell>
+                    <cell id="230">
+                        <data id="253">
+                            <property name="resultSetColumn">from_province</property>
+                        </data>
+                    </cell>
                 </row>
             </detail>
             <footer>
                 <row id="51">
                     <cell id="74"/>
                     <cell id="52"/>
+                    <cell id="268"/>
                     <cell id="53"/>
                     <cell id="54"/>
                     <cell id="55"/>
+                    <cell id="262"/>
                     <cell id="56"/>
                     <cell id="57"/>
                     <cell id="58"/>
                     <cell id="59"/>
+                    <cell id="106"/>
+                    <cell id="111"/>
+                    <cell id="116"/>
+                    <cell id="121"/>
+                    <cell id="126"/>
+                    <cell id="131"/>
+                    <cell id="142"/>
+                    <cell id="147"/>
+                    <cell id="152"/>
+                    <cell id="157"/>
+                    <cell id="162"/>
+                    <cell id="172"/>
+                    <cell id="177"/>
+                    <cell id="182"/>
+                    <cell id="190"/>
+                    <cell id="195"/>
+                    <cell id="200"/>
+                    <cell id="208"/>
+                    <cell id="223"/>
+                    <cell id="218"/>
+                    <cell id="213"/>
+                    <cell id="232"/>
                 </row>
             </footer>
         </table>
