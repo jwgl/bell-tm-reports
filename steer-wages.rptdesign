@@ -124,16 +124,6 @@
                     <property name="isInput">true</property>
                     <property name="isOutput">false</property>
                 </structure>
-                <structure>
-                    <property name="name">type</property>
-                    <property name="paramName">type</property>
-                    <property name="nativeName"></property>
-                    <property name="dataType">integer</property>
-                    <property name="nativeDataType">4</property>
-                    <property name="position">4</property>
-                    <property name="isInput">true</property>
-                    <property name="isOutput">false</property>
-                </structure>
             </list-property>
             <structure name="cachedMetaData">
                 <list-property name="resultSet">
@@ -181,9 +171,9 @@
             <xml-property name="queryText"><![CDATA[select d.name as department, t.name as username, sum(total_section) as sm
 from tm.observation_form f
 join ea.teacher t on f.observer_id=t.id
-join tm.observer o on f.observer_id=o.teacher_id and f.term_id=o.term_id
+join tm.observer o on f.observer_id=o.teacher_id and f.term_id=o.term_id and f.observer_type=o.observer_type
 join ea.department d on o.department_id=d.id
-where f.term_id=? and ('0'=? or d.id=?) and f.observer_type=?
+where f.term_id=? and ('0'=? or d.id=?) and f.observer_type<>1
 group by d.name, t.name
 order by d.name, t.name;]]></xml-property>
             <xml-property name="designerValues"><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
@@ -284,7 +274,7 @@ order by d.name, t.name;]]></xml-property>
                 <structure>
                     <property name="name">Column Binding</property>
                     <text-property name="displayName">_label</text-property>
-                    <expression name="expression" type="javascript">new Array("","校督导","院督导","校领导")[params["type"].value]+" 听课统计"</expression>
+                    <expression name="expression" type="javascript">new Array("","校督导","院督导&amp;领导","校领导")[params["type"].value]+" 听课统计"</expression>
                     <property name="dataType">string</property>
                     <property name="allowExport">true</property>
                 </structure>
@@ -302,6 +292,9 @@ order by d.name, t.name;]]></xml-property>
             <column id="18">
                 <property name="width">40%</property>
             </column>
+            <column id="59">
+                <property name="width">40%</property>
+            </column>
             <column id="57"/>
             <row id="19">
                 <property name="fontSize">18pt</property>
@@ -315,6 +308,8 @@ order by d.name, t.name;]]></xml-property>
                     </data>
                 </cell>
                 <cell id="21">
+                    <property name="colSpan">2</property>
+                    <property name="rowSpan">1</property>
                     <property name="style">NewStyle</property>
                     <data id="50">
                         <property name="resultSetColumn">Column Binding</property>
