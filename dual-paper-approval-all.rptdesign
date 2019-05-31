@@ -65,6 +65,11 @@
                     <expression name="expression">['','合作院校毕业论文','国外院校硕士论文','合作院校本科课程论文'][row["papertype"]]</expression>
                     <property name="dataType">string</property>
                 </structure>
+                <structure>
+                    <property name="name">_major_cooperative</property>
+                    <expression name="expression">row["major_cooperative"] == '-' ? '' : row["major_cooperative"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
             </list-property>
             <list-property name="columnHints">
                 <structure>
@@ -218,6 +223,11 @@
                         <property name="name">_typename</property>
                         <property name="dataType">string</property>
                     </structure>
+                    <structure>
+                        <property name="position">13</property>
+                        <property name="name">_major_cooperative</property>
+                        <property name="dataType">string</property>
+                    </structure>
                 </list-property>
             </structure>
             <property name="dataSource">Data Source</property>
@@ -317,7 +327,8 @@ join ea.student st on st.id=af.student_id
 join ea.department dt on st.department_id=dt.id
 join ea.major mj on st.major_id=mj.id
 join ea.subject sj on mj.subject_id=sj.id
-where af.award_id=? and dt.id=? and af.status='FINISHED';]]></xml-property>
+where af.award_id=? and dt.id=? and af.status='FINISHED'
+order by af.paper_approver_id;]]></xml-property>
             <xml-property name="designerValues"><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
 <model:DesignValues xmlns:design="http://www.eclipse.org/datatools/connectivity/oda/design" xmlns:model="http://www.eclipse.org/birt/report/model/adapter/odaModel">
   <Version>2.0</Version>
@@ -644,6 +655,12 @@ where af.award_id=? and dt.id=? and af.status='FINISHED';]]></xml-property>
                     <expression name="expression" type="javascript">dataSetRow["comments"]</expression>
                     <property name="dataType">string</property>
                 </structure>
+                <structure>
+                    <property name="name">_major_cooperative</property>
+                    <text-property name="displayName">_major_cooperative</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["_major_cooperative"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
             </list-property>
             <property name="pageBreakInterval">1</property>
             <column id="839"/>
@@ -823,10 +840,8 @@ where af.award_id=? and dt.id=? and af.status='FINISHED';]]></xml-property>
                                                 <property name="colSpan">2</property>
                                                 <property name="rowSpan">1</property>
                                                 <property name="style">main</property>
-                                                <data id="850">
-                                                    <property name="style">text-style</property>
-                                                    <property name="fontSize">10.5pt</property>
-                                                    <property name="resultSetColumn">major_cooperative</property>
+                                                <data id="907">
+                                                    <property name="resultSetColumn">_major_cooperative</property>
                                                 </data>
                                             </cell>
                                         </row>
@@ -1050,7 +1065,8 @@ where af.award_id=? and dt.id=? and af.status='FINISHED';]]></xml-property>
                                                     <text-property name="content"><![CDATA[中文：]]></text-property>
                                                 </text>
                                                 <data id="855">
-                                                    <property name="textUnderline">underline</property>
+                                                    <property name="fontFamily">"宋体"</property>
+                                                    <property name="textUnderline">none</property>
                                                     <property name="display">inline</property>
                                                     <property name="resultSetColumn">chinese_title</property>
                                                 </data>
@@ -1073,7 +1089,7 @@ where af.award_id=? and dt.id=? and af.status='FINISHED';]]></xml-property>
                                                 </text>
                                                 <data id="856">
                                                     <property name="fontSize">10.5pt</property>
-                                                    <property name="textUnderline">underline</property>
+                                                    <property name="textUnderline">none</property>
                                                     <property name="display">inline</property>
                                                     <property name="resultSetColumn">english_title</property>
                                                 </data>
@@ -1142,7 +1158,7 @@ where af.award_id=? and dt.id=? and af.status='FINISHED';]]></xml-property>
                                                 <property name="textAlign">left</property>
                                                 <property name="verticalAlign">top</property>
                                                 <data id="906">
-                                                    <property name="textUnderline">underline</property>
+                                                    <property name="textUnderline">none</property>
                                                     <property name="resultSetColumn">comments</property>
                                                 </data>
                                             </cell>
@@ -1182,7 +1198,7 @@ where af.award_id=? and dt.id=? and af.status='FINISHED';]]></xml-property>
                                             </cell>
                                         </row>
                                         <row id="541">
-                                            <property name="height">11em</property>
+                                            <property name="height">9em</property>
                                             <cell id="542">
                                                 <property name="colSpan">1</property>
                                                 <property name="rowSpan">3</property>
