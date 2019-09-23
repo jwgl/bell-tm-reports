@@ -390,7 +390,7 @@
     to_char(r_t.date_created, 'yyyy') as y,
     array_to_string(array_agg(concat(ert.name, ':[', er.opinion, ']')), ';', '*') as expert_reviews,
     round (sum (case when er.date_reviewed is not null and er.conclusion != '弃权' then er.value end)/
-        sum (case when er.date_reviewed is not null and er.conclusion != '弃权' then 1 else 0 end), 2) as agv_score,
+        sum (case when er.date_reviewed is not null and er.conclusion != '弃权' then 1 else 0 end)::numeric, 2) as agv_score,
     sum (case when er.date_reviewed is not null and er.conclusion = '同意' then 1 else 0 end) as count_ok,
     sum (case when er.date_reviewed is not null and er.conclusion = '不同意' then 1 else 0 end) as count_veto,
     sum (case when er.date_reviewed is not null and er.conclusion = '弃权' then 1 else 0 end) as count_waiver,
