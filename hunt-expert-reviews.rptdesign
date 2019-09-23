@@ -224,7 +224,7 @@
                     <structure>
                         <property name="position">11</property>
                         <property name="name">agv_score</property>
-                        <property name="dataType">float</property>
+                        <property name="dataType">decimal</property>
                     </structure>
                     <structure>
                         <property name="position">12</property>
@@ -339,8 +339,8 @@
                     <property name="position">11</property>
                     <property name="name">agv_score</property>
                     <property name="nativeName">agv_score</property>
-                    <property name="dataType">float</property>
-                    <property name="nativeDataType">8</property>
+                    <property name="dataType">decimal</property>
+                    <property name="nativeDataType">2</property>
                 </structure>
                 <structure>
                     <property name="position">12</property>
@@ -390,7 +390,7 @@
     to_char(r_t.date_created, 'yyyy') as y,
     array_to_string(array_agg(concat(ert.name, ':[', er.opinion, ']')), ';', '*') as expert_reviews,
     round (sum (case when er.date_reviewed is not null and er.conclusion != '弃权' then er.value end)/
-        sum (case when er.date_reviewed is not null and er.conclusion != '弃权' then 1 else 0 end)) as agv_score,
+        sum (case when er.date_reviewed is not null and er.conclusion != '弃权' then 1 else 0 end), 2) as agv_score,
     sum (case when er.date_reviewed is not null and er.conclusion = '同意' then 1 else 0 end) as count_ok,
     sum (case when er.date_reviewed is not null and er.conclusion = '不同意' then 1 else 0 end) as count_veto,
     sum (case when er.date_reviewed is not null and er.conclusion = '弃权' then 1 else 0 end) as count_waiver,
