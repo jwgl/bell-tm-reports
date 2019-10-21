@@ -1,0 +1,1852 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<report xmlns="http://www.eclipse.org/birt/2005/design" version="3.2.23" id="1">
+    <property name="createdBy">Eclipse BIRT Designer Version 4.6.0.v201606072122</property>
+    <text-property name="title">变更审批表</text-property>
+    <property name="units">in</property>
+    <property name="iconFile">/templates/blank_report.gif</property>
+    <property name="layoutPreference">fixed layout</property>
+    <property name="bidiLayoutOrientation">ltr</property>
+    <property name="imageDPI">96</property>
+    <parameters>
+        <scalar-parameter name="form_id" id="189">
+            <property name="valueType">static</property>
+            <property name="isRequired">true</property>
+            <property name="dataType">decimal</property>
+            <property name="distinct">true</property>
+            <simple-property-list name="defaultValue">
+                <value type="constant">6</value>
+            </simple-property-list>
+            <list-property name="selectionList"/>
+            <property name="paramType">simple</property>
+            <property name="concealValue">false</property>
+            <property name="controlType">text-box</property>
+            <structure name="format">
+                <property name="category">Unformatted</property>
+            </structure>
+        </scalar-parameter>
+    </parameters>
+    <data-sources>
+        <oda-data-source extensionID="org.eclipse.birt.report.data.oda.jdbc" name="postgresql" id="187">
+            <list-property name="privateDriverProperties">
+                <ex-property>
+                    <name>metadataBidiFormatStr</name>
+                    <value>ILYNN</value>
+                </ex-property>
+                <ex-property>
+                    <name>disabledMetadataBidiFormatStr</name>
+                </ex-property>
+                <ex-property>
+                    <name>contentBidiFormatStr</name>
+                    <value>ILYNN</value>
+                </ex-property>
+                <ex-property>
+                    <name>disabledContentBidiFormatStr</name>
+                </ex-property>
+            </list-property>
+            <property name="odaDriverClass">org.postgresql.Driver</property>
+            <property name="odaURL">jdbc:postgresql://localhost:5432/bell</property>
+            <property name="odaUser">tm</property>
+            <encrypted-property name="odaPassword" encryptionID="base64">dG0=</encrypted-property>
+        </oda-data-source>
+    </data-sources>
+    <data-sets>
+        <oda-data-set extensionID="org.eclipse.birt.report.data.oda.jdbc.JdbcSelectDataSet" name="info-change" id="188">
+            <list-property name="computedColumns">
+                <structure>
+                    <property name="name">_middle_year_o</property>
+                    <expression name="expression">(new RegExp("2").test(row["change_types"]) &amp;&amp; row["middle_year_n"]) ? '预期中期：'+row["middle_year_o"] : ''</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">_middle_year_n</property>
+                    <expression name="expression">(new RegExp("2").test(row["change_types"]) &amp;&amp; row["middle_year_n"]) ? '预期中期：'+row["middle_year_n"] : ''</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">_knot_year_o</property>
+                    <expression name="expression">new RegExp("2").test(row["change_types"]) ? '预期结项：'+row["knot_year_o"] : ''</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">_knot_year_n</property>
+                    <expression name="expression">new RegExp("2").test(row["change_types"])  ?  '预期结项：'+row["knot_year_n"] : ''</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">_principal_o</property>
+                    <expression name="expression">new RegExp("1").test(row["change_types"])? '负责人：'+row["principal_name_o"] : ''</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">_principal_n</property>
+                    <expression name="expression">new RegExp("1").test(row["change_types"])? '负责人：'+row["principal_name_n"] : ''</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">_name_o</property>
+                    <expression name="expression">new RegExp("3").test(row["change_types"]) ? '项目名称：'+row["project_name"] : ''</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">_name_n</property>
+                    <expression name="expression">new RegExp("3").test(row["change_types"]) ? '项目名称：'+row["project_name_n"] : ''</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">_members_o</property>
+                    <expression name="expression">new RegExp("7").test(row["change_types"]) ? '参与人：'+row["members_o"] : ''</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">_members_n</property>
+                    <expression name="expression">new RegExp("7").test(row["change_types"])? '参与人：'+row["members_n"] : ''</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">_other</property>
+                    <expression name="expression">new RegExp("8").test(row["change_types"])? '其他：'+row["other"] : ''</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">_gain_o</property>
+                    <expression name="expression">new RegExp("6").test(row["change_types"])? '成果形式：'+row["achievements_o"] : ''</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">_gain_n</property>
+                    <expression name="expression">new RegExp("6").test(row["change_types"])? '成果形式：'+row["achievements_n"] : ''</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">_change_types</property>
+                    <expression name="expression">new RegExp("1").test(row["change_types"])? '变更项目负责人\t' : '' +&#13;
+new RegExp("2").test(row["change_types"])? '延期\t' : '' +&#13;
+new RegExp("3").test(row["change_types"])? '改变项目名称\t' : '' +&#13;
+new RegExp("4").test(row["change_types"])? '自行终止项目\t' : '' +&#13;
+new RegExp("5").test(row["change_types"])? '研究内容重大调整\t' : '' +&#13;
+new RegExp("6").test(row["change_types"])? '改变成果形式\t' : '' +&#13;
+new RegExp("7").test(row["change_types"])? '变更参与人\t' : '' +&#13;
+new RegExp("2").test(row["change_types"])? '其他' : ''</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">_level</property>
+                    <expression name="expression">'' + &#13;
+{UNIVERSITY: '校级',CITY:'市级',PROVINCE:'省级',NATION:'国家级'}[row["level"]]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">_other_o</property>
+                    <expression name="expression">''</expression>
+                    <property name="dataType">string</property>
+                </structure>
+            </list-property>
+            <list-property name="columnHints">
+                <structure>
+                    <property name="columnName">project_name</property>
+                    <property name="alias">project_name</property>
+                    <property name="analysis">dimension</property>
+                    <text-property name="displayName">project_name</text-property>
+                    <text-property name="heading">project_name</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">code</property>
+                    <property name="alias">code</property>
+                    <property name="analysis">dimension</property>
+                    <text-property name="displayName">code</text-property>
+                    <text-property name="heading">code</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">level</property>
+                    <property name="alias">level</property>
+                    <property name="analysis">dimension</property>
+                    <text-property name="displayName">level</text-property>
+                    <text-property name="heading">level</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">project_type</property>
+                    <property name="alias">project_type</property>
+                    <property name="analysis">dimension</property>
+                    <text-property name="displayName">project_type</text-property>
+                    <text-property name="heading">project_type</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">department_name</property>
+                    <property name="alias">department_name</property>
+                    <property name="analysis">dimension</property>
+                    <text-property name="displayName">department_name</text-property>
+                    <text-property name="heading">department_name</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">principal_name_o</property>
+                    <property name="alias">principal_name_o</property>
+                    <property name="analysis">dimension</property>
+                    <text-property name="displayName">principal_name_o</text-property>
+                    <text-property name="heading">principal_name_o</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">middle_year_o</property>
+                    <property name="alias">middle_year_o</property>
+                    <property name="analysis">measure</property>
+                    <text-property name="displayName">middle_year_o</text-property>
+                    <text-property name="heading">middle_year_o</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">knot_year_o</property>
+                    <property name="alias">knot_year_o</property>
+                    <property name="analysis">measure</property>
+                    <text-property name="displayName">knot_year_o</text-property>
+                    <text-property name="heading">knot_year_o</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">change_types</property>
+                    <property name="alias">change_types</property>
+                    <property name="analysis">dimension</property>
+                    <text-property name="displayName">change_types</text-property>
+                    <text-property name="heading">change_types</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">project_name_n</property>
+                    <property name="alias">project_name_n</property>
+                    <property name="analysis">dimension</property>
+                    <text-property name="displayName">project_name_n</text-property>
+                    <text-property name="heading">project_name_n</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">middle_year_n</property>
+                    <property name="alias">middle_year_n</property>
+                    <property name="analysis">measure</property>
+                    <text-property name="displayName">middle_year_n</text-property>
+                    <text-property name="heading">middle_year_n</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">knot_year_n</property>
+                    <property name="alias">knot_year_n</property>
+                    <property name="analysis">measure</property>
+                    <text-property name="displayName">knot_year_n</text-property>
+                    <text-property name="heading">knot_year_n</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">principal_name_n</property>
+                    <property name="alias">principal_name_n</property>
+                    <property name="analysis">dimension</property>
+                    <text-property name="displayName">principal_name_n</text-property>
+                    <text-property name="heading">principal_name_n</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">achievements_o</property>
+                    <property name="alias">achievements_o</property>
+                    <property name="analysis">dimension</property>
+                    <text-property name="displayName">achievements_o</text-property>
+                    <text-property name="heading">achievements_o</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">achievements_n</property>
+                    <property name="alias">achievements_n</property>
+                    <property name="analysis">dimension</property>
+                    <text-property name="displayName">achievements_n</text-property>
+                    <text-property name="heading">achievements_n</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">members_o</property>
+                    <property name="alias">members_o</property>
+                    <property name="analysis">dimension</property>
+                    <text-property name="displayName">members_o</text-property>
+                    <text-property name="heading">members_o</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">members_n</property>
+                    <property name="alias">members_n</property>
+                    <property name="analysis">dimension</property>
+                    <text-property name="displayName">members_n</text-property>
+                    <text-property name="heading">members_n</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">other</property>
+                    <property name="alias">other</property>
+                    <property name="analysis">dimension</property>
+                    <text-property name="displayName">other</text-property>
+                    <text-property name="heading">other</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">reason</property>
+                    <property name="alias">reason</property>
+                    <property name="analysis">dimension</property>
+                    <text-property name="displayName">reason</text-property>
+                    <text-property name="heading">reason</text-property>
+                </structure>
+            </list-property>
+            <list-property name="parameters">
+                <structure>
+                    <property name="name">form_id</property>
+                    <property name="paramName">form_id</property>
+                    <property name="nativeName"></property>
+                    <property name="dataType">decimal</property>
+                    <property name="nativeDataType">-5</property>
+                    <property name="position">1</property>
+                    <property name="isInput">true</property>
+                    <property name="isOutput">false</property>
+                </structure>
+            </list-property>
+            <structure name="cachedMetaData">
+                <list-property name="resultSet">
+                    <structure>
+                        <property name="position">1</property>
+                        <property name="name">project_name</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">2</property>
+                        <property name="name">code</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">3</property>
+                        <property name="name">level</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">4</property>
+                        <property name="name">project_type</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">5</property>
+                        <property name="name">department_name</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">6</property>
+                        <property name="name">principal_name_o</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">7</property>
+                        <property name="name">middle_year_o</property>
+                        <property name="dataType">integer</property>
+                    </structure>
+                    <structure>
+                        <property name="position">8</property>
+                        <property name="name">knot_year_o</property>
+                        <property name="dataType">integer</property>
+                    </structure>
+                    <structure>
+                        <property name="position">9</property>
+                        <property name="name">change_types</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">10</property>
+                        <property name="name">project_name_n</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">11</property>
+                        <property name="name">middle_year_n</property>
+                        <property name="dataType">integer</property>
+                    </structure>
+                    <structure>
+                        <property name="position">12</property>
+                        <property name="name">knot_year_n</property>
+                        <property name="dataType">integer</property>
+                    </structure>
+                    <structure>
+                        <property name="position">13</property>
+                        <property name="name">principal_name_n</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">14</property>
+                        <property name="name">achievements_o</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">15</property>
+                        <property name="name">achievements_n</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">16</property>
+                        <property name="name">members_o</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">17</property>
+                        <property name="name">members_n</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">18</property>
+                        <property name="name">other</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">19</property>
+                        <property name="name">achievements_o_19</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">20</property>
+                        <property name="name">achievements_n_20</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">21</property>
+                        <property name="name">reason</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">22</property>
+                        <property name="name">_middle_year_o</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">23</property>
+                        <property name="name">_middle_year_n</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">24</property>
+                        <property name="name">_knot_year_o</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">25</property>
+                        <property name="name">_knot_year_n</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">26</property>
+                        <property name="name">_principal_o</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">27</property>
+                        <property name="name">_principal_n</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">28</property>
+                        <property name="name">_name_o</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">29</property>
+                        <property name="name">_name_n</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">30</property>
+                        <property name="name">_members_o</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">31</property>
+                        <property name="name">_members_n</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">32</property>
+                        <property name="name">_other</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">33</property>
+                        <property name="name">_gain_o</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">34</property>
+                        <property name="name">_gain_n</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">35</property>
+                        <property name="name">_change_types</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">36</property>
+                        <property name="name">_level</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">37</property>
+                        <property name="name">_other_o</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                </list-property>
+            </structure>
+            <property name="dataSource">postgresql</property>
+            <list-property name="resultSet">
+                <structure>
+                    <property name="position">1</property>
+                    <property name="name">project_name</property>
+                    <property name="nativeName">project_name</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">2</property>
+                    <property name="name">code</property>
+                    <property name="nativeName">code</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">3</property>
+                    <property name="name">level</property>
+                    <property name="nativeName">level</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">4</property>
+                    <property name="name">project_type</property>
+                    <property name="nativeName">project_type</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">5</property>
+                    <property name="name">department_name</property>
+                    <property name="nativeName">department_name</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">6</property>
+                    <property name="name">principal_name_o</property>
+                    <property name="nativeName">principal_name_o</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">7</property>
+                    <property name="name">middle_year_o</property>
+                    <property name="nativeName">middle_year_o</property>
+                    <property name="dataType">integer</property>
+                </structure>
+                <structure>
+                    <property name="position">8</property>
+                    <property name="name">knot_year_o</property>
+                    <property name="nativeName">knot_year_o</property>
+                    <property name="dataType">integer</property>
+                </structure>
+                <structure>
+                    <property name="position">9</property>
+                    <property name="name">change_types</property>
+                    <property name="nativeName">change_types</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">10</property>
+                    <property name="name">project_name_n</property>
+                    <property name="nativeName">project_name_n</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">11</property>
+                    <property name="name">middle_year_n</property>
+                    <property name="nativeName">middle_year_n</property>
+                    <property name="dataType">integer</property>
+                </structure>
+                <structure>
+                    <property name="position">12</property>
+                    <property name="name">knot_year_n</property>
+                    <property name="nativeName">knot_year_n</property>
+                    <property name="dataType">integer</property>
+                </structure>
+                <structure>
+                    <property name="position">13</property>
+                    <property name="name">principal_name_n</property>
+                    <property name="nativeName">principal_name_n</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">14</property>
+                    <property name="name">achievements_o</property>
+                    <property name="nativeName">achievements_o</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">15</property>
+                    <property name="name">achievements_n</property>
+                    <property name="nativeName">achievements_n</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">16</property>
+                    <property name="name">members_o</property>
+                    <property name="nativeName">members_o</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">17</property>
+                    <property name="name">members_n</property>
+                    <property name="nativeName">members_n</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">18</property>
+                    <property name="name">other</property>
+                    <property name="nativeName">other</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">19</property>
+                    <property name="name">achievements_o_19</property>
+                    <property name="nativeName">achievements_o</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">20</property>
+                    <property name="name">achievements_n_20</property>
+                    <property name="nativeName">achievements_n</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">21</property>
+                    <property name="name">reason</property>
+                    <property name="nativeName">reason</property>
+                    <property name="dataType">string</property>
+                </structure>
+            </list-property>
+            <xml-property name="queryText"><![CDATA[select
+p.name as project_name,
+p.code,
+p.level,
+t.name as project_type,
+d.name as department_name,
+tc.name as principal_name_o,
+p.middle_year as middle_year_o,
+p.knot_year as knot_year_o,
+c.type as change_types,
+c.name as project_name_n,
+c.middle_year as middle_year_n,
+c.knot_year as knot_year_n,
+tc1.name as principal_name_n,
+p.achievements as achievements_o,
+c.achievements as achievements_n,
+p.members as members_o,
+c.members as members_n,
+c.other,
+p.achievements as achievements_o,
+c.achievements as achievements_n,
+c.reason
+from tm_hunt.info_change c
+join tm_hunt.project p on c.project_id = p.id
+join tm_hunt.subtype t on p.subtype_id = t.id
+join ea.department d on p.department_id = d.id
+join ea.teacher tc on p.principal_id = tc.id
+left join ea.teacher tc1 on c.principal_id = tc1.id
+where c.id=?;]]></xml-property>
+            <xml-property name="designerValues"><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
+<model:DesignValues xmlns:design="http://www.eclipse.org/datatools/connectivity/oda/design" xmlns:model="http://www.eclipse.org/birt/report/model/adapter/odaModel">
+  <Version>2.0</Version>
+  <design:ResultSets derivedMetaData="true">
+    <design:resultSetDefinitions>
+      <design:resultSetColumns>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>id</design:name>
+              <design:position>1</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>-5</design:nativeDataTypeCode>
+            <design:precision>19</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>NotNullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>id</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>id</design:label>
+            <design:formattingHints>
+              <design:displaySize>20</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>phone</design:name>
+              <design:position>2</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>12</design:nativeDataTypeCode>
+            <design:precision>2147483647</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>Nullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>phone</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>phone</design:label>
+            <design:formattingHints>
+              <design:displaySize>2147483647</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>workflow_instance_id</design:name>
+              <design:position>3</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>1111</design:nativeDataTypeCode>
+            <design:precision>2147483647</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>Nullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>workflow_instance_id</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>workflow_instance_id</design:label>
+            <design:formattingHints>
+              <design:displaySize>2147483647</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>date_approved</design:name>
+              <design:position>4</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>93</design:nativeDataTypeCode>
+            <design:precision>29</design:precision>
+            <design:scale>6</design:scale>
+            <design:nullability>Nullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>date_approved</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>date_approved</design:label>
+            <design:formattingHints>
+              <design:displaySize>29</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>reviewer_id</design:name>
+              <design:position>5</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>12</design:nativeDataTypeCode>
+            <design:precision>5</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>Nullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>reviewer_id</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>reviewer_id</design:label>
+            <design:formattingHints>
+              <design:displaySize>5</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>date_created</design:name>
+              <design:position>6</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>91</design:nativeDataTypeCode>
+            <design:precision>13</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>NotNullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>date_created</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>date_created</design:label>
+            <design:formattingHints>
+              <design:displaySize>13</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>department_opinion</design:name>
+              <design:position>7</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>12</design:nativeDataTypeCode>
+            <design:precision>2147483647</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>Nullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>department_opinion</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>department_opinion</design:label>
+            <design:formattingHints>
+              <design:displaySize>2147483647</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>office</design:name>
+              <design:position>8</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>12</design:nativeDataTypeCode>
+            <design:precision>2147483647</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>Nullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>office</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>office</design:label>
+            <design:formattingHints>
+              <design:displaySize>2147483647</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>applicant_id</design:name>
+              <design:position>9</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>12</design:nativeDataTypeCode>
+            <design:precision>5</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>NotNullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>applicant_id</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>applicant_id</design:label>
+            <design:formattingHints>
+              <design:displaySize>5</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>achievements</design:name>
+              <design:position>10</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>12</design:nativeDataTypeCode>
+            <design:precision>2147483647</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>Nullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>achievements</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>achievements</design:label>
+            <design:formattingHints>
+              <design:displaySize>2147483647</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>other</design:name>
+              <design:position>11</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>12</design:nativeDataTypeCode>
+            <design:precision>2147483647</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>Nullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>other</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>other</design:label>
+            <design:formattingHints>
+              <design:displaySize>2147483647</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>date_checked</design:name>
+              <design:position>12</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>93</design:nativeDataTypeCode>
+            <design:precision>29</design:precision>
+            <design:scale>6</design:scale>
+            <design:nullability>Nullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>date_checked</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>date_checked</design:label>
+            <design:formattingHints>
+              <design:displaySize>29</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>content</design:name>
+              <design:position>13</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>12</design:nativeDataTypeCode>
+            <design:precision>2147483647</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>Nullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>content</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>content</design:label>
+            <design:formattingHints>
+              <design:displaySize>2147483647</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>date_submitted</design:name>
+              <design:position>14</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>93</design:nativeDataTypeCode>
+            <design:precision>29</design:precision>
+            <design:scale>6</design:scale>
+            <design:nullability>Nullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>date_submitted</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>date_submitted</design:label>
+            <design:formattingHints>
+              <design:displaySize>29</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>reason</design:name>
+              <design:position>15</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>12</design:nativeDataTypeCode>
+            <design:precision>2147483647</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>Nullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>reason</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>reason</design:label>
+            <design:formattingHints>
+              <design:displaySize>2147483647</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>title</design:name>
+              <design:position>16</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>12</design:nativeDataTypeCode>
+            <design:precision>2147483647</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>Nullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>title</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>title</design:label>
+            <design:formattingHints>
+              <design:displaySize>2147483647</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>date_reviewed</design:name>
+              <design:position>17</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>93</design:nativeDataTypeCode>
+            <design:precision>29</design:precision>
+            <design:scale>6</design:scale>
+            <design:nullability>Nullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>date_reviewed</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>date_reviewed</design:label>
+            <design:formattingHints>
+              <design:displaySize>29</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>members</design:name>
+              <design:position>18</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>12</design:nativeDataTypeCode>
+            <design:precision>2147483647</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>Nullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>members</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>members</design:label>
+            <design:formattingHints>
+              <design:displaySize>2147483647</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>opinion_of_university</design:name>
+              <design:position>19</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>12</design:nativeDataTypeCode>
+            <design:precision>2147483647</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>Nullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>opinion_of_university</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>opinion_of_university</design:label>
+            <design:formattingHints>
+              <design:displaySize>2147483647</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>department_id</design:name>
+              <design:position>20</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>12</design:nativeDataTypeCode>
+            <design:precision>2</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>NotNullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>department_id</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>department_id</design:label>
+            <design:formattingHints>
+              <design:displaySize>2</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>checker_id</design:name>
+              <design:position>21</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>12</design:nativeDataTypeCode>
+            <design:precision>5</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>Nullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>checker_id</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>checker_id</design:label>
+            <design:formattingHints>
+              <design:displaySize>5</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>degree</design:name>
+              <design:position>22</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>12</design:nativeDataTypeCode>
+            <design:precision>2147483647</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>Nullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>degree</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>degree</design:label>
+            <design:formattingHints>
+              <design:displaySize>2147483647</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>name</design:name>
+              <design:position>23</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>12</design:nativeDataTypeCode>
+            <design:precision>2147483647</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>Nullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>name</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>name</design:label>
+            <design:formattingHints>
+              <design:displaySize>2147483647</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>type</design:name>
+              <design:position>24</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>2003</design:nativeDataTypeCode>
+            <design:precision>10</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>NotNullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>type</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>type</design:label>
+            <design:formattingHints>
+              <design:displaySize>11</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>principal_id</design:name>
+              <design:position>25</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>12</design:nativeDataTypeCode>
+            <design:precision>5</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>Nullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>principal_id</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>principal_id</design:label>
+            <design:formattingHints>
+              <design:displaySize>5</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>status</design:name>
+              <design:position>26</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>12</design:nativeDataTypeCode>
+            <design:precision>2147483647</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>NotNullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>status</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>status</design:label>
+            <design:formattingHints>
+              <design:displaySize>2147483647</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>approver_id</design:name>
+              <design:position>27</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>12</design:nativeDataTypeCode>
+            <design:precision>5</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>Nullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>approver_id</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>approver_id</design:label>
+            <design:formattingHints>
+              <design:displaySize>5</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>main_info_form</design:name>
+              <design:position>28</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>12</design:nativeDataTypeCode>
+            <design:precision>2147483647</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>Nullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>main_info_form</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>main_info_form</design:label>
+            <design:formattingHints>
+              <design:displaySize>2147483647</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>project_id</design:name>
+              <design:position>29</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>-5</design:nativeDataTypeCode>
+            <design:precision>19</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>NotNullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>project_id</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>project_id</design:label>
+            <design:formattingHints>
+              <design:displaySize>20</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>email</design:name>
+              <design:position>30</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>12</design:nativeDataTypeCode>
+            <design:precision>2147483647</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>Nullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>email</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>email</design:label>
+            <design:formattingHints>
+              <design:displaySize>2147483647</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>knot_year</design:name>
+              <design:position>31</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>4</design:nativeDataTypeCode>
+            <design:precision>10</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>Nullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>knot_year</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>knot_year</design:label>
+            <design:formattingHints>
+              <design:displaySize>11</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>middle_year</design:name>
+              <design:position>32</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>4</design:nativeDataTypeCode>
+            <design:precision>10</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>Nullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>middle_year</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>middle_year</design:label>
+            <design:formattingHints>
+              <design:displaySize>11</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>id</design:name>
+              <design:position>33</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>-5</design:nativeDataTypeCode>
+            <design:precision>19</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>NotNullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>id</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>id</design:label>
+            <design:formattingHints>
+              <design:displaySize>20</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>info_chane_id</design:name>
+              <design:position>34</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>-5</design:nativeDataTypeCode>
+            <design:precision>19</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>NotNullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>info_chane_id</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>info_chane_id</design:label>
+            <design:formattingHints>
+              <design:displaySize>20</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>content</design:name>
+              <design:position>35</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>12</design:nativeDataTypeCode>
+            <design:precision>2147483647</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>Nullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>content</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>content</design:label>
+            <design:formattingHints>
+              <design:displaySize>2147483647</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>key</design:name>
+              <design:position>36</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>12</design:nativeDataTypeCode>
+            <design:precision>2147483647</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>NotNullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>key</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>key</design:label>
+            <design:formattingHints>
+              <design:displaySize>2147483647</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+      </design:resultSetColumns>
+      <design:criteria/>
+    </design:resultSetDefinitions>
+  </design:ResultSets>
+</model:DesignValues>]]></xml-property>
+        </oda-data-set>
+    </data-sets>
+    <styles>
+        <style name="mainStyle" id="5">
+            <property name="fontFamily">"宋体"</property>
+            <property name="fontSize">medium</property>
+            <property name="borderBottomStyle">solid</property>
+            <property name="borderBottomWidth">thin</property>
+            <property name="borderLeftStyle">solid</property>
+            <property name="borderLeftWidth">thin</property>
+            <property name="borderRightStyle">solid</property>
+            <property name="borderRightWidth">thin</property>
+            <property name="borderTopStyle">solid</property>
+            <property name="borderTopWidth">thin</property>
+            <property name="textAlign">center</property>
+            <property name="verticalAlign">middle</property>
+        </style>
+    </styles>
+    <page-setup>
+        <simple-master-page name="Simple MasterPage" id="2">
+            <property name="type">a4</property>
+            <property name="leftMargin">0.75in</property>
+            <property name="rightMargin">0.75in</property>
+            <page-footer>
+                <text id="3">
+                    <property name="contentType">html</property>
+                    <text-property name="content"><![CDATA[<value-of>new Date()</value-of>]]></text-property>
+                </text>
+            </page-footer>
+        </simple-master-page>
+    </page-setup>
+    <body>
+        <label id="4">
+            <property name="fontFamily">"宋体"</property>
+            <property name="fontSize">large</property>
+            <property name="fontWeight">bold</property>
+            <property name="marginBottom">0em</property>
+            <property name="paddingBottom">1pt</property>
+            <property name="textAlign">center</property>
+            <text-property name="text">北京师范大学珠海分校质量工程项目重要事项变更审批表</text-property>
+        </label>
+        <text id="228">
+            <property name="contentType">auto</property>
+            <text-property name="content"><![CDATA[ ]]></text-property>
+        </text>
+        <grid id="76">
+            <property name="height">6.020833333333333in</property>
+            <column id="77"/>
+            <column id="78"/>
+            <column id="79"/>
+            <column id="80"/>
+            <column id="81"/>
+            <column id="82"/>
+            <row id="83">
+                <property name="height">0.98cm</property>
+                <cell id="84">
+                    <property name="style">mainStyle</property>
+                    <label id="174">
+                        <text-property name="text">项目名称</text-property>
+                    </label>
+                </cell>
+                <cell id="85">
+                    <property name="colSpan">5</property>
+                    <property name="rowSpan">1</property>
+                    <property name="style">mainStyle</property>
+                    <data id="213">
+                        <property name="dataSet">info-change</property>
+                        <list-property name="boundDataColumns">
+                            <structure>
+                                <property name="name">project_name</property>
+                                <text-property name="displayName">project_name</text-property>
+                                <expression name="expression" type="javascript">dataSetRow["project_name"]</expression>
+                                <property name="dataType">string</property>
+                            </structure>
+                        </list-property>
+                        <property name="resultSetColumn">project_name</property>
+                    </data>
+                </cell>
+            </row>
+            <row id="90">
+                <property name="height">0.98cm</property>
+                <cell id="91">
+                    <property name="colSpan">2</property>
+                    <property name="rowSpan">1</property>
+                    <property name="style">mainStyle</property>
+                    <label id="175">
+                        <text-property name="text">项目编号</text-property>
+                    </label>
+                </cell>
+                <cell id="93">
+                    <property name="colSpan">2</property>
+                    <property name="rowSpan">1</property>
+                    <property name="style">mainStyle</property>
+                    <label id="176">
+                        <text-property name="text">项目类型</text-property>
+                    </label>
+                </cell>
+                <cell id="95">
+                    <property name="colSpan">2</property>
+                    <property name="rowSpan">1</property>
+                    <property name="style">mainStyle</property>
+                    <label id="177">
+                        <text-property name="text">项目等级</text-property>
+                    </label>
+                </cell>
+            </row>
+            <row id="97">
+                <property name="height">0.98cm</property>
+                <cell id="98">
+                    <property name="colSpan">2</property>
+                    <property name="rowSpan">1</property>
+                    <property name="style">mainStyle</property>
+                    <data id="191">
+                        <property name="dataSet">info-change</property>
+                        <list-property name="boundDataColumns">
+                            <structure>
+                                <property name="name">code</property>
+                                <text-property name="displayName">code</text-property>
+                                <expression name="expression" type="javascript">dataSetRow["code"]</expression>
+                                <property name="dataType">string</property>
+                            </structure>
+                        </list-property>
+                        <property name="resultSetColumn">code</property>
+                    </data>
+                </cell>
+                <cell id="100">
+                    <property name="colSpan">2</property>
+                    <property name="rowSpan">1</property>
+                    <property name="style">mainStyle</property>
+                    <data id="192">
+                        <property name="dataSet">info-change</property>
+                        <list-property name="boundDataColumns">
+                            <structure>
+                                <property name="name">project_type</property>
+                                <text-property name="displayName">project_type</text-property>
+                                <expression name="expression" type="javascript">dataSetRow["project_type"]</expression>
+                                <property name="dataType">string</property>
+                            </structure>
+                        </list-property>
+                        <property name="resultSetColumn">project_type</property>
+                    </data>
+                </cell>
+                <cell id="102">
+                    <property name="colSpan">2</property>
+                    <property name="rowSpan">1</property>
+                    <property name="style">mainStyle</property>
+                    <data id="214">
+                        <property name="dataSet">info-change</property>
+                        <list-property name="boundDataColumns">
+                            <structure>
+                                <property name="name">_level</property>
+                                <text-property name="displayName">_level</text-property>
+                                <expression name="expression" type="javascript">dataSetRow["_level"]</expression>
+                                <property name="dataType">string</property>
+                            </structure>
+                        </list-property>
+                        <property name="resultSetColumn">_level</property>
+                    </data>
+                </cell>
+            </row>
+            <row id="104">
+                <property name="height">0.98cm</property>
+                <cell id="105">
+                    <property name="style">mainStyle</property>
+                    <label id="178">
+                        <text-property name="text">变更事项</text-property>
+                    </label>
+                </cell>
+                <cell id="106">
+                    <property name="colSpan">5</property>
+                    <property name="rowSpan">1</property>
+                    <property name="style">mainStyle</property>
+                    <data id="194">
+                        <property name="dataSet">info-change</property>
+                        <list-property name="boundDataColumns">
+                            <structure>
+                                <property name="name">_change_types</property>
+                                <text-property name="displayName">_change_types</text-property>
+                                <expression name="expression" type="javascript">dataSetRow["_change_types"]</expression>
+                                <property name="dataType">string</property>
+                            </structure>
+                        </list-property>
+                        <property name="resultSetColumn">_change_types</property>
+                    </data>
+                </cell>
+            </row>
+            <row id="111">
+                <property name="height">0.98cm</property>
+                <cell id="112">
+                    <property name="colSpan">3</property>
+                    <property name="rowSpan">1</property>
+                    <property name="style">mainStyle</property>
+                    <label id="179">
+                        <text-property name="text">原项目信息</text-property>
+                    </label>
+                </cell>
+                <cell id="115">
+                    <property name="colSpan">3</property>
+                    <property name="rowSpan">1</property>
+                    <property name="style">mainStyle</property>
+                    <label id="180">
+                        <text-property name="text">变更后信息</text-property>
+                    </label>
+                </cell>
+            </row>
+            <row id="118">
+                <cell id="119">
+                    <property name="colSpan">3</property>
+                    <property name="rowSpan">1</property>
+                    <property name="style">mainStyle</property>
+                    <data id="208">
+                        <property name="dataSet">info-change</property>
+                        <list-property name="boundDataColumns">
+                            <structure>
+                                <property name="name">_principal_o</property>
+                                <text-property name="displayName">_principal_o</text-property>
+                                <expression name="expression" type="javascript">dataSetRow["_principal_o"]</expression>
+                                <property name="dataType">string</property>
+                            </structure>
+                        </list-property>
+                        <property name="resultSetColumn">_principal_o</property>
+                    </data>
+                    <data id="216">
+                        <property name="dataSet">info-change</property>
+                        <list-property name="boundDataColumns">
+                            <structure>
+                                <property name="name">_middle_year_o</property>
+                                <text-property name="displayName">_middle_year_o</text-property>
+                                <expression name="expression" type="javascript">dataSetRow["_middle_year_o"]</expression>
+                                <property name="dataType">string</property>
+                            </structure>
+                        </list-property>
+                        <property name="resultSetColumn">_middle_year_o</property>
+                    </data>
+                    <data id="218">
+                        <property name="dataSet">info-change</property>
+                        <list-property name="boundDataColumns">
+                            <structure>
+                                <property name="name">_knot_year_o</property>
+                                <text-property name="displayName">_knot_year_o</text-property>
+                                <expression name="expression" type="javascript">dataSetRow["_knot_year_o"]</expression>
+                                <property name="dataType">string</property>
+                            </structure>
+                        </list-property>
+                        <property name="resultSetColumn">_knot_year_o</property>
+                    </data>
+                    <data id="220">
+                        <property name="dataSet">info-change</property>
+                        <list-property name="boundDataColumns">
+                            <structure>
+                                <property name="name">_name_o</property>
+                                <text-property name="displayName">_name_o</text-property>
+                                <expression name="expression" type="javascript">dataSetRow["_name_o"]</expression>
+                                <property name="dataType">string</property>
+                            </structure>
+                        </list-property>
+                        <property name="resultSetColumn">_name_o</property>
+                    </data>
+                    <data id="222">
+                        <property name="dataSet">info-change</property>
+                        <list-property name="boundDataColumns">
+                            <structure>
+                                <property name="name">_gain_o</property>
+                                <text-property name="displayName">_gain_o</text-property>
+                                <expression name="expression" type="javascript">dataSetRow["_gain_o"]</expression>
+                                <property name="dataType">string</property>
+                            </structure>
+                        </list-property>
+                        <property name="resultSetColumn">_gain_o</property>
+                    </data>
+                    <data id="224">
+                        <property name="dataSet">info-change</property>
+                        <list-property name="boundDataColumns">
+                            <structure>
+                                <property name="name">_members_o</property>
+                                <text-property name="displayName">_members_o</text-property>
+                                <expression name="expression" type="javascript">dataSetRow["_members_o"]</expression>
+                                <property name="dataType">string</property>
+                            </structure>
+                        </list-property>
+                        <property name="resultSetColumn">_members_o</property>
+                    </data>
+                    <data id="227">
+                        <property name="dataSet">info-change</property>
+                        <list-property name="boundDataColumns">
+                            <structure>
+                                <property name="name">_other</property>
+                                <text-property name="displayName">_other</text-property>
+                                <expression name="expression" type="javascript">dataSetRow["_other"]</expression>
+                                <property name="dataType">string</property>
+                            </structure>
+                        </list-property>
+                        <property name="resultSetColumn">_other</property>
+                    </data>
+                </cell>
+                <cell id="122">
+                    <property name="colSpan">3</property>
+                    <property name="rowSpan">1</property>
+                    <property name="style">mainStyle</property>
+                    <data id="209">
+                        <property name="dataSet">info-change</property>
+                        <list-property name="boundDataColumns">
+                            <structure>
+                                <property name="name">_principal_n</property>
+                                <text-property name="displayName">_principal_n</text-property>
+                                <expression name="expression" type="javascript">dataSetRow["_principal_n"]</expression>
+                                <property name="dataType">string</property>
+                            </structure>
+                        </list-property>
+                        <property name="resultSetColumn">_principal_n</property>
+                    </data>
+                    <data id="217">
+                        <property name="dataSet">info-change</property>
+                        <list-property name="boundDataColumns">
+                            <structure>
+                                <property name="name">_middle_year_n</property>
+                                <text-property name="displayName">_middle_year_n</text-property>
+                                <expression name="expression" type="javascript">dataSetRow["_middle_year_n"]</expression>
+                                <property name="dataType">string</property>
+                            </structure>
+                        </list-property>
+                        <property name="resultSetColumn">_middle_year_n</property>
+                    </data>
+                    <data id="219">
+                        <property name="dataSet">info-change</property>
+                        <list-property name="boundDataColumns">
+                            <structure>
+                                <property name="name">_knot_year_n</property>
+                                <text-property name="displayName">_knot_year_n</text-property>
+                                <expression name="expression" type="javascript">dataSetRow["_knot_year_n"]</expression>
+                                <property name="dataType">string</property>
+                            </structure>
+                        </list-property>
+                        <property name="resultSetColumn">_knot_year_n</property>
+                    </data>
+                    <data id="221">
+                        <property name="dataSet">info-change</property>
+                        <list-property name="boundDataColumns">
+                            <structure>
+                                <property name="name">_name_n</property>
+                                <text-property name="displayName">_name_n</text-property>
+                                <expression name="expression" type="javascript">dataSetRow["_name_n"]</expression>
+                                <property name="dataType">string</property>
+                            </structure>
+                        </list-property>
+                        <property name="resultSetColumn">_name_n</property>
+                    </data>
+                    <data id="223">
+                        <property name="dataSet">info-change</property>
+                        <list-property name="boundDataColumns">
+                            <structure>
+                                <property name="name">_gain_n</property>
+                                <text-property name="displayName">_gain_n</text-property>
+                                <expression name="expression" type="javascript">dataSetRow["_gain_n"]</expression>
+                                <property name="dataType">string</property>
+                            </structure>
+                        </list-property>
+                        <property name="resultSetColumn">_gain_n</property>
+                    </data>
+                    <data id="225">
+                        <property name="dataSet">info-change</property>
+                        <list-property name="boundDataColumns">
+                            <structure>
+                                <property name="name">_members_n</property>
+                                <text-property name="displayName">_members_n</text-property>
+                                <expression name="expression" type="javascript">dataSetRow["_members_n"]</expression>
+                                <property name="dataType">string</property>
+                            </structure>
+                        </list-property>
+                        <property name="resultSetColumn">_members_n</property>
+                    </data>
+                    <data id="226">
+                        <property name="dataSet">info-change</property>
+                        <list-property name="boundDataColumns">
+                            <structure>
+                                <property name="name">_other</property>
+                                <text-property name="displayName">_other</text-property>
+                                <expression name="expression" type="javascript">dataSetRow["_other"]</expression>
+                                <property name="dataType">string</property>
+                            </structure>
+                        </list-property>
+                        <property name="resultSetColumn">_other</property>
+                    </data>
+                </cell>
+            </row>
+            <row id="125">
+                <cell id="126">
+                    <property name="colSpan">6</property>
+                    <property name="rowSpan">1</property>
+                    <property name="style">mainStyle</property>
+                    <property name="textAlign">left</property>
+                    <property name="verticalAlign">top</property>
+                    <label id="182">
+                        <property name="textAlign">left</property>
+                        <text-property name="text">变更事由：</text-property>
+                    </label>
+                    <data id="215">
+                        <property name="dataSet">info-change</property>
+                        <list-property name="boundDataColumns">
+                            <structure>
+                                <property name="name">reason</property>
+                                <text-property name="displayName">reason</text-property>
+                                <expression name="expression" type="javascript">dataSetRow["reason"]</expression>
+                                <property name="dataType">string</property>
+                            </structure>
+                        </list-property>
+                        <property name="resultSetColumn">reason</property>
+                    </data>
+                    <text id="212">
+                        <property name="textAlign">center</property>
+                        <property name="contentType">auto</property>
+                        <text-property name="content"><![CDATA[
+
+                     项目负责人（签章）
+                            年  月  日]]></text-property>
+                    </text>
+                </cell>
+            </row>
+            <row id="132">
+                <property name="height">3.7835416666666664cm</property>
+                <cell id="133">
+                    <property name="colSpan">3</property>
+                    <property name="rowSpan">1</property>
+                    <property name="style">mainStyle</property>
+                    <property name="verticalAlign">bottom</property>
+                    <text id="185">
+                        <property name="contentType">auto</property>
+                        <text-property name="content"><![CDATA[项目所在单位盖章
+  年   月   日
+  ]]></text-property>
+                    </text>
+                </cell>
+                <cell id="136">
+                    <property name="colSpan">3</property>
+                    <property name="rowSpan">1</property>
+                    <property name="style">mainStyle</property>
+                    <property name="verticalAlign">bottom</property>
+                    <text id="186">
+                        <property name="contentType">auto</property>
+                        <text-property name="content"><![CDATA[       教务处盖章
+         年   月   日
+  ]]></text-property>
+                    </text>
+                </cell>
+            </row>
+        </grid>
+    </body>
+</report>

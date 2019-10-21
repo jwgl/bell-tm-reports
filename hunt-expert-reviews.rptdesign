@@ -115,10 +115,28 @@
                     <text-property name="heading">y</text-property>
                 </structure>
                 <structure>
-                    <property name="columnName">expert_reviews</property>
+                    <property name="columnName">expert_ok</property>
                     <property name="analysis">dimension</property>
-                    <text-property name="displayName">expert_reviews</text-property>
-                    <text-property name="heading">expert_reviews</text-property>
+                    <text-property name="displayName">expert_ok</text-property>
+                    <text-property name="heading">expert_ok</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">expert_veto</property>
+                    <property name="analysis">dimension</property>
+                    <text-property name="displayName">expert_veto</text-property>
+                    <text-property name="heading">expert_veto</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">expert_waiver</property>
+                    <property name="analysis">dimension</property>
+                    <text-property name="displayName">expert_waiver</text-property>
+                    <text-property name="heading">expert_waiver</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">expert_null</property>
+                    <property name="analysis">dimension</property>
+                    <text-property name="displayName">expert_null</text-property>
+                    <text-property name="heading">expert_null</text-property>
                 </structure>
                 <structure>
                     <property name="columnName">agv_score</property>
@@ -218,46 +236,61 @@
                     </structure>
                     <structure>
                         <property name="position">10</property>
-                        <property name="name">expert_reviews</property>
+                        <property name="name">expert_ok</property>
                         <property name="dataType">string</property>
                     </structure>
                     <structure>
                         <property name="position">11</property>
+                        <property name="name">expert_veto</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">12</property>
+                        <property name="name">expert_waiver</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">13</property>
+                        <property name="name">expert_null</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">14</property>
                         <property name="name">agv_score</property>
                         <property name="dataType">decimal</property>
                     </structure>
                     <structure>
-                        <property name="position">12</property>
+                        <property name="position">15</property>
                         <property name="name">count_ok</property>
                         <property name="dataType">decimal</property>
                     </structure>
                     <structure>
-                        <property name="position">13</property>
+                        <property name="position">16</property>
                         <property name="name">count_veto</property>
                         <property name="dataType">decimal</property>
                     </structure>
                     <structure>
-                        <property name="position">14</property>
+                        <property name="position">17</property>
                         <property name="name">count_waiver</property>
                         <property name="dataType">decimal</property>
                     </structure>
                     <structure>
-                        <property name="position">15</property>
+                        <property name="position">18</property>
                         <property name="name">count_null</property>
                         <property name="dataType">decimal</property>
                     </structure>
                     <structure>
-                        <property name="position">16</property>
+                        <property name="position">19</property>
                         <property name="name">total_score</property>
                         <property name="dataType">decimal</property>
                     </structure>
                     <structure>
-                        <property name="position">17</property>
+                        <property name="position">20</property>
                         <property name="name">_title</property>
                         <property name="dataType">string</property>
                     </structure>
                     <structure>
-                        <property name="position">18</property>
+                        <property name="position">21</property>
                         <property name="name">_level</property>
                         <property name="dataType">string</property>
                     </structure>
@@ -330,48 +363,69 @@
                 </structure>
                 <structure>
                     <property name="position">10</property>
-                    <property name="name">expert_reviews</property>
-                    <property name="nativeName">expert_reviews</property>
+                    <property name="name">expert_ok</property>
+                    <property name="nativeName">expert_ok</property>
                     <property name="dataType">string</property>
                     <property name="nativeDataType">12</property>
                 </structure>
                 <structure>
                     <property name="position">11</property>
+                    <property name="name">expert_veto</property>
+                    <property name="nativeName">expert_veto</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">12</property>
+                </structure>
+                <structure>
+                    <property name="position">12</property>
+                    <property name="name">expert_waiver</property>
+                    <property name="nativeName">expert_waiver</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">12</property>
+                </structure>
+                <structure>
+                    <property name="position">13</property>
+                    <property name="name">expert_null</property>
+                    <property name="nativeName">expert_null</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">12</property>
+                </structure>
+                <structure>
+                    <property name="position">14</property>
                     <property name="name">agv_score</property>
                     <property name="nativeName">agv_score</property>
                     <property name="dataType">decimal</property>
                     <property name="nativeDataType">2</property>
                 </structure>
                 <structure>
-                    <property name="position">12</property>
+                    <property name="position">15</property>
                     <property name="name">count_ok</property>
                     <property name="nativeName">count_ok</property>
                     <property name="dataType">decimal</property>
                     <property name="nativeDataType">-5</property>
                 </structure>
                 <structure>
-                    <property name="position">13</property>
+                    <property name="position">16</property>
                     <property name="name">count_veto</property>
                     <property name="nativeName">count_veto</property>
                     <property name="dataType">decimal</property>
                     <property name="nativeDataType">-5</property>
                 </structure>
                 <structure>
-                    <property name="position">14</property>
+                    <property name="position">17</property>
                     <property name="name">count_waiver</property>
                     <property name="nativeName">count_waiver</property>
                     <property name="dataType">decimal</property>
                     <property name="nativeDataType">-5</property>
                 </structure>
                 <structure>
-                    <property name="position">15</property>
+                    <property name="position">18</property>
                     <property name="name">count_null</property>
                     <property name="nativeName">count_null</property>
                     <property name="dataType">decimal</property>
                     <property name="nativeDataType">-5</property>
                 </structure>
                 <structure>
-                    <property name="position">16</property>
+                    <property name="position">19</property>
                     <property name="name">total_score</property>
                     <property name="nativeName">total_score</property>
                     <property name="dataType">decimal</property>
@@ -388,9 +442,12 @@
     p_t.name as parent_type,
     d.name as department_name,
     to_char(r_t.date_created, 'yyyy') as y,
-    array_to_string(array_agg(concat(ert.name, ':[', er.opinion, ']')), ';', '*') as expert_reviews,
-    round (sum (case when er.date_reviewed is not null and er.conclusion != '弃权' then er.value end)/
-        sum (case when er.date_reviewed is not null and er.conclusion != '弃权' then 1 else 0 end)::numeric, 2) as agv_score,
+    array_to_string(array_agg(concat(ert.name, ':[', er.opinion, ']')) filter (where er.conclusion = '同意'), ';', '*') as expert_ok,
+    array_to_string(array_agg(concat(ert.name, ':[', er.opinion, ']')) filter (where er.conclusion = '不同意'), ';', '*') as expert_veto,
+    array_to_string(array_agg(ert.name) filter (where er.conclusion = '弃权'), ';', '*') as expert_waiver,
+    array_to_string(array_agg(ert.name) filter (where er.date_reviewed is null), ';', '*') as expert_null,
+    round (sum (case when er.date_reviewed is not null and er.value <> 0 and er.conclusion <> '弃权' then er.value end)/
+        sum (case when er.date_reviewed is not null and er.value <> 0 and er.conclusion <> '弃权' then 1 else 0 end)::numeric, 2) as agv_score,
     sum (case when er.date_reviewed is not null and er.conclusion = '同意' then 1 else 0 end) as count_ok,
     sum (case when er.date_reviewed is not null and er.conclusion = '不同意' then 1 else 0 end) as count_veto,
     sum (case when er.date_reviewed is not null and er.conclusion = '弃权' then 1 else 0 end) as count_waiver,
@@ -674,15 +731,33 @@ order by s.name, p.name;]]></xml-property>
                     <property name="dataType">float</property>
                 </structure>
                 <structure>
-                    <property name="name">expert_reviews</property>
-                    <text-property name="displayName">expert_reviews</text-property>
-                    <expression name="expression" type="javascript">dataSetRow["expert_reviews"]</expression>
-                    <property name="dataType">string</property>
-                </structure>
-                <structure>
                     <property name="name">_level</property>
                     <text-property name="displayName">_level</text-property>
                     <expression name="expression" type="javascript">dataSetRow["_level"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">expert_ok</property>
+                    <text-property name="displayName">expert_ok</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["expert_ok"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">expert_veto</property>
+                    <text-property name="displayName">expert_veto</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["expert_veto"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">expert_waiver</property>
+                    <text-property name="displayName">expert_waiver</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["expert_waiver"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">expert_null</property>
+                    <text-property name="displayName">expert_null</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["expert_null"]</expression>
                     <property name="dataType">string</property>
                 </structure>
             </list-property>
@@ -702,11 +777,14 @@ order by s.name, p.name;]]></xml-property>
             <column id="326"/>
             <column id="321"/>
             <column id="304"/>
+            <column id="411"/>
+            <column id="406"/>
+            <column id="401"/>
             <header>
                 <row id="380">
                     <property name="height">0.475in</property>
                     <cell id="381">
-                        <property name="colSpan">15</property>
+                        <property name="colSpan">18</property>
                         <property name="rowSpan">1</property>
                         <data id="114">
                             <property name="fontSize">14pt</property>
@@ -1142,7 +1220,58 @@ order by s.name, p.name;]]></xml-property>
                         <property name="borderTopStyle">solid</property>
                         <property name="borderTopWidth">thin</property>
                         <label id="314">
-                            <text-property name="text">专家意见</text-property>
+                            <text-property name="text">同意意见</text-property>
+                        </label>
+                    </cell>
+                    <cell id="408">
+                        <property name="borderBottomColor">#000000</property>
+                        <property name="borderBottomStyle">solid</property>
+                        <property name="borderBottomWidth">thin</property>
+                        <property name="borderLeftColor">#000000</property>
+                        <property name="borderLeftStyle">solid</property>
+                        <property name="borderLeftWidth">thin</property>
+                        <property name="borderRightColor">#000000</property>
+                        <property name="borderRightStyle">solid</property>
+                        <property name="borderRightWidth">thin</property>
+                        <property name="borderTopColor">#000000</property>
+                        <property name="borderTopStyle">solid</property>
+                        <property name="borderTopWidth">thin</property>
+                        <label id="412">
+                            <text-property name="text">不同意意见</text-property>
+                        </label>
+                    </cell>
+                    <cell id="403">
+                        <property name="borderBottomColor">#000000</property>
+                        <property name="borderBottomStyle">solid</property>
+                        <property name="borderBottomWidth">thin</property>
+                        <property name="borderLeftColor">#000000</property>
+                        <property name="borderLeftStyle">solid</property>
+                        <property name="borderLeftWidth">thin</property>
+                        <property name="borderRightColor">#000000</property>
+                        <property name="borderRightStyle">solid</property>
+                        <property name="borderRightWidth">thin</property>
+                        <property name="borderTopColor">#000000</property>
+                        <property name="borderTopStyle">solid</property>
+                        <property name="borderTopWidth">thin</property>
+                        <label id="413">
+                            <text-property name="text">弃权评委</text-property>
+                        </label>
+                    </cell>
+                    <cell id="398">
+                        <property name="borderBottomColor">#000000</property>
+                        <property name="borderBottomStyle">solid</property>
+                        <property name="borderBottomWidth">thin</property>
+                        <property name="borderLeftColor">#000000</property>
+                        <property name="borderLeftStyle">solid</property>
+                        <property name="borderLeftWidth">thin</property>
+                        <property name="borderRightColor">#000000</property>
+                        <property name="borderRightStyle">solid</property>
+                        <property name="borderRightWidth">thin</property>
+                        <property name="borderTopColor">#000000</property>
+                        <property name="borderTopStyle">solid</property>
+                        <property name="borderTopWidth">thin</property>
+                        <label id="414">
+                            <text-property name="text">未评评委</text-property>
                         </label>
                     </cell>
                 </row>
@@ -1445,8 +1574,59 @@ order by s.name, p.name;]]></xml-property>
                         <property name="borderTopColor">#000000</property>
                         <property name="borderTopStyle">solid</property>
                         <property name="borderTopWidth">thin</property>
-                        <data id="347">
-                            <property name="resultSetColumn">expert_reviews</property>
+                        <data id="415">
+                            <property name="resultSetColumn">expert_ok</property>
+                        </data>
+                    </cell>
+                    <cell id="409">
+                        <property name="borderBottomColor">#000000</property>
+                        <property name="borderBottomStyle">solid</property>
+                        <property name="borderBottomWidth">thin</property>
+                        <property name="borderLeftColor">#000000</property>
+                        <property name="borderLeftStyle">solid</property>
+                        <property name="borderLeftWidth">thin</property>
+                        <property name="borderRightColor">#000000</property>
+                        <property name="borderRightStyle">solid</property>
+                        <property name="borderRightWidth">thin</property>
+                        <property name="borderTopColor">#000000</property>
+                        <property name="borderTopStyle">solid</property>
+                        <property name="borderTopWidth">thin</property>
+                        <data id="416">
+                            <property name="resultSetColumn">expert_veto</property>
+                        </data>
+                    </cell>
+                    <cell id="404">
+                        <property name="borderBottomColor">#000000</property>
+                        <property name="borderBottomStyle">solid</property>
+                        <property name="borderBottomWidth">thin</property>
+                        <property name="borderLeftColor">#000000</property>
+                        <property name="borderLeftStyle">solid</property>
+                        <property name="borderLeftWidth">thin</property>
+                        <property name="borderRightColor">#000000</property>
+                        <property name="borderRightStyle">solid</property>
+                        <property name="borderRightWidth">thin</property>
+                        <property name="borderTopColor">#000000</property>
+                        <property name="borderTopStyle">solid</property>
+                        <property name="borderTopWidth">thin</property>
+                        <data id="417">
+                            <property name="resultSetColumn">expert_waiver</property>
+                        </data>
+                    </cell>
+                    <cell id="399">
+                        <property name="borderBottomColor">#000000</property>
+                        <property name="borderBottomStyle">solid</property>
+                        <property name="borderBottomWidth">thin</property>
+                        <property name="borderLeftColor">#000000</property>
+                        <property name="borderLeftStyle">solid</property>
+                        <property name="borderLeftWidth">thin</property>
+                        <property name="borderRightColor">#000000</property>
+                        <property name="borderRightStyle">solid</property>
+                        <property name="borderRightWidth">thin</property>
+                        <property name="borderTopColor">#000000</property>
+                        <property name="borderTopStyle">solid</property>
+                        <property name="borderTopWidth">thin</property>
+                        <data id="418">
+                            <property name="resultSetColumn">expert_null</property>
                         </data>
                     </cell>
                 </row>
@@ -1468,6 +1648,9 @@ order by s.name, p.name;]]></xml-property>
                     <cell id="325"/>
                     <cell id="320"/>
                     <cell id="303"/>
+                    <cell id="410"/>
+                    <cell id="405"/>
+                    <cell id="400"/>
                 </row>
             </footer>
         </table>
