@@ -1,0 +1,2126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<report xmlns="http://www.eclipse.org/birt/2005/design" version="3.2.23" id="1">
+    <property name="createdBy">Eclipse BIRT Designer Version 4.6.0.v201606072122</property>
+    <property name="units">in</property>
+    <property name="iconFile">/templates/blank_report.gif</property>
+    <property name="bidiLayoutOrientation">ltr</property>
+    <property name="imageDPI">96</property>
+    <parameters>
+        <scalar-parameter name="xn" id="6">
+            <property name="valueType">static</property>
+            <property name="isRequired">true</property>
+            <property name="dataType">string</property>
+            <property name="distinct">true</property>
+            <simple-property-list name="defaultValue">
+                <value type="constant">2020-2021</value>
+            </simple-property-list>
+            <list-property name="selectionList"/>
+            <property name="paramType">simple</property>
+            <property name="concealValue">false</property>
+            <property name="controlType">text-box</property>
+            <structure name="format">
+                <property name="category">Unformatted</property>
+            </structure>
+        </scalar-parameter>
+        <scalar-parameter name="xq" id="7">
+            <property name="valueType">static</property>
+            <property name="isRequired">true</property>
+            <property name="dataType">integer</property>
+            <property name="distinct">true</property>
+            <simple-property-list name="defaultValue">
+                <value type="constant">2</value>
+            </simple-property-list>
+            <list-property name="selectionList"/>
+            <property name="paramType">simple</property>
+            <property name="concealValue">false</property>
+            <property name="controlType">text-box</property>
+            <structure name="format">
+                <property name="category">Unformatted</property>
+            </structure>
+        </scalar-parameter>
+        <scalar-parameter name="department_name" id="8">
+            <property name="valueType">static</property>
+            <property name="isRequired">true</property>
+            <property name="dataType">string</property>
+            <property name="distinct">true</property>
+            <simple-property-list name="defaultValue">
+                <value type="constant">国际商学部</value>
+            </simple-property-list>
+            <list-property name="selectionList"/>
+            <property name="paramType">simple</property>
+            <property name="concealValue">false</property>
+            <property name="controlType">text-box</property>
+            <structure name="format">
+                <property name="category">Unformatted</property>
+            </structure>
+        </scalar-parameter>
+    </parameters>
+    <data-sources>
+        <oda-data-source extensionID="org.eclipse.birt.report.data.oda.jdbc" name="Data Source" id="4">
+            <list-property name="privateDriverProperties">
+                <ex-property>
+                    <name>metadataBidiFormatStr</name>
+                    <value>ILYNN</value>
+                </ex-property>
+                <ex-property>
+                    <name>disabledMetadataBidiFormatStr</name>
+                </ex-property>
+                <ex-property>
+                    <name>contentBidiFormatStr</name>
+                    <value>ILYNN</value>
+                </ex-property>
+                <ex-property>
+                    <name>disabledContentBidiFormatStr</name>
+                </ex-property>
+            </list-property>
+            <property name="odaDriverClass">org.postgresql.Driver</property>
+            <property name="odaURL">jdbc:postgresql://localhost:5432/bell</property>
+            <property name="odaUser">tm</property>
+            <encrypted-property name="odaPassword" encryptionID="base64">dG0=</encrypted-property>
+        </oda-data-source>
+    </data-sources>
+    <data-sets>
+        <oda-data-set extensionID="org.eclipse.birt.report.data.oda.jdbc.JdbcSelectDataSet" name="student info" id="5">
+            <list-property name="columnHints">
+                <structure>
+                    <property name="columnName">xn</property>
+                    <property name="analysis">dimension</property>
+                    <text-property name="displayName">xn</text-property>
+                    <text-property name="heading">xn</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">xq</property>
+                    <property name="analysis">measure</property>
+                    <text-property name="displayName">xq</text-property>
+                    <text-property name="heading">xq</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">sex</property>
+                    <property name="analysis">dimension</property>
+                    <text-property name="displayName">sex</text-property>
+                    <text-property name="heading">sex</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">student_id</property>
+                    <property name="analysis">dimension</property>
+                    <text-property name="displayName">student_id</text-property>
+                    <text-property name="heading">student_id</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">student_name</property>
+                    <property name="analysis">dimension</property>
+                    <text-property name="displayName">student_name</text-property>
+                    <text-property name="heading">student_name</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">class_name</property>
+                    <property name="analysis">dimension</property>
+                    <text-property name="displayName">class_name</text-property>
+                    <text-property name="heading">class_name</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">department_old</property>
+                    <property name="analysis">dimension</property>
+                    <text-property name="displayName">department_old</text-property>
+                    <text-property name="heading">department_old</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">department_new</property>
+                    <property name="analysis">dimension</property>
+                    <text-property name="displayName">department_new</text-property>
+                    <text-property name="heading">department_new</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">major_old</property>
+                    <property name="analysis">dimension</property>
+                    <text-property name="displayName">major_old</text-property>
+                    <text-property name="heading">major_old</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">major_new</property>
+                    <property name="analysis">dimension</property>
+                    <text-property name="displayName">major_new</text-property>
+                    <text-property name="heading">major_new</text-property>
+                </structure>
+            </list-property>
+            <list-property name="parameters">
+                <structure>
+                    <property name="name">xn</property>
+                    <property name="paramName">xn</property>
+                    <property name="nativeName"></property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">12</property>
+                    <property name="position">1</property>
+                    <property name="isInput">true</property>
+                    <property name="isOutput">false</property>
+                </structure>
+                <structure>
+                    <property name="name">xq</property>
+                    <property name="paramName">xq</property>
+                    <property name="nativeName"></property>
+                    <property name="dataType">integer</property>
+                    <property name="nativeDataType">4</property>
+                    <property name="position">2</property>
+                    <property name="isInput">true</property>
+                    <property name="isOutput">false</property>
+                </structure>
+                <structure>
+                    <property name="name">department</property>
+                    <property name="paramName">department_name</property>
+                    <property name="nativeName"></property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">12</property>
+                    <property name="position">3</property>
+                    <property name="isInput">true</property>
+                    <property name="isOutput">false</property>
+                </structure>
+            </list-property>
+            <structure name="cachedMetaData">
+                <list-property name="resultSet">
+                    <structure>
+                        <property name="position">1</property>
+                        <property name="name">xn</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">2</property>
+                        <property name="name">xq</property>
+                        <property name="dataType">integer</property>
+                    </structure>
+                    <structure>
+                        <property name="position">3</property>
+                        <property name="name">sex</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">4</property>
+                        <property name="name">student_id</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">5</property>
+                        <property name="name">student_name</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">6</property>
+                        <property name="name">class_name</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">7</property>
+                        <property name="name">department_old</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">8</property>
+                        <property name="name">department_new</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">9</property>
+                        <property name="name">major_old</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">10</property>
+                        <property name="name">major_new</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                </list-property>
+            </structure>
+            <property name="dataSource">Data Source</property>
+            <list-property name="resultSet">
+                <structure>
+                    <property name="position">1</property>
+                    <property name="name">xn</property>
+                    <property name="nativeName">xn</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">12</property>
+                </structure>
+                <structure>
+                    <property name="position">2</property>
+                    <property name="name">xq</property>
+                    <property name="nativeName">xq</property>
+                    <property name="dataType">integer</property>
+                    <property name="nativeDataType">4</property>
+                </structure>
+                <structure>
+                    <property name="position">3</property>
+                    <property name="name">sex</property>
+                    <property name="nativeName">sex</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">12</property>
+                </structure>
+                <structure>
+                    <property name="position">4</property>
+                    <property name="name">student_id</property>
+                    <property name="nativeName">student_id</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">12</property>
+                </structure>
+                <structure>
+                    <property name="position">5</property>
+                    <property name="name">student_name</property>
+                    <property name="nativeName">student_name</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">12</property>
+                </structure>
+                <structure>
+                    <property name="position">6</property>
+                    <property name="name">class_name</property>
+                    <property name="nativeName">class_name</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">12</property>
+                </structure>
+                <structure>
+                    <property name="position">7</property>
+                    <property name="name">department_old</property>
+                    <property name="nativeName">department_old</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">12</property>
+                </structure>
+                <structure>
+                    <property name="position">8</property>
+                    <property name="name">department_new</property>
+                    <property name="nativeName">department_new</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">12</property>
+                </structure>
+                <structure>
+                    <property name="position">9</property>
+                    <property name="name">major_old</property>
+                    <property name="nativeName">major_old</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">12</property>
+                </structure>
+                <structure>
+                    <property name="position">10</property>
+                    <property name="name">major_new</property>
+                    <property name="nativeName">major_new</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">12</property>
+                </structure>
+            </list-property>
+            <xml-property name="queryText"><![CDATA[select
+xn,
+xq,
+sex,
+student_id,
+student_name,
+class_name,
+department_old,
+department_new,
+major_old,
+major_new
+from tm_wx.et_major_switch
+where xn=? and xq=? and department_new=? and (
+  select count(*)
+  from tm_wx.et_score
+  where student_id=et_major_switch.student_id and score_number >=60
+) > 0]]></xml-property>
+            <xml-property name="designerValues"><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
+<model:DesignValues xmlns:design="http://www.eclipse.org/datatools/connectivity/oda/design" xmlns:model="http://www.eclipse.org/birt/report/model/adapter/odaModel">
+  <Version>2.0</Version>
+  <design:ResultSets derivedMetaData="true">
+    <design:resultSetDefinitions>
+      <design:resultSetColumns>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>xn</design:name>
+              <design:position>1</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>12</design:nativeDataTypeCode>
+            <design:precision>9</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>Nullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>xn</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>xn</design:label>
+            <design:formattingHints>
+              <design:displaySize>9</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>xq</design:name>
+              <design:position>2</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>4</design:nativeDataTypeCode>
+            <design:precision>10</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>Nullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>xq</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>xq</design:label>
+            <design:formattingHints>
+              <design:displaySize>11</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>sex</design:name>
+              <design:position>3</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>12</design:nativeDataTypeCode>
+            <design:precision>2</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>Nullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>sex</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>sex</design:label>
+            <design:formattingHints>
+              <design:displaySize>2</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>student_id</design:name>
+              <design:position>4</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>12</design:nativeDataTypeCode>
+            <design:precision>10</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>Nullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>student_id</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>student_id</design:label>
+            <design:formattingHints>
+              <design:displaySize>10</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>student_name</design:name>
+              <design:position>5</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>12</design:nativeDataTypeCode>
+            <design:precision>100</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>Nullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>student_name</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>student_name</design:label>
+            <design:formattingHints>
+              <design:displaySize>100</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>class_name</design:name>
+              <design:position>6</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>12</design:nativeDataTypeCode>
+            <design:precision>100</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>Nullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>class_name</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>class_name</design:label>
+            <design:formattingHints>
+              <design:displaySize>100</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>department_old</design:name>
+              <design:position>7</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>12</design:nativeDataTypeCode>
+            <design:precision>50</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>Nullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>department_old</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>department_old</design:label>
+            <design:formattingHints>
+              <design:displaySize>50</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>department_new</design:name>
+              <design:position>8</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>12</design:nativeDataTypeCode>
+            <design:precision>50</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>Nullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>department_new</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>department_new</design:label>
+            <design:formattingHints>
+              <design:displaySize>50</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>major_old</design:name>
+              <design:position>9</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>12</design:nativeDataTypeCode>
+            <design:precision>100</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>Nullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>major_old</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>major_old</design:label>
+            <design:formattingHints>
+              <design:displaySize>100</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>major_new</design:name>
+              <design:position>10</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>12</design:nativeDataTypeCode>
+            <design:precision>100</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>Nullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>major_new</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>major_new</design:label>
+            <design:formattingHints>
+              <design:displaySize>100</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+      </design:resultSetColumns>
+      <design:criteria/>
+    </design:resultSetDefinitions>
+  </design:ResultSets>
+</model:DesignValues>]]></xml-property>
+        </oda-data-set>
+        <oda-data-set extensionID="org.eclipse.birt.report.data.oda.jdbc.JdbcSelectDataSet" name="scores" id="994">
+            <list-property name="computedColumns">
+                <structure>
+                    <property name="name">_term</property>
+                    <expression name="expression">row["xn"]+"-"+row["xq"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+            </list-property>
+            <list-property name="columnHints">
+                <structure>
+                    <property name="columnName">department_name</property>
+                    <property name="analysis">dimension</property>
+                    <text-property name="displayName">department_name</text-property>
+                    <text-property name="heading">department_name</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">xn</property>
+                    <property name="analysis">dimension</property>
+                    <text-property name="displayName">xn</text-property>
+                    <text-property name="heading">xn</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">xq</property>
+                    <property name="analysis">measure</property>
+                    <text-property name="displayName">xq</text-property>
+                    <text-property name="heading">xq</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">course_id</property>
+                    <property name="analysis">dimension</property>
+                    <text-property name="displayName">course_id</text-property>
+                    <text-property name="heading">course_id</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">student_id</property>
+                    <property name="analysis">dimension</property>
+                    <text-property name="displayName">student_id</text-property>
+                    <text-property name="heading">student_id</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">student_name</property>
+                    <property name="analysis">dimension</property>
+                    <text-property name="displayName">student_name</text-property>
+                    <text-property name="heading">student_name</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">course_name</property>
+                    <property name="analysis">dimension</property>
+                    <text-property name="displayName">course_name</text-property>
+                    <text-property name="heading">course_name</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">credit</property>
+                    <property name="analysis">dimension</property>
+                    <text-property name="displayName">credit</text-property>
+                    <text-property name="heading">credit</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">score</property>
+                    <property name="analysis">dimension</property>
+                    <text-property name="displayName">score</text-property>
+                    <text-property name="heading">score</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">score_number</property>
+                    <property name="analysis">measure</property>
+                    <text-property name="displayName">score_number</text-property>
+                    <text-property name="heading">score_number</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">property</property>
+                    <property name="analysis">dimension</property>
+                    <text-property name="displayName">property</text-property>
+                    <text-property name="heading">property</text-property>
+                </structure>
+            </list-property>
+            <list-property name="parameters">
+                <structure>
+                    <property name="name">param_1</property>
+                    <property name="nativeName"></property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">12</property>
+                    <property name="position">1</property>
+                    <property name="isInput">true</property>
+                </structure>
+            </list-property>
+            <structure name="cachedMetaData">
+                <list-property name="resultSet">
+                    <structure>
+                        <property name="position">1</property>
+                        <property name="name">department_name</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">2</property>
+                        <property name="name">xn</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">3</property>
+                        <property name="name">xq</property>
+                        <property name="dataType">integer</property>
+                    </structure>
+                    <structure>
+                        <property name="position">4</property>
+                        <property name="name">course_id</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">5</property>
+                        <property name="name">student_id</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">6</property>
+                        <property name="name">student_name</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">7</property>
+                        <property name="name">course_name</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">8</property>
+                        <property name="name">credit</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">9</property>
+                        <property name="name">score</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">10</property>
+                        <property name="name">score_number</property>
+                        <property name="dataType">decimal</property>
+                    </structure>
+                    <structure>
+                        <property name="position">11</property>
+                        <property name="name">property</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">12</property>
+                        <property name="name">_term</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                </list-property>
+            </structure>
+            <property name="dataSource">Data Source</property>
+            <list-property name="resultSet">
+                <structure>
+                    <property name="position">1</property>
+                    <property name="name">department_name</property>
+                    <property name="nativeName">department_name</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">12</property>
+                </structure>
+                <structure>
+                    <property name="position">2</property>
+                    <property name="name">xn</property>
+                    <property name="nativeName">xn</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">12</property>
+                </structure>
+                <structure>
+                    <property name="position">3</property>
+                    <property name="name">xq</property>
+                    <property name="nativeName">xq</property>
+                    <property name="dataType">integer</property>
+                    <property name="nativeDataType">4</property>
+                </structure>
+                <structure>
+                    <property name="position">4</property>
+                    <property name="name">course_id</property>
+                    <property name="nativeName">course_id</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">12</property>
+                </structure>
+                <structure>
+                    <property name="position">5</property>
+                    <property name="name">student_id</property>
+                    <property name="nativeName">student_id</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">12</property>
+                </structure>
+                <structure>
+                    <property name="position">6</property>
+                    <property name="name">student_name</property>
+                    <property name="nativeName">student_name</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">12</property>
+                </structure>
+                <structure>
+                    <property name="position">7</property>
+                    <property name="name">course_name</property>
+                    <property name="nativeName">course_name</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">12</property>
+                </structure>
+                <structure>
+                    <property name="position">8</property>
+                    <property name="name">credit</property>
+                    <property name="nativeName">credit</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">12</property>
+                </structure>
+                <structure>
+                    <property name="position">9</property>
+                    <property name="name">score</property>
+                    <property name="nativeName">score</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">12</property>
+                </structure>
+                <structure>
+                    <property name="position">10</property>
+                    <property name="name">score_number</property>
+                    <property name="nativeName">score_number</property>
+                    <property name="dataType">decimal</property>
+                    <property name="nativeDataType">2</property>
+                </structure>
+                <structure>
+                    <property name="position">11</property>
+                    <property name="name">property</property>
+                    <property name="nativeName">property</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">12</property>
+                </structure>
+            </list-property>
+            <xml-property name="queryText"><![CDATA[select 
+department_name,
+xn,
+xq,
+course_id,
+student_id,
+student_name,
+course_name,
+credit,
+score,
+score_number,
+property
+from tm_wx.et_score
+where student_id=? and score_number >=60
+and property not like '%辅修%'
+and property not like '%双学位%'
+order by xn,xq
+]]></xml-property>
+            <xml-property name="designerValues"><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
+<model:DesignValues xmlns:design="http://www.eclipse.org/datatools/connectivity/oda/design" xmlns:model="http://www.eclipse.org/birt/report/model/adapter/odaModel">
+  <Version>2.0</Version>
+  <design:ResultSets derivedMetaData="true">
+    <design:resultSetDefinitions>
+      <design:resultSetColumns>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>department_name</design:name>
+              <design:position>1</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>12</design:nativeDataTypeCode>
+            <design:precision>50</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>Nullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>department_name</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>department_name</design:label>
+            <design:formattingHints>
+              <design:displaySize>50</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>xn</design:name>
+              <design:position>2</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>12</design:nativeDataTypeCode>
+            <design:precision>9</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>Nullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>xn</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>xn</design:label>
+            <design:formattingHints>
+              <design:displaySize>9</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>xq</design:name>
+              <design:position>3</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>4</design:nativeDataTypeCode>
+            <design:precision>10</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>Nullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>xq</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>xq</design:label>
+            <design:formattingHints>
+              <design:displaySize>11</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>course_id</design:name>
+              <design:position>4</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>12</design:nativeDataTypeCode>
+            <design:precision>50</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>Nullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>course_id</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>course_id</design:label>
+            <design:formattingHints>
+              <design:displaySize>50</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>student_id</design:name>
+              <design:position>5</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>12</design:nativeDataTypeCode>
+            <design:precision>10</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>Nullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>student_id</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>student_id</design:label>
+            <design:formattingHints>
+              <design:displaySize>10</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>student_name</design:name>
+              <design:position>6</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>12</design:nativeDataTypeCode>
+            <design:precision>100</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>Nullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>student_name</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>student_name</design:label>
+            <design:formattingHints>
+              <design:displaySize>100</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>course_name</design:name>
+              <design:position>7</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>12</design:nativeDataTypeCode>
+            <design:precision>100</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>Nullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>course_name</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>course_name</design:label>
+            <design:formattingHints>
+              <design:displaySize>100</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>credit</design:name>
+              <design:position>8</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>12</design:nativeDataTypeCode>
+            <design:precision>10</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>Nullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>credit</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>credit</design:label>
+            <design:formattingHints>
+              <design:displaySize>10</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>score</design:name>
+              <design:position>9</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>12</design:nativeDataTypeCode>
+            <design:precision>20</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>Nullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>score</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>score</design:label>
+            <design:formattingHints>
+              <design:displaySize>20</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>score_number</design:name>
+              <design:position>10</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>4</design:nativeDataTypeCode>
+            <design:precision>10</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>Nullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>score_number</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>score_number</design:label>
+            <design:formattingHints>
+              <design:displaySize>11</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+      </design:resultSetColumns>
+      <design:criteria/>
+    </design:resultSetDefinitions>
+  </design:ResultSets>
+</model:DesignValues>]]></xml-property>
+        </oda-data-set>
+    </data-sets>
+    <styles>
+        <style name="mainStyle" id="978">
+            <property name="fontFamily">"宋体"</property>
+            <property name="fontSize">9pt</property>
+            <property name="borderBottomStyle">solid</property>
+            <property name="borderBottomWidth">thin</property>
+            <property name="borderLeftStyle">solid</property>
+            <property name="borderLeftWidth">thin</property>
+            <property name="borderRightStyle">solid</property>
+            <property name="borderRightWidth">thin</property>
+            <property name="borderTopStyle">solid</property>
+            <property name="borderTopWidth">thin</property>
+            <property name="textAlign">center</property>
+            <property name="verticalAlign">middle</property>
+        </style>
+    </styles>
+    <page-setup>
+        <simple-master-page name="Simple MasterPage" id="2">
+            <property name="topMargin">0in</property>
+            <property name="bottomMargin">0.05in</property>
+            <property name="headerHeight">0.25in</property>
+            <page-footer>
+                <text id="3">
+                    <property name="contentType">html</property>
+                    <text-property name="content"><![CDATA[]]></text-property>
+                </text>
+            </page-footer>
+        </simple-master-page>
+    </page-setup>
+    <body>
+        <list id="1198">
+            <property name="dataSet">student info</property>
+            <list-property name="boundDataColumns">
+                <structure>
+                    <property name="name">xn</property>
+                    <text-property name="displayName">xn</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["xn"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">xq</property>
+                    <text-property name="displayName">xq</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["xq"]</expression>
+                    <property name="dataType">integer</property>
+                </structure>
+                <structure>
+                    <property name="name">sex</property>
+                    <text-property name="displayName">sex</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["sex"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">student_id</property>
+                    <text-property name="displayName">student_id</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["student_id"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">student_name</property>
+                    <text-property name="displayName">student_name</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["student_name"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">class_name</property>
+                    <text-property name="displayName">class_name</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["class_name"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">department_old</property>
+                    <text-property name="displayName">department_old</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["department_old"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">department_new</property>
+                    <text-property name="displayName">department_new</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["department_new"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">major_old</property>
+                    <text-property name="displayName">major_old</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["major_old"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">major_new</property>
+                    <text-property name="displayName">major_new</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["major_new"]+"("+dataSetRow["class_name"]+")"</expression>
+                    <property name="dataType">string</property>
+                    <property name="allowExport">true</property>
+                </structure>
+            </list-property>
+            <detail>
+                <label id="979">
+                    <property name="fontFamily">"宋体"</property>
+                    <property name="fontSize">14pt</property>
+                    <property name="fontWeight">bold</property>
+                    <property name="textAlign">center</property>
+                    <text-property name="text">北京师范大学珠海分校转专业学生认定表</text-property>
+                </label>
+                <grid id="908">
+                    <property name="pageBreakAfter">always</property>
+                    <property name="height">9.885416666666666in</property>
+                    <property name="width">7.854166666666667in</property>
+                    <column id="909">
+                        <property name="width">0.9in</property>
+                    </column>
+                    <column id="910">
+                        <property name="width">2.5in</property>
+                    </column>
+                    <column id="911">
+                        <property name="width">0.9in</property>
+                    </column>
+                    <column id="912">
+                        <property name="width">1.3645833333333333in</property>
+                    </column>
+                    <column id="913">
+                        <property name="width">0.9in</property>
+                    </column>
+                    <column id="914">
+                        <property name="width">1.3020833333333333in</property>
+                    </column>
+                    <row id="922">
+                        <cell id="923">
+                            <property name="style">mainStyle</property>
+                            <label id="980">
+                                <text-property name="text">学号</text-property>
+                            </label>
+                        </cell>
+                        <cell id="924">
+                            <property name="style">mainStyle</property>
+                            <data id="987">
+                                <property name="resultSetColumn">student_id</property>
+                            </data>
+                        </cell>
+                        <cell id="925">
+                            <property name="style">mainStyle</property>
+                            <label id="981">
+                                <text-property name="text">姓名</text-property>
+                            </label>
+                        </cell>
+                        <cell id="926">
+                            <property name="style">mainStyle</property>
+                            <data id="988">
+                                <property name="resultSetColumn">student_name</property>
+                            </data>
+                        </cell>
+                        <cell id="927">
+                            <property name="style">mainStyle</property>
+                            <label id="982">
+                                <text-property name="text">性别</text-property>
+                            </label>
+                        </cell>
+                        <cell id="928">
+                            <property name="style">mainStyle</property>
+                            <data id="989">
+                                <property name="resultSetColumn">sex</property>
+                            </data>
+                        </cell>
+                    </row>
+                    <row id="929">
+                        <cell id="930">
+                            <property name="style">mainStyle</property>
+                            <label id="983">
+                                <text-property name="text">原学院</text-property>
+                            </label>
+                        </cell>
+                        <cell id="931">
+                            <property name="style">mainStyle</property>
+                            <data id="990">
+                                <property name="resultSetColumn">department_old</property>
+                            </data>
+                        </cell>
+                        <cell id="932">
+                            <property name="style">mainStyle</property>
+                            <label id="984">
+                                <text-property name="text">转入学院</text-property>
+                            </label>
+                        </cell>
+                        <cell id="933">
+                            <property name="colSpan">3</property>
+                            <property name="rowSpan">1</property>
+                            <property name="style">mainStyle</property>
+                            <data id="991">
+                                <property name="resultSetColumn">department_new</property>
+                            </data>
+                        </cell>
+                    </row>
+                    <row id="936">
+                        <cell id="937">
+                            <property name="style">mainStyle</property>
+                            <label id="985">
+                                <text-property name="text">原专业</text-property>
+                            </label>
+                        </cell>
+                        <cell id="938">
+                            <property name="style">mainStyle</property>
+                            <data id="992">
+                                <property name="resultSetColumn">major_old</property>
+                            </data>
+                        </cell>
+                        <cell id="939">
+                            <property name="style">mainStyle</property>
+                            <label id="986">
+                                <text-property name="text">转入专业</text-property>
+                            </label>
+                        </cell>
+                        <cell id="940">
+                            <property name="colSpan">3</property>
+                            <property name="rowSpan">1</property>
+                            <property name="style">mainStyle</property>
+                            <data id="993">
+                                <property name="resultSetColumn">major_new</property>
+                            </data>
+                        </cell>
+                    </row>
+                    <row id="943">
+                        <property name="verticalAlign">top</property>
+                        <cell id="944">
+                            <property name="colSpan">6</property>
+                            <property name="rowSpan">1</property>
+                            <property name="style">mainStyle</property>
+                            <table id="995">
+                                <property name="dataSet">scores</property>
+                                <list-property name="paramBindings">
+                                    <structure>
+                                        <property name="paramName">param_1</property>
+                                        <simple-property-list name="expression">
+                                            <value type="javascript">row["student_id"]</value>
+                                        </simple-property-list>
+                                    </structure>
+                                </list-property>
+                                <list-property name="boundDataColumns">
+                                    <structure>
+                                        <property name="name">xn</property>
+                                        <text-property name="displayName">xn</text-property>
+                                        <expression name="expression" type="javascript">dataSetRow["xn"]</expression>
+                                        <property name="dataType">string</property>
+                                    </structure>
+                                    <structure>
+                                        <property name="name">xq</property>
+                                        <text-property name="displayName">xq</text-property>
+                                        <expression name="expression" type="javascript">dataSetRow["xq"]</expression>
+                                        <property name="dataType">integer</property>
+                                    </structure>
+                                    <structure>
+                                        <property name="name">course_name</property>
+                                        <text-property name="displayName">course_name</text-property>
+                                        <expression name="expression" type="javascript">dataSetRow["course_name"]</expression>
+                                        <property name="dataType">string</property>
+                                    </structure>
+                                    <structure>
+                                        <property name="name">credit</property>
+                                        <text-property name="displayName">credit</text-property>
+                                        <expression name="expression" type="javascript">dataSetRow["credit"]</expression>
+                                        <property name="dataType">string</property>
+                                    </structure>
+                                    <structure>
+                                        <property name="name">score</property>
+                                        <text-property name="displayName">score</text-property>
+                                        <expression name="expression" type="javascript">dataSetRow["score"]</expression>
+                                        <property name="dataType">string</property>
+                                    </structure>
+                                    <structure>
+                                        <property name="name">_term</property>
+                                        <text-property name="displayName">_term</text-property>
+                                        <expression name="expression" type="javascript">dataSetRow["_term"]</expression>
+                                        <property name="dataType">string</property>
+                                    </structure>
+                                    <structure>
+                                        <property name="name">property</property>
+                                        <text-property name="displayName">property</text-property>
+                                        <expression name="expression" type="javascript">dataSetRow["property"]</expression>
+                                        <property name="dataType">string</property>
+                                    </structure>
+                                </list-property>
+                                <property name="pageBreakInterval">999</property>
+                                <column id="1024"/>
+                                <column id="1026"/>
+                                <column id="1064"/>
+                                <column id="1027">
+                                    <property name="width">2.5em</property>
+                                </column>
+                                <column id="1028">
+                                    <property name="width">2.5em</property>
+                                </column>
+                                <column id="1033"/>
+                                <column id="1037"/>
+                                <column id="1045">
+                                    <property name="width">2.5em</property>
+                                </column>
+                                <column id="1041"/>
+                                <header>
+                                    <row id="1046">
+                                        <property name="height">0.3125in</property>
+                                        <cell id="1047">
+                                            <property name="style">mainStyle</property>
+                                        </cell>
+                                        <cell id="1048">
+                                            <property name="colSpan">4</property>
+                                            <property name="rowSpan">1</property>
+                                            <property name="style">mainStyle</property>
+                                            <label id="1056">
+                                                <text-property name="text">原专业修读课程</text-property>
+                                            </label>
+                                        </cell>
+                                        <cell id="1051">
+                                            <property name="colSpan">4</property>
+                                            <property name="rowSpan">1</property>
+                                            <property name="style">mainStyle</property>
+                                            <label id="1058">
+                                                <text-property name="text">转入专业修读课程</text-property>
+                                            </label>
+                                        </cell>
+                                    </row>
+                                    <row id="996">
+                                        <cell id="997">
+                                            <property name="style">mainStyle</property>
+                                            <label id="998">
+                                                <text-property name="text">学年学期</text-property>
+                                            </label>
+                                        </cell>
+                                        <cell id="1001">
+                                            <property name="style">mainStyle</property>
+                                            <label id="1002">
+                                                <text-property name="text">课程名称</text-property>
+                                            </label>
+                                        </cell>
+                                        <cell id="1061">
+                                            <property name="style">mainStyle</property>
+                                            <label id="1065">
+                                                <text-property name="text">课程性质</text-property>
+                                            </label>
+                                        </cell>
+                                        <cell id="1003">
+                                            <property name="style">mainStyle</property>
+                                            <label id="1004">
+                                                <text-property name="text">学分</text-property>
+                                            </label>
+                                        </cell>
+                                        <cell id="1005">
+                                            <property name="style">mainStyle</property>
+                                            <label id="1006">
+                                                <text-property name="text">成绩</text-property>
+                                            </label>
+                                        </cell>
+                                        <cell id="1030">
+                                            <property name="style">mainStyle</property>
+                                            <label id="1059">
+                                                <text-property name="text">课程名称</text-property>
+                                            </label>
+                                        </cell>
+                                        <cell id="1034">
+                                            <property name="style">mainStyle</property>
+                                            <label id="1066">
+                                                <text-property name="text">课程性质</text-property>
+                                            </label>
+                                        </cell>
+                                        <cell id="1042">
+                                            <property name="style">mainStyle</property>
+                                            <label id="1067">
+                                                <text-property name="text">学分</text-property>
+                                            </label>
+                                        </cell>
+                                        <cell id="1038">
+                                            <property name="style">mainStyle</property>
+                                            <label id="1068">
+                                                <text-property name="text">备注</text-property>
+                                            </label>
+                                        </cell>
+                                    </row>
+                                </header>
+                                <detail>
+                                    <row id="1007">
+                                        <cell id="1008">
+                                            <property name="style">mainStyle</property>
+                                            <data id="1029">
+                                                <property name="resultSetColumn">_term</property>
+                                            </data>
+                                        </cell>
+                                        <cell id="1012">
+                                            <property name="style">mainStyle</property>
+                                            <data id="1013">
+                                                <property name="resultSetColumn">course_name</property>
+                                            </data>
+                                        </cell>
+                                        <cell id="1062">
+                                            <property name="style">mainStyle</property>
+                                            <data id="1201">
+                                                <property name="resultSetColumn">property</property>
+                                            </data>
+                                        </cell>
+                                        <cell id="1014">
+                                            <property name="style">mainStyle</property>
+                                            <data id="1015">
+                                                <property name="resultSetColumn">credit</property>
+                                            </data>
+                                        </cell>
+                                        <cell id="1016">
+                                            <property name="style">mainStyle</property>
+                                            <data id="1017">
+                                                <property name="resultSetColumn">score</property>
+                                            </data>
+                                        </cell>
+                                        <cell id="1031">
+                                            <property name="style">mainStyle</property>
+                                            <data id="1199">
+                                                <property name="resultSetColumn">course_name</property>
+                                            </data>
+                                        </cell>
+                                        <cell id="1035">
+                                            <property name="style">mainStyle</property>
+                                            <text id="1278">
+                                                <property name="contentType">auto</property>
+                                                <text-property name="content"><![CDATA[ ]]></text-property>
+                                            </text>
+                                        </cell>
+                                        <cell id="1043">
+                                            <property name="style">mainStyle</property>
+                                            <data id="1200">
+                                                <property name="resultSetColumn">credit</property>
+                                            </data>
+                                        </cell>
+                                        <cell id="1039">
+                                            <property name="style">mainStyle</property>
+                                            <text id="1279">
+                                                <property name="contentType">auto</property>
+                                                <text-property name="content"><![CDATA[ ]]></text-property>
+                                            </text>
+                                        </cell>
+                                    </row>
+                                </detail>
+                                <footer>
+                                    <row id="1018">
+                                        <cell id="1019">
+                                            <property name="style">mainStyle</property>
+                                        </cell>
+                                        <cell id="1021">
+                                            <property name="style">mainStyle</property>
+                                        </cell>
+                                        <cell id="1063">
+                                            <property name="style">mainStyle</property>
+                                        </cell>
+                                        <cell id="1022">
+                                            <property name="style">mainStyle</property>
+                                        </cell>
+                                        <cell id="1023">
+                                            <property name="style">mainStyle</property>
+                                        </cell>
+                                        <cell id="1032">
+                                            <property name="style">mainStyle</property>
+                                        </cell>
+                                        <cell id="1036">
+                                            <property name="style">mainStyle</property>
+                                        </cell>
+                                        <cell id="1044">
+                                            <property name="style">mainStyle</property>
+                                        </cell>
+                                        <cell id="1040">
+                                            <property name="style">mainStyle</property>
+                                        </cell>
+                                    </row>
+                                </footer>
+                            </table>
+                        </cell>
+                    </row>
+                    <row id="950">
+                        <property name="height">0.20833333333333334in</property>
+                        <cell id="951">
+                            <property name="colSpan">3</property>
+                            <property name="rowSpan">1</property>
+                            <property name="style">mainStyle</property>
+                            <label id="1123">
+                                <text-property name="text">需要补修的专业课程名称（学分）</text-property>
+                            </label>
+                        </cell>
+                        <cell id="954">
+                            <property name="colSpan">3</property>
+                            <property name="rowSpan">1</property>
+                            <property name="style">mainStyle</property>
+                            <label id="1124">
+                                <text-property name="text">预计补修时间</text-property>
+                            </label>
+                        </cell>
+                    </row>
+                    <row id="957">
+                        <property name="height">1em</property>
+                        <cell id="958">
+                            <property name="colSpan">3</property>
+                            <property name="rowSpan">1</property>
+                            <property name="fontFamily">"仿宋"</property>
+                            <property name="fontSize">9pt</property>
+                            <property name="borderBottomColor">#000000</property>
+                            <property name="borderBottomStyle">solid</property>
+                            <property name="borderBottomWidth">thin</property>
+                            <property name="borderLeftColor">#000000</property>
+                            <property name="borderLeftStyle">solid</property>
+                            <property name="borderLeftWidth">thin</property>
+                            <property name="borderRightColor">#000000</property>
+                            <property name="borderRightStyle">solid</property>
+                            <property name="borderRightWidth">thin</property>
+                            <property name="borderTopColor">#000000</property>
+                            <property name="borderTopStyle">solid</property>
+                            <property name="borderTopWidth">thin</property>
+                            <property name="textAlign">left</property>
+                            <property name="verticalAlign">top</property>
+                            <text id="1262">
+                                <property name="contentType">auto</property>
+                                <text-property name="content"><![CDATA[ ]]></text-property>
+                            </text>
+                        </cell>
+                        <cell id="961">
+                            <property name="colSpan">3</property>
+                            <property name="rowSpan">1</property>
+                            <property name="fontFamily">"仿宋"</property>
+                            <property name="fontSize">9pt</property>
+                            <property name="borderBottomColor">#000000</property>
+                            <property name="borderBottomStyle">solid</property>
+                            <property name="borderBottomWidth">thin</property>
+                            <property name="borderLeftColor">#000000</property>
+                            <property name="borderLeftStyle">solid</property>
+                            <property name="borderLeftWidth">thin</property>
+                            <property name="borderRightColor">#000000</property>
+                            <property name="borderRightStyle">solid</property>
+                            <property name="borderRightWidth">thin</property>
+                            <property name="borderTopColor">#000000</property>
+                            <property name="borderTopStyle">solid</property>
+                            <property name="borderTopWidth">thin</property>
+                            <property name="textAlign">left</property>
+                            <property name="verticalAlign">top</property>
+                            <text id="1270">
+                                <property name="contentType">auto</property>
+                                <text-property name="content"><![CDATA[ ]]></text-property>
+                            </text>
+                        </cell>
+                    </row>
+                    <row id="964">
+                        <property name="height">1em</property>
+                        <cell id="965">
+                            <property name="colSpan">3</property>
+                            <property name="rowSpan">1</property>
+                            <property name="backgroundAttachment">scroll</property>
+                            <property name="backgroundImageType">url</property>
+                            <property name="backgroundPositionX">0%</property>
+                            <property name="backgroundPositionY">0%</property>
+                            <property name="backgroundRepeat">repeat</property>
+                            <property name="backgroundSizeHeight">auto</property>
+                            <property name="backgroundSizeWidth">auto</property>
+                            <property name="fontFamily">"仿宋"</property>
+                            <property name="fontSize">9pt</property>
+                            <property name="fontWeight">normal</property>
+                            <property name="fontStyle">normal</property>
+                            <property name="fontVariant">normal</property>
+                            <property name="color">black</property>
+                            <property name="textLineThrough">none</property>
+                            <property name="textOverline">none</property>
+                            <property name="textUnderline">none</property>
+                            <property name="borderBottomColor">#000000</property>
+                            <property name="borderBottomStyle">solid</property>
+                            <property name="borderBottomWidth">thin</property>
+                            <property name="borderLeftColor">#000000</property>
+                            <property name="borderLeftStyle">solid</property>
+                            <property name="borderLeftWidth">thin</property>
+                            <property name="borderRightColor">#000000</property>
+                            <property name="borderRightStyle">solid</property>
+                            <property name="borderRightWidth">thin</property>
+                            <property name="borderTopColor">#000000</property>
+                            <property name="borderTopStyle">solid</property>
+                            <property name="borderTopWidth">thin</property>
+                            <property name="marginTop">0pt</property>
+                            <property name="marginLeft">0pt</property>
+                            <property name="marginBottom">0pt</property>
+                            <property name="marginRight">0pt</property>
+                            <property name="paddingTop">1pt</property>
+                            <property name="paddingLeft">1pt</property>
+                            <property name="paddingBottom">1pt</property>
+                            <property name="paddingRight">1pt</property>
+                            <property name="textAlign">left</property>
+                            <property name="textIndent">0em</property>
+                            <property name="letterSpacing">normal</property>
+                            <property name="lineHeight">normal</property>
+                            <property name="orphans">2</property>
+                            <property name="textTransform">none</property>
+                            <property name="verticalAlign">top</property>
+                            <property name="whiteSpace">normal</property>
+                            <property name="widows">2</property>
+                            <property name="wordSpacing">normal</property>
+                            <property name="display">block</property>
+                            <property name="pageBreakAfter">auto</property>
+                            <property name="pageBreakBefore">auto</property>
+                            <property name="pageBreakInside">auto</property>
+                            <property name="showIfBlank">false</property>
+                            <property name="canShrink">false</property>
+                            <property name="overflow">hidden</property>
+                            <text id="1263">
+                                <property name="contentType">auto</property>
+                                <text-property name="content"><![CDATA[ ]]></text-property>
+                            </text>
+                        </cell>
+                        <cell id="968">
+                            <property name="colSpan">3</property>
+                            <property name="rowSpan">1</property>
+                            <property name="fontFamily">"仿宋"</property>
+                            <property name="fontSize">9pt</property>
+                            <property name="borderBottomColor">#000000</property>
+                            <property name="borderBottomStyle">solid</property>
+                            <property name="borderBottomWidth">thin</property>
+                            <property name="borderLeftColor">#000000</property>
+                            <property name="borderLeftStyle">solid</property>
+                            <property name="borderLeftWidth">thin</property>
+                            <property name="borderRightColor">#000000</property>
+                            <property name="borderRightStyle">solid</property>
+                            <property name="borderRightWidth">thin</property>
+                            <property name="borderTopColor">#000000</property>
+                            <property name="borderTopStyle">solid</property>
+                            <property name="borderTopWidth">thin</property>
+                            <property name="textAlign">left</property>
+                            <property name="verticalAlign">top</property>
+                            <text id="1271">
+                                <property name="contentType">auto</property>
+                                <text-property name="content"><![CDATA[ ]]></text-property>
+                            </text>
+                        </cell>
+                    </row>
+                    <row id="1132">
+                        <property name="height">1em</property>
+                        <cell id="1133">
+                            <property name="colSpan">3</property>
+                            <property name="rowSpan">1</property>
+                            <property name="fontFamily">"仿宋"</property>
+                            <property name="fontSize">9pt</property>
+                            <property name="borderBottomColor">#000000</property>
+                            <property name="borderBottomStyle">solid</property>
+                            <property name="borderBottomWidth">thin</property>
+                            <property name="borderLeftColor">#000000</property>
+                            <property name="borderLeftStyle">solid</property>
+                            <property name="borderLeftWidth">thin</property>
+                            <property name="borderRightColor">#000000</property>
+                            <property name="borderRightStyle">solid</property>
+                            <property name="borderRightWidth">thin</property>
+                            <property name="borderTopColor">#000000</property>
+                            <property name="borderTopStyle">solid</property>
+                            <property name="borderTopWidth">thin</property>
+                            <property name="textAlign">left</property>
+                            <property name="verticalAlign">top</property>
+                            <text id="1264">
+                                <property name="contentType">auto</property>
+                                <text-property name="content"><![CDATA[ ]]></text-property>
+                            </text>
+                        </cell>
+                        <cell id="1136">
+                            <property name="colSpan">3</property>
+                            <property name="rowSpan">1</property>
+                            <property name="fontFamily">"仿宋"</property>
+                            <property name="fontSize">9pt</property>
+                            <property name="borderBottomColor">#000000</property>
+                            <property name="borderBottomStyle">solid</property>
+                            <property name="borderBottomWidth">thin</property>
+                            <property name="borderLeftColor">#000000</property>
+                            <property name="borderLeftStyle">solid</property>
+                            <property name="borderLeftWidth">thin</property>
+                            <property name="borderRightColor">#000000</property>
+                            <property name="borderRightStyle">solid</property>
+                            <property name="borderRightWidth">thin</property>
+                            <property name="borderTopColor">#000000</property>
+                            <property name="borderTopStyle">solid</property>
+                            <property name="borderTopWidth">thin</property>
+                            <property name="textAlign">left</property>
+                            <property name="verticalAlign">top</property>
+                            <text id="1272">
+                                <property name="contentType">auto</property>
+                                <text-property name="content"><![CDATA[ ]]></text-property>
+                            </text>
+                        </cell>
+                    </row>
+                    <row id="1139">
+                        <property name="height">1em</property>
+                        <cell id="1140">
+                            <property name="colSpan">3</property>
+                            <property name="rowSpan">1</property>
+                            <property name="fontFamily">"仿宋"</property>
+                            <property name="fontSize">9pt</property>
+                            <property name="borderBottomColor">#000000</property>
+                            <property name="borderBottomStyle">solid</property>
+                            <property name="borderBottomWidth">thin</property>
+                            <property name="borderLeftColor">#000000</property>
+                            <property name="borderLeftStyle">solid</property>
+                            <property name="borderLeftWidth">thin</property>
+                            <property name="borderRightColor">#000000</property>
+                            <property name="borderRightStyle">solid</property>
+                            <property name="borderRightWidth">thin</property>
+                            <property name="borderTopColor">#000000</property>
+                            <property name="borderTopStyle">solid</property>
+                            <property name="borderTopWidth">thin</property>
+                            <property name="textAlign">left</property>
+                            <property name="verticalAlign">top</property>
+                            <text id="1265">
+                                <property name="contentType">auto</property>
+                                <text-property name="content"><![CDATA[ ]]></text-property>
+                            </text>
+                        </cell>
+                        <cell id="1143">
+                            <property name="colSpan">3</property>
+                            <property name="rowSpan">1</property>
+                            <property name="fontFamily">"仿宋"</property>
+                            <property name="fontSize">9pt</property>
+                            <property name="borderBottomColor">#000000</property>
+                            <property name="borderBottomStyle">solid</property>
+                            <property name="borderBottomWidth">thin</property>
+                            <property name="borderLeftColor">#000000</property>
+                            <property name="borderLeftStyle">solid</property>
+                            <property name="borderLeftWidth">thin</property>
+                            <property name="borderRightColor">#000000</property>
+                            <property name="borderRightStyle">solid</property>
+                            <property name="borderRightWidth">thin</property>
+                            <property name="borderTopColor">#000000</property>
+                            <property name="borderTopStyle">solid</property>
+                            <property name="borderTopWidth">thin</property>
+                            <property name="textAlign">left</property>
+                            <property name="verticalAlign">top</property>
+                            <text id="1273">
+                                <property name="contentType">auto</property>
+                                <text-property name="content"><![CDATA[ ]]></text-property>
+                            </text>
+                        </cell>
+                    </row>
+                    <row id="971">
+                        <property name="height">1em</property>
+                        <cell id="972">
+                            <property name="colSpan">3</property>
+                            <property name="rowSpan">1</property>
+                            <property name="fontFamily">"仿宋"</property>
+                            <property name="fontSize">9pt</property>
+                            <property name="borderBottomColor">#000000</property>
+                            <property name="borderBottomStyle">solid</property>
+                            <property name="borderBottomWidth">thin</property>
+                            <property name="borderLeftColor">#000000</property>
+                            <property name="borderLeftStyle">solid</property>
+                            <property name="borderLeftWidth">thin</property>
+                            <property name="borderRightColor">#000000</property>
+                            <property name="borderRightStyle">solid</property>
+                            <property name="borderRightWidth">thin</property>
+                            <property name="borderTopColor">#000000</property>
+                            <property name="borderTopStyle">solid</property>
+                            <property name="borderTopWidth">thin</property>
+                            <property name="textAlign">left</property>
+                            <property name="verticalAlign">top</property>
+                            <text id="1266">
+                                <property name="contentType">auto</property>
+                                <text-property name="content"><![CDATA[ ]]></text-property>
+                            </text>
+                        </cell>
+                        <cell id="975">
+                            <property name="colSpan">3</property>
+                            <property name="rowSpan">1</property>
+                            <property name="fontFamily">"仿宋"</property>
+                            <property name="fontSize">9pt</property>
+                            <property name="borderBottomColor">#000000</property>
+                            <property name="borderBottomStyle">solid</property>
+                            <property name="borderBottomWidth">thin</property>
+                            <property name="borderLeftColor">#000000</property>
+                            <property name="borderLeftStyle">solid</property>
+                            <property name="borderLeftWidth">thin</property>
+                            <property name="borderRightColor">#000000</property>
+                            <property name="borderRightStyle">solid</property>
+                            <property name="borderRightWidth">thin</property>
+                            <property name="borderTopColor">#000000</property>
+                            <property name="borderTopStyle">solid</property>
+                            <property name="borderTopWidth">thin</property>
+                            <property name="textAlign">left</property>
+                            <property name="verticalAlign">top</property>
+                            <text id="1274">
+                                <property name="contentType">auto</property>
+                                <text-property name="content"><![CDATA[ ]]></text-property>
+                            </text>
+                        </cell>
+                    </row>
+                    <row id="1125">
+                        <property name="height">1em</property>
+                        <cell id="1126">
+                            <property name="colSpan">3</property>
+                            <property name="rowSpan">1</property>
+                            <property name="fontFamily">"仿宋"</property>
+                            <property name="fontSize">9pt</property>
+                            <property name="borderBottomColor">#000000</property>
+                            <property name="borderBottomStyle">solid</property>
+                            <property name="borderBottomWidth">thin</property>
+                            <property name="borderLeftColor">#000000</property>
+                            <property name="borderLeftStyle">solid</property>
+                            <property name="borderLeftWidth">thin</property>
+                            <property name="borderRightColor">#000000</property>
+                            <property name="borderRightStyle">solid</property>
+                            <property name="borderRightWidth">thin</property>
+                            <property name="borderTopColor">#000000</property>
+                            <property name="borderTopStyle">solid</property>
+                            <property name="borderTopWidth">thin</property>
+                            <property name="textAlign">left</property>
+                            <property name="verticalAlign">top</property>
+                            <text id="1267">
+                                <property name="contentType">auto</property>
+                                <text-property name="content"><![CDATA[ ]]></text-property>
+                            </text>
+                        </cell>
+                        <cell id="1129">
+                            <property name="colSpan">3</property>
+                            <property name="rowSpan">1</property>
+                            <property name="fontFamily">"仿宋"</property>
+                            <property name="fontSize">9pt</property>
+                            <property name="borderBottomColor">#000000</property>
+                            <property name="borderBottomStyle">solid</property>
+                            <property name="borderBottomWidth">thin</property>
+                            <property name="borderLeftColor">#000000</property>
+                            <property name="borderLeftStyle">solid</property>
+                            <property name="borderLeftWidth">thin</property>
+                            <property name="borderRightColor">#000000</property>
+                            <property name="borderRightStyle">solid</property>
+                            <property name="borderRightWidth">thin</property>
+                            <property name="borderTopColor">#000000</property>
+                            <property name="borderTopStyle">solid</property>
+                            <property name="borderTopWidth">thin</property>
+                            <property name="textAlign">left</property>
+                            <property name="verticalAlign">top</property>
+                            <text id="1275">
+                                <property name="contentType">auto</property>
+                                <text-property name="content"><![CDATA[ ]]></text-property>
+                            </text>
+                        </cell>
+                    </row>
+                    <row id="1146">
+                        <property name="height">1em</property>
+                        <cell id="1147">
+                            <property name="colSpan">3</property>
+                            <property name="rowSpan">1</property>
+                            <property name="fontFamily">"仿宋"</property>
+                            <property name="fontSize">9pt</property>
+                            <property name="borderBottomColor">#000000</property>
+                            <property name="borderBottomStyle">solid</property>
+                            <property name="borderBottomWidth">thin</property>
+                            <property name="borderLeftColor">#000000</property>
+                            <property name="borderLeftStyle">solid</property>
+                            <property name="borderLeftWidth">thin</property>
+                            <property name="borderRightColor">#000000</property>
+                            <property name="borderRightStyle">solid</property>
+                            <property name="borderRightWidth">thin</property>
+                            <property name="borderTopColor">#000000</property>
+                            <property name="borderTopStyle">solid</property>
+                            <property name="borderTopWidth">thin</property>
+                            <property name="textAlign">left</property>
+                            <property name="verticalAlign">top</property>
+                            <text id="1268">
+                                <property name="contentType">auto</property>
+                                <text-property name="content"><![CDATA[ ]]></text-property>
+                            </text>
+                        </cell>
+                        <cell id="1150">
+                            <property name="colSpan">3</property>
+                            <property name="rowSpan">1</property>
+                            <property name="fontFamily">"仿宋"</property>
+                            <property name="fontSize">9pt</property>
+                            <property name="borderBottomColor">#000000</property>
+                            <property name="borderBottomStyle">solid</property>
+                            <property name="borderBottomWidth">thin</property>
+                            <property name="borderLeftColor">#000000</property>
+                            <property name="borderLeftStyle">solid</property>
+                            <property name="borderLeftWidth">thin</property>
+                            <property name="borderRightColor">#000000</property>
+                            <property name="borderRightStyle">solid</property>
+                            <property name="borderRightWidth">thin</property>
+                            <property name="borderTopColor">#000000</property>
+                            <property name="borderTopStyle">solid</property>
+                            <property name="borderTopWidth">thin</property>
+                            <property name="textAlign">left</property>
+                            <property name="verticalAlign">top</property>
+                            <text id="1276">
+                                <property name="contentType">auto</property>
+                                <text-property name="content"><![CDATA[ ]]></text-property>
+                            </text>
+                        </cell>
+                    </row>
+                    <row id="1160">
+                        <property name="height">1em</property>
+                        <cell id="1161">
+                            <property name="colSpan">3</property>
+                            <property name="rowSpan">1</property>
+                            <property name="fontFamily">"仿宋"</property>
+                            <property name="fontSize">9pt</property>
+                            <property name="borderBottomColor">#000000</property>
+                            <property name="borderBottomStyle">solid</property>
+                            <property name="borderBottomWidth">thin</property>
+                            <property name="borderLeftColor">#000000</property>
+                            <property name="borderLeftStyle">solid</property>
+                            <property name="borderLeftWidth">thin</property>
+                            <property name="borderRightColor">#000000</property>
+                            <property name="borderRightStyle">solid</property>
+                            <property name="borderRightWidth">thin</property>
+                            <property name="borderTopColor">#000000</property>
+                            <property name="borderTopStyle">solid</property>
+                            <property name="borderTopWidth">thin</property>
+                            <property name="textAlign">left</property>
+                            <property name="verticalAlign">top</property>
+                            <text id="1269">
+                                <property name="contentType">auto</property>
+                                <text-property name="content"><![CDATA[ ]]></text-property>
+                            </text>
+                        </cell>
+                        <cell id="1164">
+                            <property name="colSpan">3</property>
+                            <property name="rowSpan">1</property>
+                            <property name="fontFamily">"仿宋"</property>
+                            <property name="fontSize">9pt</property>
+                            <property name="borderBottomColor">#000000</property>
+                            <property name="borderBottomStyle">solid</property>
+                            <property name="borderBottomWidth">thin</property>
+                            <property name="borderLeftColor">#000000</property>
+                            <property name="borderLeftStyle">solid</property>
+                            <property name="borderLeftWidth">thin</property>
+                            <property name="borderRightColor">#000000</property>
+                            <property name="borderRightStyle">solid</property>
+                            <property name="borderRightWidth">thin</property>
+                            <property name="borderTopColor">#000000</property>
+                            <property name="borderTopStyle">solid</property>
+                            <property name="borderTopWidth">thin</property>
+                            <property name="textAlign">left</property>
+                            <property name="verticalAlign">top</property>
+                            <text id="1277">
+                                <property name="contentType">auto</property>
+                                <text-property name="content"><![CDATA[ ]]></text-property>
+                            </text>
+                        </cell>
+                    </row>
+                    <row id="1153">
+                        <property name="height">0.28125in</property>
+                        <cell id="1154">
+                            <property name="colSpan">6</property>
+                            <property name="rowSpan">1</property>
+                            <property name="style">mainStyle</property>
+                            <text id="1186">
+                                <property name="contentType">auto</property>
+                                <text-property name="content"><![CDATA[学生确认签名：                                       联系电话：                               年    月      日									]]></text-property>
+                            </text>
+                        </cell>
+                    </row>
+                    <row id="1167">
+                        <property name="height">0.8854166666666666in</property>
+                        <cell id="1168">
+                            <property name="colSpan">6</property>
+                            <property name="rowSpan">1</property>
+                            <property name="style">mainStyle</property>
+                            <property name="textAlign">left</property>
+                            <property name="verticalAlign">top</property>
+                            <text id="1187">
+                                <property name="contentType">auto</property>
+                                <text-property name="content"><![CDATA[学院意见：
+
+
+
+主管教学院长/系主任（签章）                 学院盖章：        年    月    日]]></text-property>
+                            </text>
+                        </cell>
+                    </row>
+                    <row id="1174">
+                        <property name="height">0.96875in</property>
+                        <cell id="1175">
+                            <property name="colSpan">6</property>
+                            <property name="rowSpan">1</property>
+                            <property name="style">mainStyle</property>
+                            <text id="1195">
+                                <property name="backgroundAttachment">scroll</property>
+                                <property name="backgroundPositionX">0%</property>
+                                <property name="backgroundPositionY">0%</property>
+                                <property name="backgroundRepeat">repeat</property>
+                                <property name="fontFamily">serif</property>
+                                <property name="fontSize">10pt</property>
+                                <property name="fontWeight">normal</property>
+                                <property name="fontStyle">normal</property>
+                                <property name="fontVariant">normal</property>
+                                <property name="color">black</property>
+                                <property name="textLineThrough">none</property>
+                                <property name="textOverline">none</property>
+                                <property name="textUnderline">none</property>
+                                <property name="borderBottomColor">black</property>
+                                <property name="borderBottomStyle">none</property>
+                                <property name="borderBottomWidth">medium</property>
+                                <property name="borderLeftColor">black</property>
+                                <property name="borderLeftStyle">none</property>
+                                <property name="borderLeftWidth">medium</property>
+                                <property name="borderRightColor">black</property>
+                                <property name="borderRightStyle">none</property>
+                                <property name="borderRightWidth">medium</property>
+                                <property name="borderTopColor">black</property>
+                                <property name="borderTopStyle">none</property>
+                                <property name="borderTopWidth">medium</property>
+                                <property name="marginTop">0pt</property>
+                                <property name="marginLeft">0pt</property>
+                                <property name="marginBottom">0pt</property>
+                                <property name="marginRight">0pt</property>
+                                <property name="paddingTop">1pt</property>
+                                <property name="paddingLeft">1pt</property>
+                                <property name="paddingBottom">1pt</property>
+                                <property name="paddingRight">1pt</property>
+                                <property name="textAlign">left</property>
+                                <property name="textIndent">0em</property>
+                                <property name="letterSpacing">normal</property>
+                                <property name="lineHeight">normal</property>
+                                <property name="orphans">2</property>
+                                <property name="textTransform">none</property>
+                                <property name="whiteSpace">normal</property>
+                                <property name="widows">2</property>
+                                <property name="wordSpacing">normal</property>
+                                <property name="display">block</property>
+                                <property name="pageBreakAfter">auto</property>
+                                <property name="pageBreakBefore">auto</property>
+                                <property name="pageBreakInside">auto</property>
+                                <property name="showIfBlank">false</property>
+                                <property name="canShrink">false</property>
+                                <property name="overflow">hidden</property>
+                                <property name="contentType">auto</property>
+                                <text-property name="content"><![CDATA[教务处意见:
+
+
+
+                                           （盖章）：                                          年    月    日]]></text-property>
+                            </text>
+                        </cell>
+                    </row>
+                    <row id="1188">
+                        <property name="height">0.7916666666666666in</property>
+                        <cell id="1189">
+                            <property name="colSpan">6</property>
+                            <property name="rowSpan">1</property>
+                            <property name="style">mainStyle</property>
+                            <property name="backgroundAttachment">scroll</property>
+                            <property name="backgroundPositionX">0%</property>
+                            <property name="backgroundPositionY">0%</property>
+                            <property name="backgroundRepeat">repeat</property>
+                            <property name="fontFamily">serif</property>
+                            <property name="fontSize">10pt</property>
+                            <property name="fontWeight">normal</property>
+                            <property name="fontStyle">normal</property>
+                            <property name="fontVariant">normal</property>
+                            <property name="color">black</property>
+                            <property name="textLineThrough">none</property>
+                            <property name="textOverline">none</property>
+                            <property name="textUnderline">none</property>
+                            <property name="borderBottomColor">black</property>
+                            <property name="borderBottomStyle">none</property>
+                            <property name="borderBottomWidth">medium</property>
+                            <property name="borderLeftColor">black</property>
+                            <property name="borderLeftStyle">none</property>
+                            <property name="borderLeftWidth">medium</property>
+                            <property name="borderRightColor">black</property>
+                            <property name="borderRightStyle">none</property>
+                            <property name="borderRightWidth">medium</property>
+                            <property name="borderTopColor">black</property>
+                            <property name="borderTopStyle">none</property>
+                            <property name="borderTopWidth">medium</property>
+                            <property name="marginTop">0pt</property>
+                            <property name="marginLeft">0pt</property>
+                            <property name="marginBottom">0pt</property>
+                            <property name="marginRight">0pt</property>
+                            <property name="paddingTop">1pt</property>
+                            <property name="paddingLeft">1pt</property>
+                            <property name="paddingBottom">1pt</property>
+                            <property name="paddingRight">1pt</property>
+                            <property name="textAlign">left</property>
+                            <property name="textIndent">0em</property>
+                            <property name="letterSpacing">normal</property>
+                            <property name="lineHeight">normal</property>
+                            <property name="orphans">2</property>
+                            <property name="textTransform">none</property>
+                            <property name="whiteSpace">normal</property>
+                            <property name="widows">2</property>
+                            <property name="wordSpacing">normal</property>
+                            <property name="display">block</property>
+                            <property name="pageBreakAfter">auto</property>
+                            <property name="pageBreakBefore">auto</property>
+                            <property name="pageBreakInside">auto</property>
+                            <property name="showIfBlank">false</property>
+                            <property name="canShrink">false</property>
+                            <property name="overflow">hidden</property>
+                            <text id="1197">
+                                <property name="contentType">auto</property>
+                                <text-property name="content"><![CDATA[注:1、如互认课程名称和学分不同，请在备注栏注明。
+   2、学生在收到此表后须及时登录教务管理系统核查本人课程及学分是否无误。
+   3、此表2份，由学院和学生本人各留一份。]]></text-property>
+                            </text>
+                        </cell>
+                    </row>
+                </grid>
+                <grid id="1234">
+                    <column id="1235"/>
+                    <column id="1236"/>
+                    <column id="1237"/>
+                    <column id="1238"/>
+                    <column id="1239"/>
+                    <column id="1240"/>
+                    <row id="1241">
+                        <cell id="1242"/>
+                        <cell id="1243"/>
+                        <cell id="1244"/>
+                        <cell id="1245"/>
+                        <cell id="1246"/>
+                        <cell id="1247"/>
+                    </row>
+                </grid>
+            </detail>
+        </list>
+    </body>
+</report>
